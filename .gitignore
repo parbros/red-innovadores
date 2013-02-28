@@ -20,6 +20,8 @@ db/*.sqlite3-journal
 *.log
 tmp
 tmp/**/*
+.ruby-version
+config/database.yml
 
 # Documentation
 doc/api

@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 
 
 gem 'pg'
+gem 'refinerycms-blog', '~> 2.0.0'
 
 group :development, :test do
 end
