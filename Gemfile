@@ -9,6 +9,7 @@ gem 'rails', '3.2.12'
 gem 'pg'
 gem 'refinerycms-blog', '~> 2.0.0'
 gem 'refinerycms-videojs'
+gem 'refinerycms-memberships', :git => 'git://github.com/sbeam/refinerycms_membership.git', :branch => '2.0-stable'
 
 group :development, :test do
 end

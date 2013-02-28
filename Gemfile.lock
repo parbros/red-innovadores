@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/sbeam/refinerycms_membership.git
+  revision: da0ac8fc44a49a9528a1e25a3edf34922817f784
+  branch: 2.0-stable
+  specs:
+    refinerycms-memberships (2.0.3)
+      nokogiri (~> 1.5.0)
+      refinerycms-core (>= 2.0.0)
+      refinerycms-settings (>= 2.0.0)
+      webrat (~> 0.7.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,6 +85,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.21)
     multi_json (1.6.1)
+    nokogiri (1.5.6)
     orm_adapter (0.0.7)
     paper_trail (2.7.1)
       activerecord (~> 3.0)
@@ -188,6 +200,10 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
+    webrat (0.7.3)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
     will_paginate (3.0.4)
 
 PLATFORMS
@@ -201,6 +217,7 @@ DEPENDENCIES
   refinerycms (~> 2.0.0)
   refinerycms-blog (~> 2.0.0)
   refinerycms-i18n (~> 2.0.0)
+  refinerycms-memberships!
   refinerycms-videojs
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
