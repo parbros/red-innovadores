@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/refinery/refinerycms-settings.git
+  revision: b045d02a2ca9aa26884fddcfb491f222852e6f11
+  branch: 2-0-stable
+  specs:
+    refinerycms-settings (2.0.2)
+      acts_as_indexed (~> 0.7.7)
+      refinerycms-core (~> 2.0.1)
+
+GIT
   remote: git://github.com/sbeam/refinerycms_membership.git
   revision: da0ac8fc44a49a9528a1e25a3edf34922817f784
   branch: 2.0-stable
@@ -159,6 +168,12 @@ GEM
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
       refinerycms-core (= 2.0.9)
+    refinerycms-inquiries (2.0.3)
+      filters_spam (~> 0.2)
+      refinerycms-core (~> 2.0.1)
+      refinerycms-settings (~> 2.0.1)
+    refinerycms-page-images (2.0.1)
+      refinerycms-pages (~> 2.0.0)
     refinerycms-pages (2.0.9)
       awesome_nested_set (~> 2.1.3)
       babosa (!= 0.3.6)
@@ -168,8 +183,8 @@ GEM
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
       refinerycms-core (= 2.0.9)
-    refinerycms-settings (2.0.2)
-      refinerycms-core (~> 2.0.1)
+    refinerycms-search (2.0.0)
+      refinerycms-core (~> 2.0.4)
     refinerycms-videojs (0.5.5.1)
       dragonfly
       rack-cache
@@ -217,7 +232,11 @@ DEPENDENCIES
   refinerycms (~> 2.0.0)
   refinerycms-blog (~> 2.0.0)
   refinerycms-i18n (~> 2.0.0)
+  refinerycms-inquiries (~> 2.0.0)
   refinerycms-memberships!
+  refinerycms-page-images (~> 2.0.0)
+  refinerycms-search (~> 2.0.0)
+  refinerycms-settings!
   refinerycms-videojs
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

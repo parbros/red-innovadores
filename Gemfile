@@ -7,9 +7,6 @@ gem 'rails', '3.2.12'
 
 
 gem 'pg'
-gem 'refinerycms-blog', '~> 2.0.0'
-gem 'refinerycms-videojs'
-gem 'refinerycms-memberships', :git => 'git://github.com/sbeam/refinerycms_membership.git', :branch => '2.0-stable'
 
 group :development, :test do
 end
@@ -49,7 +46,10 @@ gem 'refinerycms', '~> 2.0.0'
 
 # Specify additional Refinery CMS Extensions here (all optional):
 gem 'refinerycms-i18n', '~> 2.0.0'
-#  gem 'refinerycms-blog', '~> 2.0.0'
-#  gem 'refinerycms-inquiries', '~> 2.0.0'
-#  gem 'refinerycms-search', '~> 2.0.0'
-#  gem 'refinerycms-page-images', '~> 2.0.0'
+gem 'refinerycms-blog', '~> 2.0.0'
+gem 'refinerycms-videojs'
+gem 'refinerycms-memberships', :git => 'git://github.com/sbeam/refinerycms_membership.git', :branch => '2.0-stable'
+gem "refinerycms-settings", :git => "git://github.com/refinery/refinerycms-settings.git", :branch => "2-0-stable"
+gem 'refinerycms-inquiries', '~> 2.0.0'
+gem 'refinerycms-search', '~> 2.0.0'
+gem 'refinerycms-page-images', '~> 2.0.0'
