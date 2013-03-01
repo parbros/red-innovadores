@@ -1,0 +1,8 @@
+es:
+  refinery:
+    plugins:
+      videos:
+        title: 'Videos'
+        no_item_yet: 'No videos'
+      refinerycms_memberships:
+        title: 'Miembros'
