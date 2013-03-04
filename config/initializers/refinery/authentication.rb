@@ -1,5 +1,4 @@
-# encoding: utf-8
-Refinery::Authentication.configure do |config|
-  # Configure whether to allow superuser to assign roles
-  config.superuser_can_assign_roles = true
-end
+Devise.setup do |config| 
+  config.cas_base_url = "http://localhost:8888"
+end 
+

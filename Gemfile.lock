@@ -76,6 +76,9 @@ GEM
       orm_adapter (~> 0.0.3)
       railties (~> 3.1)
       warden (~> 1.1.1)
+    devise_cas_authenticatable (1.1.4)
+      devise (>= 1.0.6)
+      rubycas-client (>= 2.2.1)
     dragonfly (0.9.14)
       multi_json (~> 1.0)
       rack
@@ -204,6 +207,8 @@ GEM
       refinerycms-core
     routing-filter (0.3.1)
       actionpack
+    rubycas-client (2.3.9)
+      activesupport
     sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -240,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass!
   coffee-rails (~> 3.2.1)
+  devise_cas_authenticatable
   haml-rails
   jquery-rails (~> 2.0.0)
   pg

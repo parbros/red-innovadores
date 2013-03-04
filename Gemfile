@@ -28,6 +28,9 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'jquery-rails', '~> 2.0.0'
 
+
+gem 'devise_cas_authenticatable'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
