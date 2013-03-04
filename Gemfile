@@ -27,6 +27,7 @@ end
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'jquery-rails', '~> 2.0.0'
+gem 'unicorn'
 
 
 gem 'devise_cas_authenticatable'
