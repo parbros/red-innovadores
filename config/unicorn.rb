@@ -32,13 +32,13 @@ listen 3000, :tcp_nopush => true
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "/home/red-innovadores/red-innovadores/pids/unicorn.pid"
+pid "/home/red-innovadores/red-innovadores/shared/pids/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "/home/red-innovadores/red-innovadores/log/unicorn.stderr.log"
-stdout_path "/home/red-innovadores/red-innovadores/log/unicorn.stdout.log"
+stderr_path "/home/red-innovadores/red-innovadores/shared/logs/unicorn.stderr.log"
+stdout_path "/home/red-innovadores/red-innovadores/shared/logs/unicorn.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
