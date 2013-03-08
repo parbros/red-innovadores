@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-
+gem 'activeresource', :require => 'active_resource'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -31,10 +31,6 @@ end
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'jquery-rails', '~> 2.0.0'
-gem 'unicorn'
-
-
-gem 'devise_cas_authenticatable'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -63,3 +59,6 @@ gem "refinerycms-settings", :git => "git://github.com/refinery/refinerycms-setti
 gem 'refinerycms-inquiries', '~> 2.0.0'
 gem 'refinerycms-search', '~> 2.0.0'
 gem 'refinerycms-page-images', '~> 2.0.0'
+
+gem 'devise_cas_authenticatable'
+gem 'forem', :git => "git://github.com/radar/forem.git"
