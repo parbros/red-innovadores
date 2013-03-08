@@ -8,7 +8,7 @@
     hide_children = Refinery::Core.menu_hide_children if hide_children.nil?
 -%>
 
-  <ul class="nav">
+  <ul class="nav pull-left">
     <li><a href="/blog">Actualidad</a></li>
     
     <%= render :partial => '/refinery/menu_branch', :collection => roots,
@@ -18,5 +18,23 @@
                :menu_levels => local_assigns[:menu_levels],
                :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
              } -%>
-  </ul>          
+  </ul>
+  <ul class="nav pull-right">
+    <% if current_refinery_user.blank? %>
+      <li><a href="/refinery/users/login">Ingresar</a></li>
+    <% else %>
+    <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a tabindex="-1" href="/members/edit">Editar perfil</a></li>
+            <% if current_refinery_user.has_role?(:superuser) -%>
+              <li><a tabindex="-1" href="/administrador">CMS Administrador</a></li>
+              <li><a tabindex="-1" href="/foros/admin">Foro Administrador</a></li>
+            <% end -%>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="/refinery/users/logout">Logout</a></li>
+        </ul>
+    </div>
+    <% end -%>
+  </ul>
 <% end -%>
