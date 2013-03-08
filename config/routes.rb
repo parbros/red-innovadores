@@ -5,7 +5,10 @@ RedInnovadores::Application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
-  mount Forem::Engine, :at => "/forums"
+  
+  match '/administrador' => redirect('/refinery')
+  
+  mount Forem::Engine, :at => "/foros"
   mount Refinery::Core::Engine, :at => '/'
 
   # The priority is based upon order of creation:

@@ -1,4 +1,4 @@
-<li>
+<li>Some
   <%= link_to(menu_branch.title, refinery.url_for(menu_branch.url)) -%>
   <% if ( (children = menu_branch.children unless hide_children).present? &&
           (!local_assigns[:menu_levels] || menu_branch.ancestors.length < local_assigns[:menu_levels]) ) -%>

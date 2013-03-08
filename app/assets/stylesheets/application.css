@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require twitter_bootstrap
+ *= require blog
  *= require_tree .
  */

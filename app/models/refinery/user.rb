@@ -12,9 +12,8 @@ module Refinery
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
-    if self.respond_to?(:devise)
-      devise :cas_authenticatable
-    end
+    
+    devise :cas_authenticatable
 
     # Setup accessible (or protected) attributes for your model
     # :login is a virtual attribute for authenticating by either username or email
