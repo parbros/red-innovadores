@@ -94,6 +94,10 @@ module Refinery
     def to_param
       to_s.parameterize
     end
+    
+    def forem_admin?
+      has_role?(:superuser)
+    end
 
     private
     # To ensure uniqueness without case sensitivity we first downcase the username.
