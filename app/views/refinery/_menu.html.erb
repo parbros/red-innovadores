@@ -10,7 +10,6 @@
 
   <ul class="nav pull-left">
     <li><a href="/blog">NOTICIAS relevantes</a></li>
-    <li><a href="/blog">APRENDIZAJE</a></li>
     <li><a href="http://198.211.103.4/">APRENDIZAJE</a></li>
     <li><a href="/foros">FOROS de discusion</a></li>
     <li><a href="#">COMUNIDAD de inovaci&oacute;n</a></li>
@@ -26,10 +25,11 @@
   <ul class="nav pull-right">
     <% if current_refinery_user.blank? %>
       <li><a href="/refinery/users/login">Ingresar</a></li>
+      <li><a href="/members/new">Registro</a></li>
     <% else %>
     <div class="btn-group">
         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action<span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
             <li><a tabindex="-1" href="/members/edit">Editar perfil</a></li>
             <% if current_refinery_user.has_role?(:superuser) -%>
               <li><a tabindex="-1" href="/administrador">CMS Administrador</a></li>
