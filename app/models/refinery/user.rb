@@ -13,12 +13,12 @@ module Refinery
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
     
-    devise :cas_authenticatable, :database_authenticatable
+    devise :cas_authenticatable
 
     # Setup accessible (or protected) attributes for your model
     # :login is a virtual attribute for authenticating by either username or email
     # This is in addition to a real persisted field like 'username'
-    attr_accessor :login
+    attr_accessor :login, :password, :password_confirmation
     attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login
 
     validates :username, :presence => true, :uniqueness => true
