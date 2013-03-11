@@ -1,5 +1,6 @@
 require 'devise'
 require 'friendly_id'
+require 'bcrypt'
 
 module Refinery
   class User < Refinery::Core::BaseModel
@@ -31,6 +32,7 @@ module Refinery
         value = conditions[authentication_keys.first]
         where(["username = :value OR email = :value", { :value => value }]).first
       end
+
     end
 
     def plugins=(plugin_names)
@@ -52,6 +54,15 @@ module Refinery
         !user_to_delete.has_role?(:superuser) &&
         ::Refinery::Role[:refinery].users.any? &&
         id != user_to_delete.id
+    end
+
+    def password=(new_password)
+      @password = new_password
+      self.encrypted_password = password_digest(@password) if @password.present?
+    end
+
+    def password_digest(password)
+      ::BCrypt::Password.create("#{password}", :cost => 10).to_s
     end
 
     def can_edit?(user_to_edit = self)
