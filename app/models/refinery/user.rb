@@ -34,6 +34,10 @@ module Refinery
       end
 
     end
+    
+    def display_name
+      username || email
+    end
 
     def plugins=(plugin_names)
       if persisted? # don't add plugins when the user_id is nil.

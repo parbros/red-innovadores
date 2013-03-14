@@ -27,8 +27,10 @@
       <li><a href="/refinery/users/login">Ingresar</a></li>
       <li><a href="/members/new">Registro</a></li>
     <% else %>
-    <div class="btn-group">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action<span class="caret"></span></a>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <%= current_refinery_user.display_name %><span class="caret"></span>
+        </a>
         <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
             <li><a tabindex="-1" href="/members/edit">Editar perfil</a></li>
             <% if current_refinery_user.has_role?(:superuser) -%>
@@ -38,7 +40,7 @@
             <li class="divider"></li>
             <li><a tabindex="-1" href="/refinery/users/logout">Logout</a></li>
         </ul>
-    </div>
+      </li>
     <% end -%>
   </ul>
 <% end -%>
