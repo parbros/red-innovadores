@@ -1,7 +1,16 @@
-<div class="navbar">
-  <div class="navbar-inner">
-    <%= link_to Refinery::Core.site_name, refinery.root_path, class: 'brand' %>
-
-    <%= render :partial => "/refinery/menu", :locals => {:dom_id => 'menu', :css => 'menu'} %>
+<header>
+  <div class="container">
+    <%= image_tag 'logo.png', class: ['pull-left'] %>
+    <%= link_to 'Entrar', 'http://auth.redinnovacion.org/', class:['btn', 'btn-warning', 'pull-right']%>
   </div>
-</div>
+</header>
+
+<nav>
+  <div class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <%= render :partial => "/refinery/menu", :locals => {:dom_id => 'menu', :css => 'menu'} %>
+      </div>
+    </div>
+  </div>
+</nav>
