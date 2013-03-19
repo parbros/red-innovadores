@@ -1,16 +1,32 @@
 <header>
   <div class="container">
     <%= image_tag 'logo.png', class: ['pull-left'] %>
-    <%= link_to 'Entrar', 'http://auth.redinnovacion.org/', class:['btn', 'btn-warning', 'pull-right']%>
+    <% if current_refinery_user.blank? %>
+      <%= link_to 'Entrar', 'http://auth.redinnovacion.org/', class:['btn', 'btn-warning', 'pull-right']%>
+    <% else %>
+      <div class="btn-group pull-right">
+        <a class="dropdown-toggle btn btn-warning" data-toggle="dropdown" href="#">
+          <%= current_refinery_user.display_name %><span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a tabindex="-1" href="/members/edit">Editar perfil</a></li>
+            <% if current_refinery_user.has_role?(:superuser) -%>
+              <li><a tabindex="-1" href="/administrador">CMS Administrador</a></li>
+              <li><a tabindex="-1" href="/foros/admin">Foro Administrador</a></li>
+            <% end -%>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="/refinery/users/logout">Logout</a></li>
+        </ul>
+      </div>
+    <% end -%>
+    
+    
   </div>
 </header>
-
-<nav>
-  <div class="navbar">
+<div class="navbar">
+  <div class="navbar-inner">
     <div class="container">
-      <div class="navbar-inner">
-        <%= render :partial => "/refinery/menu", :locals => {:dom_id => 'menu', :css => 'menu'} %>
-      </div>
+      <%= render :partial => "/refinery/menu", :locals => {:dom_id => 'menu', :css => 'menu'} %>
     </div>
   </div>
-</nav>
+</div>

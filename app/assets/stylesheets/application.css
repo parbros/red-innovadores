@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require twitter_bootstrap
  *= require blog
  *= require_tree .
+ *= require twitter_bootstrap
  *= require base
  */
