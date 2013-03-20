@@ -1,0 +1,39 @@
+<a href="#newIdea" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a>
+<% content_for :body do %>
+  <ul id="ideas">
+    <% @ideas.each do |idea| %>
+      <li>
+        <%= link_to idea.title, refinery.ideas_idea_path(idea) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>
+
+<div class="modal hide fade" id="newIdea">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Nueva Idea</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for @idea, url: refinery.ideas_ideas_path, html: {class: 'form-horizontal'} do |form|%>
+      <div class="control-group">
+        <%= form.label :title, 'Titulo', class: 'control-label' %>
+        <div class="controls">
+          <%= form.text_field :title, placeholder: 'Titulo de la idea'%>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= form.label :content, 'Contenido', class: 'control-label' %>
+        <div class="controls">
+          <%= form.text_area :content, placeholder: "Contenido de la idea", :cols => 20, :rows => 30%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+    <a href="#" class="btn btn-primary" id="crearIdeaButton">Crear Idea</a>
+  </div>
+</div>

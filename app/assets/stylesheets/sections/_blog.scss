@@ -1,16 +1,17 @@
-@import 'bootstrap';
+section#body_content {
+  @include makeRow();
+}
 
 section#body_content_left {
-  @extend .span8;
-  display: inline-block;
+  @include makeColumn(8);
 }
 
 section#body_content_right {
-  @extend .span4;
-  display: inline-block;
+  @include makeColumn(4);
   
   .inner {
     @extend .well;
+    @extend .sidebar-nav;
     
     ul#categories {
       @extend .nav; 

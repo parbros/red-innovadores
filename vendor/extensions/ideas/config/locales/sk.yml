@@ -1,0 +1,29 @@
+sk:
+  refinery:
+    plugins:
+      ideas:
+        title: Ideas
+    ideas:
+      admin:
+        ideas:
+          actions:
+            create_new: Pridať Idea
+            reorder: Preusporiadať Ideas
+            reorder_done: Koniec radenia Ideas
+          records:
+            title: Ideas
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Ideas. Kliknite na "Pridať Idea" pre pridanie prvého idea.
+          idea:
+            view_live_html: Zobraziť náhľad idea<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť idea
+            delete: Zmazať idea
+      ideas:
+        show:
+          other: Daľšie Ideas
+  activerecord:
+    attributes:
+      'refinery/ideas/idea':
+        title: Title
+        content: Content
+        user_id: User

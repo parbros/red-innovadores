@@ -1,0 +1,29 @@
+nb:
+  refinery:
+    plugins:
+      ideas:
+        title: Ideas
+    ideas:
+      admin:
+        ideas:
+          actions:
+            create_new: Lag en ny Idea
+            reorder: Endre rekkefølgen på Ideas
+            reorder_done: Ferdig å endre rekkefølgen Ideas
+          records:
+            title: Ideas
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Ideas enda. Klikk på "Lag en ny Idea" for å legge til din første idea.
+          idea:
+            view_live_html: Vis hvordan denne idea ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne idea
+            delete: Fjern denne idea permanent
+      ideas:
+        show:
+          other: Andre Ideas
+  activerecord:
+    attributes:
+      'refinery/ideas/idea':
+        title: Title
+        content: Content
+        user_id: User

@@ -1,0 +1,29 @@
+fr:
+  refinery:
+    plugins:
+      ideas:
+        title: Ideas
+    ideas:
+      admin:
+        ideas:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Idea
+            reorder: Réordonner les Ideas
+            reorder_done: Fin de réordonnancement des Ideas
+          records:
+            title: Ideas
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Idea. Cliquer sur "Créer un(e) nouve(au/l/lle) Idea" pour créer votre premi(er/ère) idea.'
+          idea:
+            view_live_html: Voir ce(t/tte) idea <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) idea
+            delete: Supprimer définitivement ce(t/tte) idea
+      ideas:
+        show:
+          other: Autres Ideas
+  activerecord:
+    attributes:
+      'refinery/ideas/idea':
+        title: Title
+        content: Content
+        user_id: User

@@ -1,0 +1,29 @@
+nl:
+  refinery:
+    plugins:
+      ideas:
+        title: Ideas
+    ideas:
+      admin:
+        ideas:
+          actions:
+            create_new: Maak een nieuwe Idea
+            reorder: Wijzig de volgorde van de Ideas
+            reorder_done: Klaar met het wijzingen van de volgorde van de Ideas
+          records:
+            title: Ideas
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Ideas. Druk op 'Maak een nieuwe Idea' om de eerste aan te maken.
+          idea:
+            view_live_html: Bekijk deze idea op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze idea
+            delete: Verwijder deze idea voor eeuwig
+      ideas:
+        show:
+          other: Andere Ideas
+  activerecord:
+    attributes:
+      'refinery/ideas/idea':
+        title: Title
+        content: Content
+        user_id: User

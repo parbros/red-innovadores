@@ -1,0 +1,31 @@
+zh-CN:
+  refinery:
+    plugins:
+      ideas:
+        title: Ideas
+    ideas:
+      admin:
+        ideas:
+          actions:
+            create_new: 建立新的 Idea
+            reorder: 对 Ideas 重新排序
+            reorder_done: 对 Ideas 的重新排序结束
+          records:
+            title: Ideas
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Ideas yet. Click "Add New Idea" to add your first idea.
+            no_items_yet: 目前没有 Ideas . 点击 "Add New Idea" 创建一个idea.
+          idea:
+            view_live_html: 查看 idea 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 idea
+            delete: 永久删除 idea
+      ideas:
+        show:
+          other: 其他 Ideas
+  activerecord:
+    attributes:
+      'refinery/ideas/idea':
+        title: Title
+        content: Content
+        user_id: User

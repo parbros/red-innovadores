@@ -62,3 +62,4 @@ gem 'refinerycms-page-images', '~> 2.0.0'
 
 gem 'devise_cas_authenticatable'
 gem 'forem', :git => "git://github.com/radar/forem.git"
+gem 'refinerycms-ideas', :path => 'vendor/extensions'

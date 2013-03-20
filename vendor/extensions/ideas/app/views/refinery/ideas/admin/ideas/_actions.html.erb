@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Ideas::Admin::IdeasController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.ideas_admin_ideas_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_ideas_admin_idea_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Ideas::Admin::IdeasController.sortable? && ::Refinery::Ideas::Idea.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Ideas"),
+                 refinery.ideas_admin_ideas_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Ideas"),
+                 refinery.ideas_admin_ideas_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$('#crearIdeaButton').click(function(event) {
+  event.preventDefault();
+  $('form#new_idea').submit();
+});

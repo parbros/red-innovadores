@@ -1,0 +1,30 @@
+es:
+  refinery:
+    plugins:
+      ideas:
+        title: Ideas
+#        article: masculino/femenino
+    ideas:
+      admin:
+        ideas:
+          actions:
+            create_new: Crear nuevo idea
+            reorder: Reordenar ideas
+            reorder_done: Reordenación de ideas completada
+          records:
+            title: Ideas
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay ideas todavía. Pulsa en "Crear nuevo Idea" para crear tu primer idea.
+          idea:
+            view_live_html: Ver este idea como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este idea
+            delete: Borrar este idea para siempre
+      ideas:
+        show:
+          other: Otros ideas
+  activerecord:
+    attributes:
+      'refinery/ideas/idea':
+        title: Title
+        content: Content
+        user_id: User

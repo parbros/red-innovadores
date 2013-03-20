@@ -1,0 +1,42 @@
+<% content_for :body_content_title do %>
+  <%= @idea.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1><%=raw @idea.title %></h1>
+  </section>
+  <section>
+    <p>
+      <%=raw @idea.content %>
+    </p>
+  </section>
+  <section>
+    <h1>User</h1>
+    <p>
+      <%=raw @idea.user_id %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2>Vota esta idea</h2>
+    <%= link_to refinery.ideas_idea_votes_path(@idea, vote: {tendency: 1}), class: ['btn', 'btn-primary'], method: :post do %>
+      <i class="icon-thumbs-up icon-white"></i> (<%= @idea.votes.votes_up.count %>)
+    <% end %>
+    <%= link_to refinery.ideas_idea_votes_path(@idea, vote: {tendency: -1}), class: ['btn', 'btn-danger'], method: :post do %>
+      <i class="icon-thumbs-down icon-white"></i> (<%= @idea.votes.votes_down.count %>)
+    <% end %>
+    <h2><%= t('.other') %></h2>
+    <ul id="ideas">
+      <% @ideas.each do |idea| %>
+        <li>
+          <%= link_to idea.title, refinery.ideas_idea_path(idea) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -1,0 +1,29 @@
+en:
+  refinery:
+    plugins:
+      ideas:
+        title: Ideas
+    ideas:
+      admin:
+        ideas:
+          actions:
+            create_new: Add New Idea
+            reorder: Reorder Ideas
+            reorder_done: Done Reordering Ideas
+          records:
+            title: Ideas
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Ideas yet. Click "Add New Idea" to add your first idea.
+          idea:
+            view_live_html: View this idea live <br/><em>(opens in a new window)</em>
+            edit: Edit this idea
+            delete: Remove this idea forever
+      ideas:
+        show:
+          other: Other Ideas
+  activerecord:
+    attributes:
+      'refinery/ideas/idea':
+        title: Title
+        content: Content
+        user_id: User

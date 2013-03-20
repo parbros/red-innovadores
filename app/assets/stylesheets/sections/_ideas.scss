@@ -1,0 +1,20 @@
+section.no_body_content_left.no_body_content_right {
+  @include makeRow();
+
+  section#body {
+    @include makeColumn(8);
+  }
+  
+  section#side_body {
+    @include makeColumn(4);
+    
+    .inner {
+      @extend .well;
+      
+      ul#ideas {
+        @extend .nav; 
+        @extend .nav-list;
+      }
+    }
+  }
+}

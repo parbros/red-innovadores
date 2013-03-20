@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308071054) do
+ActiveRecord::Schema.define(:version => 20130319144128) do
 
   create_table "forem_categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -159,6 +159,23 @@ ActiveRecord::Schema.define(:version => 20130308071054) do
   add_index "refinery_blog_posts", ["access_count"], :name => "index_refinery_blog_posts_on_access_count"
   add_index "refinery_blog_posts", ["id"], :name => "index_refinery_blog_posts_on_id"
   add_index "refinery_blog_posts", ["slug"], :name => "index_refinery_blog_posts_on_slug"
+
+  create_table "refinery_ideas", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "refinery_ideas_votes", :force => true do |t|
+    t.integer  "tendency"
+    t.integer  "idea_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "refinery_image_page_translations", :force => true do |t|
     t.integer  "refinery_image_page_id"
