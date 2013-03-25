@@ -1,0 +1,39 @@
+<% content_for :body_content_title do %>
+  <%= @experience.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Title</h1>
+    <p>
+      <%=raw @experience.title %>
+    </p>
+  </section>
+  <section>
+    <h1>Content</h1>
+    <p>
+      <%=raw @experience.content %>
+    </p>
+  </section>
+  <section>
+    <h1>User</h1>
+    <p>
+      <%=raw @experience.user %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="experiences">
+      <% @experiences.each do |experience| %>
+        <li>
+          <%= link_to experience.title, refinery.experiences_experience_path(experience) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Experiences::Admin::ExperiencesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.experiences_admin_experiences_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_experiences_admin_experience_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Experiences::Admin::ExperiencesController.sortable? && ::Refinery::Experiences::Experience.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Experiences"),
+                 refinery.experiences_admin_experiences_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Experiences"),
+                 refinery.experiences_admin_experiences_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

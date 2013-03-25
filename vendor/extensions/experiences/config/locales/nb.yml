@@ -1,0 +1,29 @@
+nb:
+  refinery:
+    plugins:
+      experiences:
+        title: Experiences
+    experiences:
+      admin:
+        experiences:
+          actions:
+            create_new: Lag en ny Experience
+            reorder: Endre rekkefølgen på Experiences
+            reorder_done: Ferdig å endre rekkefølgen Experiences
+          records:
+            title: Experiences
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Experiences enda. Klikk på "Lag en ny Experience" for å legge til din første experience.
+          experience:
+            view_live_html: Vis hvordan denne experience ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne experience
+            delete: Fjern denne experience permanent
+      experiences:
+        show:
+          other: Andre Experiences
+  activerecord:
+    attributes:
+      'refinery/experiences/experience':
+        title: Title
+        content: Content
+        user: User

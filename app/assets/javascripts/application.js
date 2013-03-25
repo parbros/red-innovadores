@@ -13,9 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require tinymce-jquery
 //= require_tree .
 
 $('#crearIdeaButton').click(function(event) {
   event.preventDefault();
   $('form#new_idea').submit();
+});
+
+$('#crearExperienceButton').click(function(event) {
+  event.preventDefault();
+  $('form#new_experience').submit();
 });

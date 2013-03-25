@@ -1,0 +1,29 @@
+en:
+  refinery:
+    plugins:
+      experiences:
+        title: Experiences
+    experiences:
+      admin:
+        experiences:
+          actions:
+            create_new: Add New Experience
+            reorder: Reorder Experiences
+            reorder_done: Done Reordering Experiences
+          records:
+            title: Experiences
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Experiences yet. Click "Add New Experience" to add your first experience.
+          experience:
+            view_live_html: View this experience live <br/><em>(opens in a new window)</em>
+            edit: Edit this experience
+            delete: Remove this experience forever
+      experiences:
+        show:
+          other: Other Experiences
+  activerecord:
+    attributes:
+      'refinery/experiences/experience':
+        title: Title
+        content: Content
+        user: User

@@ -31,6 +31,7 @@ end
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'jquery-rails', '~> 2.0.0'
+gem 'tinymce-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -63,3 +64,4 @@ gem 'refinerycms-page-images', '~> 2.0.0'
 gem 'devise_cas_authenticatable'
 gem 'forem', :git => "git://github.com/radar/forem.git"
 gem 'refinerycms-ideas', :path => 'vendor/extensions'
+gem 'refinerycms-experiences', :path => 'vendor/extensions'

@@ -1,0 +1,29 @@
+nl:
+  refinery:
+    plugins:
+      experiences:
+        title: Experiences
+    experiences:
+      admin:
+        experiences:
+          actions:
+            create_new: Maak een nieuwe Experience
+            reorder: Wijzig de volgorde van de Experiences
+            reorder_done: Klaar met het wijzingen van de volgorde van de Experiences
+          records:
+            title: Experiences
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Experiences. Druk op 'Maak een nieuwe Experience' om de eerste aan te maken.
+          experience:
+            view_live_html: Bekijk deze experience op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze experience
+            delete: Verwijder deze experience voor eeuwig
+      experiences:
+        show:
+          other: Andere Experiences
+  activerecord:
+    attributes:
+      'refinery/experiences/experience':
+        title: Title
+        content: Content
+        user: User

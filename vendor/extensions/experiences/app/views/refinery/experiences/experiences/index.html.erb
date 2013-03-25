@@ -1,9 +1,9 @@
-<a href="#newIdea" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a>
+<a href="#newExperiences" class="btn btn-warning pull-right" data-toggle="modal">Nueva Experiencia</a>
 <% content_for :body do %>
-  <ul id="ideas">
-    <% @ideas.each do |idea| %>
+  <ul id="experiences">
+    <% @experiences.each do |experience| %>
       <li>
-        <%= link_to idea.title, refinery.ideas_idea_path(idea) %>
+        <%= link_to experience.title, refinery.experiences_experience_path(experience) %>
       </li>
     <% end %>
   </ul>
@@ -11,17 +11,17 @@
 
 <%= render '/refinery/content_page' %>
 
-<div class="modal hide fade" id="newIdea">
+<div class="modal hide fade" id="newExperiences">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Nueva Idea</h3>
+    <h3>Nueva Experiencia</h3>
   </div>
   <div class="modal-body">
-    <%= form_for @idea, url: refinery.ideas_ideas_path do |form|%>
+    <%= form_for @experience, url: refinery.experiences_experiences_path do |form|%>
       <div class="control-group">
         <%= form.label :title, 'Titulo', class: 'control-label' %>
         <div class="controls">
-          <%= form.text_field :title, placeholder: 'Titulo de la idea', class: 'input-xlarge' %>
+          <%= form.text_field :title, placeholder: 'Titulo de tu experiecnia', class: 'input-xlarge' %>
         </div>
       </div>
       <div class="control-group">
@@ -34,6 +34,6 @@
   </div>
   <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
-    <a href="#" class="btn btn-primary" id="crearIdeaButton">Crear Idea</a>
+    <a href="#" class="btn btn-primary" id="crearExperienceButton">Crear Idea</a>
   </div>
 </div>

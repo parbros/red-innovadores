@@ -1,0 +1,29 @@
+fr:
+  refinery:
+    plugins:
+      experiences:
+        title: Experiences
+    experiences:
+      admin:
+        experiences:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Experience
+            reorder: Réordonner les Experiences
+            reorder_done: Fin de réordonnancement des Experiences
+          records:
+            title: Experiences
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Experience. Cliquer sur "Créer un(e) nouve(au/l/lle) Experience" pour créer votre premi(er/ère) experience.'
+          experience:
+            view_live_html: Voir ce(t/tte) experience <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) experience
+            delete: Supprimer définitivement ce(t/tte) experience
+      experiences:
+        show:
+          other: Autres Experiences
+  activerecord:
+    attributes:
+      'refinery/experiences/experience':
+        title: Title
+        content: Content
+        user: User

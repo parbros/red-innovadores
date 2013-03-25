@@ -1,0 +1,30 @@
+es:
+  refinery:
+    plugins:
+      experiences:
+        title: Experiences
+#        article: masculino/femenino
+    experiences:
+      admin:
+        experiences:
+          actions:
+            create_new: Crear nuevo experience
+            reorder: Reordenar experiences
+            reorder_done: Reordenación de experiences completada
+          records:
+            title: Experiences
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay experiences todavía. Pulsa en "Crear nuevo Experience" para crear tu primer experience.
+          experience:
+            view_live_html: Ver este experience como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este experience
+            delete: Borrar este experience para siempre
+      experiences:
+        show:
+          other: Otros experiences
+  activerecord:
+    attributes:
+      'refinery/experiences/experience':
+        title: Title
+        content: Content
+        user: User

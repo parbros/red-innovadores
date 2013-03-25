@@ -23,3 +23,6 @@ Refinery::Search::Engine.load_seed
 
 # Added by Refinery CMS Ideas extension
 Refinery::Ideas::Engine.load_seed
+
+# Added by Refinery CMS Experiences extension
+Refinery::Experiences::Engine.load_seed
