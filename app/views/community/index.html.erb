@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="span6">
+    <h1> Experiencias <a href="#newExperiences" class="btn btn-warning pull-right" data-toggle="modal">Nueva Experiencia</a></h1>
+    <ul id="experiences">
+      <% @experiences.each do |experience| %>
+        <li>
+          <%= link_to experience.title, refinery.experiences_experience_path(experience) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span6">
+    <h1> Ideas <a href="#newIdea" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a></h1>
+    <ul id="ideas">
+      <% @ideas.each do |idea| %>
+        <li>
+          <%= link_to idea.title, refinery.ideas_idea_path(idea) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="modal hide fade" id="newExperiences">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Nueva Experiencia</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for @experience, url: refinery.experiences_experiences_path do |form|%>
+      <div class="control-group">
+        <%= form.label :title, 'Titulo', class: 'control-label' %>
+        <div class="controls">
+          <%= form.text_field :title, placeholder: 'Titulo de tu experiecnia', class: 'input-xlarge' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= form.label :content, 'Contenido', class: 'control-label' %>
+        <div class="controls">
+          <%= form.text_area :content, placeholder: "Contenido de la idea", class: ["tinymce"]%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+    <a href="#" class="btn btn-primary" id="crearExperienceButton">Crear Idea</a>
+  </div>
+</div>
+
+<div class="modal hide fade" id="newIdea">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Nueva Idea</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for @idea, url: refinery.ideas_ideas_path do |form|%>
+      <div class="control-group">
+        <%= form.label :title, 'Titulo', class: 'control-label' %>
+        <div class="controls">
+          <%= form.text_field :title, placeholder: 'Titulo de la idea', class: 'input-xlarge' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= form.label :content, 'Contenido', class: 'control-label' %>
+        <div class="controls">
+          <%= form.text_area :content, placeholder: "Contenido de la idea", class: ["tinymce"]%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+    <a href="#" class="btn btn-primary" id="crearIdeaButton">Crear Idea</a>
+  </div>
+</div>

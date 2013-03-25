@@ -8,6 +8,8 @@ RedInnovadores::Application.routes.draw do
   
   match '/administrador' => redirect('/refinery')
   
+  resources :comunidad, only: [:index], controller: :community
+  
   mount Forem::Engine, :at => "/foros"
   mount Refinery::Core::Engine, :at => '/'
 
