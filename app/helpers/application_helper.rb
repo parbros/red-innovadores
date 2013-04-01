@@ -11,9 +11,10 @@ module ApplicationHelper
   end
   
   def content_teaser(content)
-    truncate(content.content, {
+    truncated_content = truncate(content.content, {
       :length => Refinery::Blog.post_teaser_length,
       :preserve_html_tags => true
     }).html_safe
+    strip_tags(truncated_content)
   end
 end
