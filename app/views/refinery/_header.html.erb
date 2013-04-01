@@ -1,6 +1,6 @@
 <header>
   <div class="container">
-    <%= image_tag 'logo.png', class: ['pull-left'] %>
+    <%= link_to refinery.root_path do image_tag 'logo.png', class: ['pull-left'] end%>
     <% if current_refinery_user.blank? %>
       <%= link_to 'Entrar', 'http://auth.redinnovacion.org/', class:['btn', 'btn-warning', 'pull-right']%>
     <% else %>

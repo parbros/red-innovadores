@@ -1,0 +1,62 @@
+<div class="row home">
+  <div class="span12">
+    <div class="row">
+      <div class="span12">
+        <h2>Ultimas publicaciones</h2>
+        <div class="row">
+          <% @posts.each do |post| %>
+            <div class="span4">
+              <img src="http://placehold.it/300x188"/>
+              <h3><%= post.title %></h3>
+              <p><%= blog_post_teaser(post) %></p>
+              <%= link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post) %>
+            </div>
+          <% end %>
+      
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span12">
+        <h2>Comunidad</h2>
+    
+        <div class="row">
+          <div class="span6">
+            <% if @experiences.first %>
+              <% experience = @experiences.first %>
+              <img src="http://placehold.it/460x288"/>
+              <h3><%= experience.title %></h3>
+              <p><%= content_teaser(experience) %></p>
+              <%= link_to link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.experiences_experience_path(experience)%>
+            <% end %>
+          </div>
+          <div class="span6">
+
+            <div class="row">
+              <div class="span6">
+                <% if @experiences.second %>
+                  <% experience = @experiences.second %>
+                  <img src="http://placehold.it/460x144"/>
+                  <h3><%= experience.title %></h3>
+                  <p><%= content_teaser(experience) %></p>
+                  <%= link_to 'Leer más', refinery.experiences_experience_path(experience)%>
+                <% end %>
+              </div>
+            </div>
+            
+            <div class="row">
+              <% @ideas.each do |idea| %>
+                <div class="span2">
+                  <img src="http://placehold.it/140x88"/>
+                  <h3><%= idea.title %></h3>
+                  <%= link_to "Ver más", refinery.ideas_idea_path(idea) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ html {
 
 body {
   background-color: transparent;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body > header {
@@ -18,10 +19,53 @@ body > header {
   width: 100%;
 }
 
+a {
+  color: #056672;
+  font-weight: 600;
+  font-size: 12px;
+}
+
 .navbar {
   .container { width: 940px;}
 }
 
 .tinymce {
   height: 600px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Merriweather', serif;
+  color: #202020;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: 22px;
+  line-height: 2px;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+p {
+  color: #545454;
+  font-size: 12px;
 }

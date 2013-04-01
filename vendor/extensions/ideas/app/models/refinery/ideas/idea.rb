@@ -11,6 +11,10 @@ module Refinery
       acts_as_indexed :fields => [:title, :content]
 
       validates :title, :presence => true, :uniqueness => true
+      
+      def self.recent(count)
+        order('created_at DESC').limit(count)
+      end
     end
   end
 end

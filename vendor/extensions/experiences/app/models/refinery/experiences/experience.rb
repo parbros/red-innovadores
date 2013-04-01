@@ -12,6 +12,9 @@ module Refinery
       belongs_to :user
       has_many :comments
       
+      def self.recent(count)
+        order('created_at DESC').limit(count)
+      end
     end
   end
 end
