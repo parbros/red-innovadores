@@ -12,10 +12,12 @@
           <%= yield %>
         </div>
       </div>
-      <footer>
-        <%= render '/refinery/footer' -%>
-      </footer>
     </div>
+    <footer>
+       <div class="container">
+         <%= render '/refinery/footer' -%>
+      </div>
+    </footer>
     <%= render '/refinery/javascripts' %>
     <%= tinymce_assets %>
     <%= tinymce :alternate %>
