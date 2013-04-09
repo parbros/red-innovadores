@@ -38,8 +38,10 @@
     }
     
     .description {
-      color: #444444;
-      font-size: 13px;
+      p {
+        color: #444444;
+        font-size: 13px;
+      }
     }
   }
 }
@@ -80,8 +82,10 @@ table.topics {
   }
   
   .description {
-    color: #444444;
-    font-size: 13px;
+    p {
+      color: #444444;
+      font-size: 13px;
+    }
   }
 }
 
@@ -121,12 +125,21 @@ menu {
     .user {
       @include makeColumn(3);
       background-color: #fff;
+      
+      .username, .icon {padding: 8px;}
     }
     
     .contents {
       @include makeColumn(9);
+      padding-top: 8px;
+      padding-bottom: 8px;
 
-      a { text-transform: capitalize;}
+      a { text-transform: capitalize; padding-left: 8px;}
+      
+      p {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
 
       ul.actions {
         @extend .unstyled;
