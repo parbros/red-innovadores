@@ -1,0 +1,150 @@
+.category {
+  table {
+    background-color: #fff;
+    border-spacing: 40px 10px; 
+    
+    tr {
+      border-bottom: 1px solid #bbb;
+
+      td.topics-count, td.posts-count, td.views-count {
+        text-align: center;
+        font-family: Open Sans;
+        color: #052E3F;
+        font-size: 17px;
+        font-weight: 600;
+      }
+      
+      th {
+        color: #666666;
+        font-size: 12px;
+        font-weight: 400;
+        font-family: Open Sans;
+      }
+      
+      td {
+        color: #888888;
+        font-size: 13px; 
+      }
+    }
+
+    thead {
+      border-bottom: 1px solid #bbb;
+    }
+    
+    .title {
+      color: #052E3F;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    
+    .description {
+      color: #444444;
+      font-size: 13px;
+    }
+  }
+}
+
+table.topics {
+  tr {
+    border-bottom: 1px solid #bbb;
+
+    td.topics-count, td.posts-count, td.views-count {
+      text-align: center;
+      font-family: Open Sans;
+      color: #052E3F;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    
+    th {
+      color: #666666;
+      font-size: 12px;
+      font-weight: 400;
+      font-family: Open Sans;
+    }
+    
+    td {
+      color: #888888;
+      font-size: 13px; 
+    }
+  }
+
+  thead {
+    border-bottom: 1px solid #bbb;
+  }
+  
+  .subject a {
+    color: #052E3F;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  
+  .description {
+    color: #444444;
+    font-size: 13px;
+  }
+}
+
+table.forums, table.index, table.topics { background-color: #fff; }
+
+menu {
+  a {
+    @extend .btn;
+  }
+}
+
+.moderation {
+  @extend .alert;
+  form {
+    p {
+      @extend .pull-left;
+      margin-right: 10px;
+      
+      label, input { display: inline;}
+    }
+  }
+}
+
+#posts {
+  background-color: #fff;
+
+  .post {
+    @include makeRow();
+
+    &.odd {
+      .contents {background-color: #fff;}
+    }
+    &.even {
+      .contents {background-color: #ccc;}
+    }
+
+    .user {
+      @include makeColumn(3);
+      background-color: #fff;
+    }
+    
+    .contents {
+      @include makeColumn(9);
+
+      a { text-transform: capitalize;}
+
+      ul.actions {
+        @extend .unstyled;
+        @extend .inline;
+        
+        a {
+          @extend .btn;
+          @extend .btn-mini;
+        }
+      }
+    }
+  }
+}
+
+.input.text {
+  margin-top: 10px;
+
+  textarea {
+    width: 100%;
+  }
+}

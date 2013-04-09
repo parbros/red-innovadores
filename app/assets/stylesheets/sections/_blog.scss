@@ -44,13 +44,7 @@ article.blog_post {
     }
   }
   
-  footer {
-    a {
-      @extend .btn;
-      @extend .btn-primary;
-      @extend .pull-right;
-    }
-    
+  footer {    
     aside {
       @extend .pull-left;
     }

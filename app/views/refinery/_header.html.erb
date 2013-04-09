@@ -2,7 +2,7 @@
   <div class="container">
     <%= link_to refinery.root_path do image_tag 'logo.png', class: ['pull-left'] end%>
     <% if current_refinery_user.blank? %>
-      <%= link_to 'Entrar', 'http://auth.redinnovacion.org/', class:['btn', 'btn-warning', 'pull-right']%>
+      <%= link_to 'Entrar', '/refinery/users/login', class:['btn', 'btn-warning', 'pull-right']%>
     <% else %>
       <div class="btn-group pull-right">
         <a class="dropdown-toggle btn btn-warning" data-toggle="dropdown" href="#">
