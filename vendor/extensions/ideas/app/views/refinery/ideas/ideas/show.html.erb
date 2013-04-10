@@ -3,20 +3,13 @@
 <% end %>
 
 <% content_for :body do %>
-  <section>
-    <h1><%=raw @idea.title %></h1>
-  </section>
-  <section>
-    <p>
-      <%=raw @idea.content %>
-    </p>
-  </section>
-  <section>
-    <h1>User</h1>
-    <p>
-      <%=raw @idea.user_id %>
-    </p>
-  </section>
+  <div class="idea">
+    <header>
+      <h1><%= raw @idea.title%></h1>
+      <section class="detail">Enviado hace <%= time_ago_in_words(@idea.created_at) %> por <%= @idea.user.username %></section> 
+    </header>
+    <section><p><%= content_teaser(@idea).html_safe %></p></section>
+  </div>
 <% end %>
 
 <% content_for :side_body do %>

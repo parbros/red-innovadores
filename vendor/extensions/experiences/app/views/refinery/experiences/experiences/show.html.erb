@@ -3,24 +3,13 @@
 <% end %>
 
 <% content_for :body do %>
-  <section>
-    <h1>Title</h1>
-    <p>
-      <%=raw @experience.title %>
-    </p>
-  </section>
-  <section>
-    <h1>Content</h1>
-    <p>
-      <%=raw @experience.content %>
-    </p>
-  </section>
-  <section>
-    <h1>User</h1>
-    <p>
-      <%=raw @experience.user %>
-    </p>
-  </section>
+  <div class="experience">
+    <header>
+      <h1><%=raw @experience.title %></h1>
+      <section class="detail">Enviado hace <%= time_ago_in_words(@experience.created_at) %> por <%= @experience.user.username %></section> 
+    </header>
+    <section><p><%= content_teaser(@experience).html_safe %></p></section>
+  </div>
 <% end %>
 
 <% content_for :side_body do %>

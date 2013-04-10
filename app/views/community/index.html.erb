@@ -1,23 +1,35 @@
 <div class="row">
   <div class="span6">
     <h1> Experiencias <a href="#newExperiences" class="btn btn-warning pull-right" data-toggle="modal">Nueva Experiencia</a></h1>
-    <ul id="experiences">
+    <div id="experiences" class="row">
       <% @experiences.each do |experience| %>
-        <li>
-          <%= link_to experience.title, refinery.experiences_experience_path(experience) %>
-        </li>
+      <div class="span6">
+        <div class="experience">
+          <header>
+            <h2><%= link_to experience.title, refinery.experiences_experience_path(experience) %> </h2>
+            <section class="detail">Enviado hace <%= time_ago_in_words(experience.created_at) %> por <%= experience.user.username %></section> 
+          </header>
+          <section><p><%= content_teaser(experience).html_safe %></p></section>
+        </div>
+      </div>
       <% end %>
-    </ul>
+    </div>
   </div>
   <div class="span6">
     <h1> Ideas <a href="#newIdea" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a></h1>
-    <ul id="ideas">
+    <div id="ideas">
       <% @ideas.each do |idea| %>
-        <li>
-          <%= link_to idea.title, refinery.ideas_idea_path(idea) %>
-        </li>
+        <div class="span6">
+          <div class="idea">
+            <header>
+              <h2><%= link_to idea.title, refinery.ideas_idea_path(idea) %></h2>
+              <section class="detail">Enviado hace <%= time_ago_in_words(idea.created_at) %> por <%= idea.user.username %></section> 
+            </header>
+            <section><p><%= content_teaser(idea).html_safe %></p></section>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>
 

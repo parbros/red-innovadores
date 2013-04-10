@@ -2,6 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul#experiences, ul#ideas {
-  @extend .unstyled;
+.experience, .idea {
+  background-color: white;
+  padding: 8px;
+  margin-bottom: 10px;
+  
+  header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 20px;
+
+    h2 {
+      a {
+        color: #052E3F;
+        font-size: 17px;
+        font-weight: 600;
+      }
+    }
+    
+    section.detail {
+      color: #888888;
+      font-size: 13px;
+    }
+  }
 }
