@@ -17,6 +17,17 @@ body > header {
   margin: 0;
   padding: 10px 0;
   width: 100%;
+  
+  ul.social-network-links {
+    @extend .unstyled;
+    @extend .inline;
+    
+    margin: 13px 20px 0 0;
+  }
+  
+  .profile-button {
+    margin-top: 10px;
+  }
 }
 
 a {
@@ -77,13 +88,26 @@ body > footer {
   background: #056772;
   color: #052E3F;
   height: 75px;
+  font-family: 'Open Sans Condesend', sans-serif;
+  font-size: 12px;
   margin: 10px 0 0 0;
   
   p {
     color: #052E3F;
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 14px;
-    margin: 18px 0;
+    font-size: 12px;
+    margin: 16px 0;
+  }
+  
+  a {
+    color: #052C3F;
+    font-size: 12px;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
+  img.footer-logo {
+    @extend .pull-right;
+    margin-top: -20px;
   }
 }
 
