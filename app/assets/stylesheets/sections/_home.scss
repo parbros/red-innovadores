@@ -23,6 +23,14 @@
   
 }
 
+.carousel-indicators li {
+  background-color: #dedede;
+  
+  &.active {
+    background-color: #056772;
+  }
+}
+
 .carousel-inner .item {
   img {
     max-width: 940px;
