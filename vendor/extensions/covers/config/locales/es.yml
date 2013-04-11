@@ -1,0 +1,32 @@
+es:
+  refinery:
+    plugins:
+      covers:
+        title: Covers
+#        article: masculino/femenino
+    covers:
+      admin:
+        covers:
+          actions:
+            create_new: Crear nuevo cover
+            reorder: Reordenar covers
+            reorder_done: Reordenación de covers completada
+          records:
+            title: Covers
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay covers todavía. Pulsa en "Crear nuevo Cover" para crear tu primer cover.
+          cover:
+            view_live_html: Ver este cover como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este cover
+            delete: Borrar este cover para siempre
+      covers:
+        show:
+          other: Otros covers
+  activerecord:
+    attributes:
+      'refinery/covers/cover':
+        image: Image
+        caption: Caption
+        post_id: Post
+        idea_id: Idea
+        experience_id: Experience

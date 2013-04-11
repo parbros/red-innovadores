@@ -1,0 +1,31 @@
+nl:
+  refinery:
+    plugins:
+      covers:
+        title: Covers
+    covers:
+      admin:
+        covers:
+          actions:
+            create_new: Maak een nieuwe Cover
+            reorder: Wijzig de volgorde van de Covers
+            reorder_done: Klaar met het wijzingen van de volgorde van de Covers
+          records:
+            title: Covers
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Covers. Druk op 'Maak een nieuwe Cover' om de eerste aan te maken.
+          cover:
+            view_live_html: Bekijk deze cover op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze cover
+            delete: Verwijder deze cover voor eeuwig
+      covers:
+        show:
+          other: Andere Covers
+  activerecord:
+    attributes:
+      'refinery/covers/cover':
+        image: Image
+        caption: Caption
+        post_id: Post
+        idea_id: Idea
+        experience_id: Experience

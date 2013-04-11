@@ -65,3 +65,4 @@ gem 'devise_cas_authenticatable'
 gem 'forem', :git => "git://github.com/radar/forem.git"
 gem 'refinerycms-ideas', :path => 'vendor/extensions'
 gem 'refinerycms-experiences', :path => 'vendor/extensions'
+gem 'refinerycms-covers', :path => 'vendor/extensions'

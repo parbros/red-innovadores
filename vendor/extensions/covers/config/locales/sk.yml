@@ -1,0 +1,31 @@
+sk:
+  refinery:
+    plugins:
+      covers:
+        title: Covers
+    covers:
+      admin:
+        covers:
+          actions:
+            create_new: Pridať Cover
+            reorder: Preusporiadať Covers
+            reorder_done: Koniec radenia Covers
+          records:
+            title: Covers
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Covers. Kliknite na "Pridať Cover" pre pridanie prvého cover.
+          cover:
+            view_live_html: Zobraziť náhľad cover<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť cover
+            delete: Zmazať cover
+      covers:
+        show:
+          other: Daľšie Covers
+  activerecord:
+    attributes:
+      'refinery/covers/cover':
+        image: Image
+        caption: Caption
+        post_id: Post
+        idea_id: Idea
+        experience_id: Experience

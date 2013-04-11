@@ -1,0 +1,31 @@
+fr:
+  refinery:
+    plugins:
+      covers:
+        title: Covers
+    covers:
+      admin:
+        covers:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Cover
+            reorder: Réordonner les Covers
+            reorder_done: Fin de réordonnancement des Covers
+          records:
+            title: Covers
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Cover. Cliquer sur "Créer un(e) nouve(au/l/lle) Cover" pour créer votre premi(er/ère) cover.'
+          cover:
+            view_live_html: Voir ce(t/tte) cover <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) cover
+            delete: Supprimer définitivement ce(t/tte) cover
+      covers:
+        show:
+          other: Autres Covers
+  activerecord:
+    attributes:
+      'refinery/covers/cover':
+        image: Image
+        caption: Caption
+        post_id: Post
+        idea_id: Idea
+        experience_id: Experience

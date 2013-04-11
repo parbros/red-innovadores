@@ -1,0 +1,31 @@
+nb:
+  refinery:
+    plugins:
+      covers:
+        title: Covers
+    covers:
+      admin:
+        covers:
+          actions:
+            create_new: Lag en ny Cover
+            reorder: Endre rekkefølgen på Covers
+            reorder_done: Ferdig å endre rekkefølgen Covers
+          records:
+            title: Covers
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Covers enda. Klikk på "Lag en ny Cover" for å legge til din første cover.
+          cover:
+            view_live_html: Vis hvordan denne cover ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne cover
+            delete: Fjern denne cover permanent
+      covers:
+        show:
+          other: Andre Covers
+  activerecord:
+    attributes:
+      'refinery/covers/cover':
+        image: Image
+        caption: Caption
+        post_id: Post
+        idea_id: Idea
+        experience_id: Experience

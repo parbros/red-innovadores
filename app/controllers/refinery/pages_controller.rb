@@ -8,10 +8,9 @@ module Refinery
 
     # This action is usually accessed with the root path, normally '/'
     def home
-      @posts = ::Refinery::Blog::Post.recent(3)
-      @experiences = Refinery::Experiences::Experience.recent(3)
-      @ideas = Refinery::Ideas::Idea.recent(3)
-      # render_with_templates?
+      @posts = ::Refinery::Covers::Cover.where('post_id IS NOT NULL')
+      @community = ::Refinery::Covers::Cover.where('experience_id IS NOT NULL OR idea_id IS NOT NULL')
+      @images = ::Refinery::Covers::Cover.where('image_id IS NOT NULL')
     end
 
     # This action can be accessed normally, or as nested pages.

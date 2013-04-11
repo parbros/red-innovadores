@@ -29,13 +29,7 @@
     </div>
 
   </div>
-  
-  <div class='field'>
-    <%= f.label :user -%>
-    <%= f.text_field :user  -%>
 
-  </div>
-  
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.experiences.admin.experiences.experience'),

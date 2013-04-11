@@ -26,3 +26,9 @@ Refinery::Ideas::Engine.load_seed
 
 # Added by Refinery CMS Experiences extension
 Refinery::Experiences::Engine.load_seed
+
+# Added by Refinery CMS Portfolio Engine
+Refinery::Portfolio::Engine.load_seed
+
+# Added by Refinery CMS Covers extension
+Refinery::Covers::Engine.load_seed

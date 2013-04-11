@@ -1,0 +1,31 @@
+en:
+  refinery:
+    plugins:
+      covers:
+        title: Covers
+    covers:
+      admin:
+        covers:
+          actions:
+            create_new: Add New Cover
+            reorder: Reorder Covers
+            reorder_done: Done Reordering Covers
+          records:
+            title: Covers
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Covers yet. Click "Add New Cover" to add your first cover.
+          cover:
+            view_live_html: View this cover live <br/><em>(opens in a new window)</em>
+            edit: Edit this cover
+            delete: Remove this cover forever
+      covers:
+        show:
+          other: Other Covers
+  activerecord:
+    attributes:
+      'refinery/covers/cover':
+        image: Image
+        caption: Caption
+        post_id: Post
+        idea_id: Idea
+        experience_id: Experience
