@@ -1,31 +1,59 @@
 <div class="row">
   <div class="span6">
-    <h1> Experiencias <a href="#newExperiences" class="btn btn-warning pull-right" data-toggle="modal">Nueva Experiencia</a></h1>
+    <h1> Experiencias 
+      <% if current_refinery_user %>
+        <a href="#newExperiences" class="btn btn-warning pull-right" data-toggle="modal">Nueva Experiencia</a>
+      <% end %>
+    </h1>
     <div id="experiences" class="row">
       <% @experiences.each do |experience| %>
       <div class="span6">
         <div class="experience">
           <header>
             <h2><%= link_to experience.title, refinery.experiences_experience_path(experience) %> </h2>
-            <section class="detail">Enviado hace <%= time_ago_in_words(experience.created_at) %> por <%= experience.user.username %></section> 
           </header>
-          <section><p><%= content_teaser(experience).html_safe %></p></section>
+          <aside class='details'>
+            <div class="author">
+              <span><i class="icon-user"></i><%= "#{experience.user.username.humanize}" if experience.user.present? %></span>
+            </div>
+            <div class="date">
+              <span><i class="icon-calendar"></i><%= l(experience.created_at, :format => :long)%></span>
+            </div>
+          </aside>
+          <section class="summary">
+            <p><%= content_teaser(experience).html_safe %></p>
+            <%= link_to 'Leer más', refinery.experiences_experience_path(experience) %>
+          </section>
         </div>
       </div>
       <% end %>
     </div>
   </div>
   <div class="span6">
-    <h1> Ideas <a href="#newIdea" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a></h1>
+    <h1> Ideas 
+      <% if current_refinery_user %>
+        <a href="#newIdea" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a>
+        <% end %>
+    </h1>
     <div id="ideas">
       <% @ideas.each do |idea| %>
         <div class="span6">
           <div class="idea">
             <header>
               <h2><%= link_to idea.title, refinery.ideas_idea_path(idea) %></h2>
-              <section class="detail">Enviado hace <%= time_ago_in_words(idea.created_at) %> por <%= idea.user.username %></section> 
             </header>
-            <section><p><%= content_teaser(idea).html_safe %></p></section>
+            <aside class='details'>
+              <div class="author">
+                <span><i class="icon-user"></i><%= "#{idea.user.username.humanize}" if idea.user.present? %></span>
+              </div>
+              <div class="date">
+                <span><i class="icon-calendar"></i><%= l(idea.created_at, :format => :long)%></span>
+              </div>
+            </aside>
+            <section class="summary">
+              <p><%= content_teaser(idea).html_safe %></p>
+              <%= link_to 'Leer más', refinery.ideas_idea_path(idea) %>
+            </section>
           </div>
         </div>
       <% end %>

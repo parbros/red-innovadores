@@ -2,27 +2,70 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .experience, .idea {
-  background-color: white;
-  padding: 8px;
-  margin-bottom: 10px;
+  @include makeRow();
+  
+  h2 {
+    @include makeColumn(6);
+
+    a {
+      @extend .content-title;
+    }
+  }
   
   header {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #bbb;
-    padding-bottom: 20px;
+    @include makeColumn(12);
+  }
+  
+  aside.details {
+    @include makeColumn(2);
 
-    h2 {
+    span {
+      display: inline-block;
+      margin-bottom: 5px;
+      opacity: .5;
+      -webkit-transition: all .25s linear;
+      transition: all .25s linear;
+    
+      &:hover { opacity: 1;}
+      
       a {
-        color: #052E3F;
-        font-size: 17px;
-        font-weight: 600;
+        color: #444;
+        font-size: 14px;
       }
+      
+      i { margin-right: 7px;} 
+    }
+  }
+  
+  section.summary {
+    @include makeColumn(4);
+  }
+}
+
+.idea.show, .experience.show {
+  @include makeRow();
+
+  section.summary {
+    @include makeColumn(9);
+  }
+  
+  aside.details {
+    @include makeColumn(3);
+    
+    h3 {
+      margin: 0 0 10px 0;
     }
     
-    section.detail {
-      color: #888888;
-      font-size: 13px;
+    .other-ideas, .votes {
+      margin: 10px 0 20px 0;
+    }
+    
+    ul.social-plugin {
+      @extend .unstyled;
+
+      span {opacity: 1;}
     }
   }
 }

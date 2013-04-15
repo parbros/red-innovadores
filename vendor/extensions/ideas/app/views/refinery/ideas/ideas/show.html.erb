@@ -3,33 +3,49 @@
 <% end %>
 
 <% content_for :body do %>
-  <div class="idea">
+  <div class="idea show">
     <header>
       <h1><%= raw @idea.title%></h1>
-      <section class="detail">Enviado hace <%= time_ago_in_words(@idea.created_at) %> por <%= @idea.user.username %></section> 
     </header>
-    <section><p><%= content_teaser(@idea).html_safe %></p></section>
+    <aside class='details'>
+      <div class="author">
+        <span><i class="icon-user"></i><%= "#{@idea.user.username.humanize}" if @idea.user.present? %></span>
+      </div>
+      <div class="date">
+        <span><i class="icon-calendar"></i><%= l(@idea.created_at, :format => :long)%></span>
+      </div>
+      
+      <div class="votes">
+        <h3>Vota esta idea</h3>
+        <%= link_to refinery.ideas_idea_votes_path(@idea, vote: {tendency: 1}), class: ['btn', 'btn-primary'], method: :post do %>
+          <i class="icon-thumbs-up icon-white"></i> (<%= @idea.votes.votes_up.count %>)
+        <% end %>
+        <%= link_to refinery.ideas_idea_votes_path(@idea, vote: {tendency: -1}), class: ['btn', 'btn-danger'], method: :post do %>
+          <i class="icon-thumbs-down icon-white"></i> (<%= @idea.votes.votes_down.count %>)
+        <% end %>
+      </div>
+      
+      <div class="other-ideas">
+        <h3>Otras Ideas</h3>
+        <ul id="ideas">
+          <% @ideas.each do |idea| %>
+            <li><%= link_to idea.title, refinery.ideas_idea_path(idea) %></li>
+          <% end %>
+        </ul>
+      </div>
+      
+      <div class="social-plugin-container">
+        <h3>Comparte</h3>
+        <ul class="social-plugin">
+          <li><span class='st_facebook_hcount' displayText='Facebook'></span></li>
+          <li><span class='st_twitter_hcount' displayText='Tweet'></span></li>
+          <li><span class='st_googleplus_hcount' displayText='Google +'></span></li>
+          <li><span class='st_email_hcount' displayText='Email'></span></li>
+        </ul>
+      </div>
+    </aside>
+    <section class="summary"><p><%= content_teaser(@idea).html_safe %></p></section>
   </div>
-<% end %>
-
-<% content_for :side_body do %>
-  <aside>
-    <h2>Vota esta idea</h2>
-    <%= link_to refinery.ideas_idea_votes_path(@idea, vote: {tendency: 1}), class: ['btn', 'btn-primary'], method: :post do %>
-      <i class="icon-thumbs-up icon-white"></i> (<%= @idea.votes.votes_up.count %>)
-    <% end %>
-    <%= link_to refinery.ideas_idea_votes_path(@idea, vote: {tendency: -1}), class: ['btn', 'btn-danger'], method: :post do %>
-      <i class="icon-thumbs-down icon-white"></i> (<%= @idea.votes.votes_down.count %>)
-    <% end %>
-    <h2><%= t('.other') %></h2>
-    <ul id="ideas">
-      <% @ideas.each do |idea| %>
-        <li>
-          <%= link_to idea.title, refinery.ideas_idea_path(idea) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
 <% end %>
 
 <%= render '/refinery/content_page' %>

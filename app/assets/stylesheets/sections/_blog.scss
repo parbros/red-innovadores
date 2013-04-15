@@ -56,6 +56,10 @@ section#blog_posts, div#show_blog_post {
       aside.details {
         @include makeColumn(3);
         
+        h3 {
+          margin: 0 0 10px 0;
+        }
+        
         span {
           display: inline-block;
           margin-bottom: 5px;
@@ -70,11 +74,17 @@ section#blog_posts, div#show_blog_post {
             font-size: 14px;
           }
           
-          i { margin-right: 7px;} 
+          i { margin-right: 10px;} 
         }
         
         aside {
           margin-top: 15px;
+        }
+        
+        ul.social-plugin {
+          @extend .unstyled;
+
+          span {opacity: 1;}
         }
       }
       
