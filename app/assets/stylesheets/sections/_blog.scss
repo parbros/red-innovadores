@@ -3,134 +3,172 @@ section#body_content {
 }
 
 section#body_content_left {
-  @include makeColumn(8);
+  @include makeColumn(9);
 }
 
 section#body_content_right {
-  @include makeColumn(4);
+  @include makeColumn(3);
   
   .inner {
     @extend .well;
     @extend .sidebar-nav;
     
-    ul#categories {
-      @extend .nav; 
-      @extend .nav-list;
+    ul#tags, ul#categories {
+      @extend .unstyled;
+      
+      li {
+        i {
+          margin-right: 10px;
+        }
+      }
     }
     
-    nav#tags {
-      a {
-        @extend .label;
-        @extend .label-info;
+    h2 {
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+  }
+}
+
+section#blog_posts, div#show_blog_post {
+  article.blog_post {
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    
+    &:last-child { border: 0;}
+    
+    header {
+      @include makeRow();
+      
+      h1 {
+        @include makeColumn(9);
+
+        a {
+          @extend .content-title;
+        }
+      }
+    }
+    
+    .post-resume {
+      @include makeRow();
+      
+      aside.details {
+        @include makeColumn(3);
+        
+        span {
+          display: inline-block;
+          margin-bottom: 5px;
+          opacity: .5;
+          -webkit-transition: all .25s linear;
+          transition: all .25s linear;
+        
+          &:hover { opacity: 1;}
+          
+          a {
+            color: #444;
+            font-size: 14px;
+          }
+          
+          i { margin-right: 7px;} 
+        }
+        
+        aside {
+          margin-top: 15px;
+        }
+      }
+      
+      section.post-summary {
+        @include makeColumn(6);
+      
       }
     }
   }
 }
 
-#show_blog_post {
-  background-color: #fff;
-  margin-bottom: 20px;
+div#show_blog_post {
+  .post-resume {
+    section.post-summary {
+      @include makeColumn(9);
+      width: 700px !important;
+    }
+  }
   
   nav#next_prev_article {
-    
-    a.prev {
-      padding-left: 8px;
-    }
-
-    a.next {
-      padding-right: 8px;
-    }
-  }
-  
-  article#blog_post {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #bbb;
-    padding-bottom: 20px;
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
   }
 }
 
-article#blog_post, article.blog_post {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  color: #888888;
-  font-size: 13px;
-  padding: 8px;
-
-  header {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #bbb;
-    padding-bottom: 20px;
-
-    a {
-      color: #052E3F;
-      font-size: 17px;
-      font-weight: 600;
-    }
-    
-    section.details {
-      .blog_author {display: inline;}
-    }
-  }
-  
-  aside.tagged {
-    a {
-      @extend .label;
-      @extend .label-info;
-    }
-  }
-  
-  & > section {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #bbb;
-    padding-bottom: 20px;
-  }
-  
-  footer {    
-    aside {
-      @extend .pull-left;
-    }
-  }
-}
-
-section#blog_posts {
-  article.blog_post {
-    background-color: #fff;
-  }
+section#body {
+  @include makeColumn(12);
 }
 
 aside#comments {
+  @include makeRow();
+  
+  h2 {@include makeColumn(8)}
+
   article.blog_comment_message {
-    background-color: white;
-    padding: 8px;
-    margin-bottom: 10px;
+    @include makeColumn(8);
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
     
-    img, p { display: inline;}
-    
-    footer {
-      margin-top: 20px;
-      border-top: 1px solid #bbb;
-      padding-top: 20px;
-      
-      p {
-        color: #888888;
-        font-size: 13px;
+    div.comment_message {
+      @include makeRow();
+
+      img {
+        @include makeColumn(1);
       }
+    
+      p {
+        @include makeColumn(7);
+      }
+    }
+    
+    footer.blog_comment_author {
+      margin-top: 15px;
     }
   }
   
-  .new_comment {
-    background-color: white;
-    padding: 8px;
-
-    .field {
-      label {
-        width: 100px;
-        display: inline-block;
-      }
+  form.new_comment {
+    @include makeColumn(4);
+    
+    h2 { 
+      @include makeColumn(4);
+    }
+    
+    div.form_new_comment {
+      @include makeRow();
       
-      input {
-        display: inline-block;
+      div.field {
+        @include makeColumn(4);
+
+        input, textarea {
+          background-color: #eee;
+      
+          &:focus {
+            background-color: white;
+          }
+      
+          &::-webkit-input-placeholder {
+             color: #aaa;
+          }
+
+          &:-moz-placeholder { /* Firefox 18- */
+             color: aaa;  
+          }
+
+          &::-moz-placeholder {  /* Firefox 19+ */
+             color: aaa;  
+          }
+
+          &:-ms-input-placeholder {  
+             color: aaa;  
+          }
+        }
       }
     }
   }

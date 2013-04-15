@@ -1,0 +1,12 @@
+<% if @posts.many? %>
+  <h2><%= t('.other') %></h2>
+  <ul id="blog_posts">
+    <% @posts.each do |blog_post| %>
+      <li>
+        <%= link_to refinery.blog_post_path(blog_post) do %>
+          <%= "#{truncate(blog_post.title, {length: 35})}"%>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

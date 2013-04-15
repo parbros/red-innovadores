@@ -1,0 +1,56 @@
+<% if post.live? %>
+  <article class="blog_post" id="<%= dom_id(post) %>">
+    <header>
+      <h1><%= link_to post.title, refinery.blog_post_path(post) %></h1>
+    </header>
+    
+    
+    <div class="post-resume">
+      <aside class='details'>
+        <div class="author">
+          <span><i class="icon-user"></i><%= "#{post.author.username.humanize}" if post.author.present? %></span>
+        </div>
+        <div class="date">
+          <span><i class="icon-calendar"></i><%= l(post.published_at.to_date, :format => :long)%></span>
+        </div>
+        <% if Refinery::Blog::Post.comments_allowed? %>
+          <div class='count_comment'>
+            <span>
+              <i class="icon-comment"></i><% if post.comments.any? %><%= pluralize(post.comments.approved.count, t('singular', :scope => 'refinery.blog.shared.comments').humanize) %>
+              <% else %><%= t('none', :scope => 'refinery.blog.shared.comments').humanize %>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+
+        <% if (tags = post.tags).any? %>
+          <aside class='tagged'>
+            <% tags.each do |tag| %>
+            <div class="tag">
+              <span><i class="icon-tag"></i><%= link_to tag, refinery.blog_tagged_posts_path(tag.id, tag.name.parameterize) %></span>
+            </div>
+            <% end %>
+          </aside>
+        <% end %>
+        
+        <% if (categories = post.categories).any? %>
+          <aside class='filed_in'>
+            <% categories.each do |category| %>
+              <div class="category"><span><i class="icon-play"></i><%= link_to category.title, refinery.blog_category_path(category) %></span></div>
+            <% end %>
+          </aside>
+        <% end %>
+      </aside>
+  
+      <section class='post-summary'>
+        <% if blog_post_teaser_enabled? %>
+          <%= blog_post_teaser(post) %>
+        <% else %>
+          <%= post.body.html_safe %>
+        <% end %>
+        <%= link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post) if blog_post_teaser_enabled? %>
+      </section>      
+    </div>
+
+  </article>
+<% end %>

@@ -3,35 +3,55 @@
    <%= value %>
  </div>
 <% end %>
-<article id="blog_post">
+<article class="blog_post" id="<%= dom_id(@post) %>">
   <header>
-    <h1><%= @post.title %></h1>
-    <section class='details'>
-      <time datetime="<%=l @post.published_at.to_date, :format => :default %>" class='posted_at'>
-        <%= t('created_at', :scope => 'refinery.blog.shared.posts', :when => l(@post.published_at.to_date, :format => :short)) %>
-      </time>
-      <%= content_tag(:div, "#{t('by', :scope => 'refinery.blog.posts.show')} #{@post.author.username}", :class => "blog_author") if @post.author.present? %>
-      <% if @post.source_url.present? %>
-        <div class='blog_source'>
-          <%= "#{t('source', :scope => 'refinery.blog.posts.show')}: " %>
-          <%= link_to (@post.source_url_title.blank? ? @post.source_url : @post.source_url_title), @post.source_url %>
+    <h1><%= link_to @post.title, refinery.blog_post_path(@post) %></h1>
+  </header>
+  
+  
+  <div class="post-resume">
+    <aside class='details'>
+      <div class="author">
+        <span><i class="icon-user"></i><%= "#{@post.author.username.humanize}" if @post.author.present? %></span>
+      </div>
+      <div class="date">
+        <span><i class="icon-calendar"></i><%= l(@post.published_at.to_date, :format => :long)%></span>
+      </div>
+      <% if Refinery::Blog::Post.comments_allowed? %>
+        <div class='count_comment'>
+          <span>
+            <i class="icon-comment"></i><% if @post.comments.any? %><%= pluralize(@post.comments.approved.count, t('singular', :scope => 'refinery.blog.shared.comments').humanize) %>
+            <% else %><%= t('none', :scope => 'refinery.blog.shared.comments').humanize %>
+            <% end %>
+          </span>
         </div>
       <% end %>
-      <% if (categories = @post.categories).any? %>
-        <aside class='filed_in'>
-          <%= t('filed_in', :scope => 'refinery.blog.posts.show') %>
-          <% categories.each_with_index do |category, index| %>
-            <%= link_to category.title, refinery.blog_category_path(category) -%><%= ',' if index < ((categories.length) - 1) %>
+
+      <% if (tags = @post.tags).any? %>
+        <aside class='tagged'>
+          <% tags.each do |tag| %>
+          <div class="tag">
+            <span><i class="icon-tag"></i><%= link_to tag, refinery.blog_tagged_posts_path(tag.id, tag.name.parameterize) %></span>
+          </div>
           <% end %>
         </aside>
       <% end %>
-    </section>
-  </header>
-  <%= @post.body.html_safe %>
+      
+      <% if (categories = @post.categories).any? %>
+        <aside class='filed_in'>
+          <% categories.each do |category| %>
+            <div class="category"><span><i class="icon-play"></i><%= link_to category.title, refinery.blog_category_path(category) %></span></div>
+          <% end %>
+        </aside>
+      <% end %>
+    </aside>
 
-  <% if Refinery::Blog::Post::ShareThis.enabled? %>
-    <span class="st_sharethis" displayText="ShareThis"></span>
-  <% end %>
+    <section class='post-summary'>
+        <%= @post.body.html_safe %>
+    </section>      
+  </div>
+
 </article>
+
 <%= render :partial => '/refinery/draft_page_message' unless @post.nil? or @post.live? -%>
 <%= render 'nav' if next_or_previous?(@post) %>

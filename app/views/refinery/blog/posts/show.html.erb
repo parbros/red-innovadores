@@ -1,4 +1,4 @@
-<% content_for :body_content_left do %>
+<% content_for :body do %>
   <div id="show_blog_post">
     <%= render 'post' %>
   </div>
@@ -7,8 +7,6 @@
     <%= render 'comments'%>
   <% end %>
 <% end %>
-
-<%= render :partial => '/refinery/blog/shared/body_content_right' %>
 
 <%= render :partial => "/refinery/content_page", :locals => { :remove_automatic_sections => true }  %>
 

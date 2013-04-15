@@ -1,6 +1,18 @@
 @import 'twitter_bootstrap';
 @import 'sections/*';
 
+.content-title {
+  color: #052E3F;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  
+  &:hover {
+    background-color: #f9a732;
+    text-decoration: none;
+  }
+}
+
 html {
   background: url('/assets/background.png');
 }
@@ -34,9 +46,18 @@ a {
   color: #056672;
   font-weight: 600;
   font-size: 12px;
+  -webkit-transition: all .25s linear;
+  transition: all .25s linear;
 }
 
 .navbar {
+  
+  .navbar-inner {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+  }
+
   .container { width: 940px;}
 }
 
@@ -124,4 +145,8 @@ input[type=submit] {
 p {
   color: #444444;
   font-size: 13px;
+}
+
+.flash {
+  @include makeRow();
 }
