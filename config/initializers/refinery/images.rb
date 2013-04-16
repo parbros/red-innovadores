@@ -29,8 +29,8 @@ Refinery::Images.configure do |config|
   # The s3_backend setting by default defers to the core setting for this but can be set just for images.
   config.s3_backend = Refinery::Core.s3_backend
   config.s3_bucket_name = "red-innovacion"
-  config.s3_access_key_id = "N0SVd2HD2XzBHvfUSmDu5i8SS9fb3EdGYKKk/B/g"
-  config.s3_secret_access_key = "AKIAIMYIAP4I5LHK7TWQ"
+  config.s3_access_key_id = "AKIAIMYIAP4I5LHK7TWQ"
+  config.s3_secret_access_key = "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"
 
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware
