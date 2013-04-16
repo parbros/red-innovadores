@@ -1,39 +1,44 @@
 <aside id="comments">
-  <% flash.each do |key, value| %>
-    <div id='flash' class="flash flash_<%= key %>">
-      <%= value %>
-    </div>
-  <% end %>
-  
-  <h2><%= t('title', :scope => 'refinery.blog.posts.show.comments') %></h2>
-  <% if (comments = @post.comments.approved).any? %>
-    <%= render :partial => "comment", :collection => comments %>
-  <% else %>
-    <p>
-      <%= t('none', :scope => 'refinery.blog.shared.comments') %>.
-    </p>
-  <% end %>
+  <div class="comments-container">
+    <% flash.each do |key, value| %>
+      <div id='flash' class="flash flash_<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
 
-  <%= form_for [refinery, :blog, @comment] do |f| %>
-    <div class="form_new_comment">
-      <h2><%= t('add', :scope => 'refinery.blog.posts.show.comments') %></h2>
-      <%= render :partial => "/refinery/admin/error_messages",
-                 :locals => {
-                   :object => f.object,
-                   :include_object_name => true
-                 } %>
-      <div class='field'>
-        <%= f.text_field :name, placeholder: 'Nombre', class: 'span4' %>
-      </div>
-      <div class='field'>
-        <%= f.email_field :email, placeholder: 'Email', class: 'span4' %>
-      </div>
-      <div class='field message_field'>
-        <%= f.text_area :message, placeholder: 'Comentario', class: 'span4' %>
-      </div>
-      <div class='field'>
-        <%= f.submit t('submit', :scope => 'refinery.blog.posts.show') %>
-      </div>
+    <h2><%= t('title', :scope => 'refinery.blog.posts.show.comments') %></h2>
+
+    <div class="comments-messages-container">
+      <% if (comments = @post.comments.approved).any? %>
+        <%= render :partial => "comment", :collection => comments %>
+      <% else %>
+        <p>
+          <%= t('none', :scope => 'refinery.blog.shared.comments') %>.
+        </p>
+      <% end %>
     </div>
-  <% end %>
+
+    <%= form_for [refinery, :blog, @comment] do |f| %>
+      <div class="form_new_comment">
+        <h2><%= t('add', :scope => 'refinery.blog.posts.show.comments') %></h2>
+        <%= render :partial => "/refinery/admin/error_messages",
+                   :locals => {
+                     :object => f.object,
+                     :include_object_name => true
+                   } %>
+        <div class='field'>
+          <%= f.text_field :name, placeholder: 'Nombre', class: 'span4' %>
+        </div>
+        <div class='field'>
+          <%= f.email_field :email, placeholder: 'Email', class: 'span4' %>
+        </div>
+        <div class='field message_field'>
+          <%= f.text_area :message, placeholder: 'Comentario', class: 'span4' %>
+        </div>
+        <div class='field'>
+          <%= f.submit t('submit', :scope => 'refinery.blog.posts.show') %>
+        </div>
+      </div>
+    <% end %>
+  </div> 
 </aside>

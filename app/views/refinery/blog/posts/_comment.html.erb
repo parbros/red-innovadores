@@ -1,11 +1,11 @@
 <article class='blog_comment_message' id='<%= "comment-#{comment.to_param}" %>'>
-  <div class='comment_message'>
-    <%= image_tag comment.avatar_url, :alt => comment.name, :class => 'avatar' %>
-    <%= simple_format auto_link(comment.message.to_s) %>
+  <header class='blog_comment_author'>
+    <span class="author"><strong><%= comment.name %></strong></span>
+    <span class="date"><strong><%= l(comment.created_at.to_date, :format => :long)%></strong></span>
+  </header>
+  <div class="comment-message-container">
+    <div class='comment_message'>
+      <%= simple_format auto_link(comment.message.to_s) %>
+    </div>
   </div>
-  <footer class='blog_comment_author'>
-    <p>
-      Por <strong><%= comment.name %></strong> | El <strong><%= l(comment.created_at.to_date, :format => :long)%></strong>
-    </p>
-  </footer>
 </article>

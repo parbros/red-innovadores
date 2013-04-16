@@ -37,10 +37,8 @@
 }
 
 .carousel-inner .item {
-  img {
-    max-width: 940px;
-    max-height: 325px;
-  }
+  width: 600px;
+  height: 325px;
   
   .carousel-caption {
     color: white;
@@ -53,4 +51,8 @@
     }
     p {color: white;}
   }
+}
+
+#myCarousel {
+  margin: 0 auto;
 }
