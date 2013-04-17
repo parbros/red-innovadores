@@ -1,7 +1,7 @@
 <article class='blog_comment_message' id='<%= "comment-#{comment.to_param}" %>'>
   <header class='blog_comment_author'>
-    <span class="author"><strong><%= comment.name %></strong></span>
-    <span class="date"><strong><%= l(comment.created_at.to_date, :format => :long)%></strong></span>
+    <span class="author"><%= comment.name %></span>
+    <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
   </header>
   <div class="comment-message-container">
     <div class='comment_message'>

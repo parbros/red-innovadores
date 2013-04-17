@@ -60,12 +60,12 @@ section#blog_posts {
         
         .date {
           font-size: 22px;
+          font-weight: 300;
           
           span {
             color: #878787;
             font-size: 14px;
             margin-left: 10px;
-            font-weight: 300;
           }
         }
         
@@ -149,12 +149,12 @@ div#show_blog_post {
     
     .date {
       font-size: 22px;
+      font-weight: 300;
       
       span {
         color: #878787;
         font-size: 14px;
         margin-left: 10px;
-        font-weight: 300;
       }
     }
     
@@ -238,6 +238,14 @@ section#body {
 
 aside#comments {
   @include makeRow();
+  margin-top: 50px;
+  
+  &:before {
+    content: url('/assets/comments-arrow.png');
+    position: relative;
+    left: 300px;
+    top: 0px;
+  }
   
   h2 { margin-left: 20px}
   
@@ -260,6 +268,12 @@ aside#comments {
     
       header {
         padding: 10px;
+        margin-bottom: 10px;
+        
+        span {
+          color: #444444;
+          font-weight: 600;
+        }
         
         span.author {
           @extend .pull-left;
@@ -307,6 +321,12 @@ aside#comments {
 
           &:-ms-input-placeholder {  
              color: aaa;  
+          }
+        }
+        
+        &.message_field {
+          textarea {
+            height: 200px;
           }
         }
       }

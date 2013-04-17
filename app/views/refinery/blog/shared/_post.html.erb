@@ -56,7 +56,9 @@
           <% else %>
             <%= post.body.html_safe %>
           <% end %>
-          <%= link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post) if blog_post_teaser_enabled? %>
+          <%= link_to refinery.blog_post_path(post) do %>
+            <%= t('read_more', :scope => 'refinery.blog.shared.posts')%> <%= image_tag '/assets/read-more.png'%>
+          <% end if blog_post_teaser_enabled? %>
         </div>
       </section>
     </div>
