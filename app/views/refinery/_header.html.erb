@@ -2,6 +2,7 @@
   <div class="container">
     <%= link_to refinery.root_path do image_tag 'logo.png', class: ['pull-left'] end%>
     <% if current_refinery_user.blank? %>
+      <%= link_to 'Registrarse', '/registro', class:['btn', 'btn-warning', 'pull-right', 'signup-button']%>
       <%= link_to 'Entrar', '/refinery/users/login', class:['btn', 'btn-warning', 'pull-right', 'profile-button']%>
     <% else %>
       <div class="btn-group pull-right profile-button">

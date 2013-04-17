@@ -4,6 +4,8 @@
     <h1> Experiencias 
       <% if current_refinery_user %>
         <a href="#newExperiences" class="btn btn-warning pull-right" data-toggle="modal">Nueva Experiencia</a>
+      <% else %>
+        <a href="/refinery/users/login" class="btn btn-warning pull-right" data-toggle="modal">Nueva Experiencia</a>
       <% end %>
     </h1>
     
@@ -48,7 +50,9 @@
     <h1> Ideas 
       <% if current_refinery_user %>
         <a href="#newIdea" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a>
-        <% end %>
+      <% else %>
+        <a href="/refinery/users/login" class="btn btn-warning pull-right" data-toggle="modal">Nueva Idea</a>
+      <% end %>
     </h1>
     <div id="ideas">
       <% @ideas.each do |idea| %>
