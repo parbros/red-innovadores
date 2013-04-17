@@ -145,3 +145,25 @@ p {
 .flash {
   @include makeRow();
 }
+
+.navbar-search .search-query {
+  background-color: #007783;
+  border: 0;
+  color: white;
+  
+  &::-webkit-input-placeholder {
+     color: white;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+     color: white;  
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: white;  
+  }
+
+  &:-ms-input-placeholder {  
+     color: white;  
+  }
+}

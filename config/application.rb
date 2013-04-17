@@ -66,5 +66,9 @@ module RedInnovadores
     config.assets.version = '1.0'
     
     config.assets.initialize_on_precompile = true
+    
+    config.to_prepare do
+      Refinery.searchable_models = [Refinery::Page, Refinery::Blog::Post, Refinery::Experiences::Experience, Refinery::Ideas::Idea]
+    end
   end
 end
