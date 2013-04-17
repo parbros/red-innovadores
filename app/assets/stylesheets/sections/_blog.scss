@@ -10,8 +10,13 @@ section#body_content_right {
   @include makeColumn(3);
   
   .inner {
-    @extend .well;
     @extend .sidebar-nav;
+    
+    ul#tags, ul#categories, ul#blog_posts {
+      border-bottom: 1px solid #d2d2d2;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
     
     ul#tags, ul#categories {
       @extend .unstyled;
