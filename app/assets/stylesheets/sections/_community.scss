@@ -3,11 +3,41 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.experience, .idea {
-  @include makeRow();
+#experiences .experience, #ideas .idea {
+  background-color: white;
+  border-bottom: 2px solid #d2d2d2;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+
+  .experience-container, .idea-container {
+    @include makeRow();
+    
+    .details-container {
+      border-left: 1px solid #d2d2d2;
+      padding: 5px;
+      height: 270px;
+    }
+    
+    .summary-container {
+      @include makeRow();
+      border-right: 1px solid #d2d2d2;
+      height: 270px;
+      padding: 5px;
+    }
+  }
   
+  .details-separator {
+    background-color: #E1E1E1;
+    width: 100px;
+    height: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
   h2 {
-    @include makeColumn(6);
+    margin-top: 0;
 
     a {
       @extend .content-title;
@@ -15,12 +45,24 @@
   }
   
   header {
-    @include makeColumn(12);
   }
   
   aside.details {
     @include makeColumn(2);
+    background-color: #f4f4f4;
+    height: 280px;
 
+    .date {
+      font-size: 18px;
+      font-weight: 300;
+      
+      span {
+        color: #878787;
+        font-size: 12px;
+        margin-left: 5px;
+      }
+    }
+    
     span {
       display: inline-block;
       margin-bottom: 5px;
@@ -41,31 +83,92 @@
   
   section.summary {
     @include makeColumn(4);
+    background-color: white;
+    height: 280px;
   }
 }
 
 .idea.show, .experience.show {
   @include makeRow();
+  background-color: transparent;;
 
   section.summary {
     @include makeColumn(9);
+    
+    header {
+      @include makeRow();
+  
+      h1 {
+        @include makeColumn(8);
+        @extend .content-title;
+      }
+    }
   }
   
   aside.details {
     @include makeColumn(3);
     
-    h3 {
-      margin: 0 0 10px 0;
-    }
+    .details-container {
+      border-right: 1px solid #BBBBBB;
+      
+      .date {
+        font-size: 22px;
+        font-weight: 300;
+      
+        span {
+          color: #878787;
+          font-size: 14px;
+          margin-left: 10px;
+        }
+      }
     
-    .other-ideas, .votes {
-      margin: 10px 0 20px 0;
-    }
+      .details-separator {
+        background-color: #E1E1E1;
+        width: 100px;
+        height: 10px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
     
-    ul.social-plugin {
-      @extend .unstyled;
+      h3 {
+        margin: 0 0 10px 0;
+      }
+    
+      span {
+        color: #052D3F;
+        display: inline-block;
+        font-weight: 300;
+        margin-bottom: 5px;
+        -webkit-transition: all .25s linear;
+        transition: all .25s linear;
 
-      span {opacity: 1;}
+        a {
+          color: #052D3F;
+          font-size: 14px;
+          font-weight: 300;
+        }
+      
+        i { margin-right: 10px;} 
+      }
+    
+      aside {
+        margin-top: 8px;
+      }
+      
+      .other-ideas, .votes {
+        border-top: 1px solid #BBBBBB;
+        margin: 10px 0 20px 0;
+        padding-top: 10px;
+      }
+    
+      .social-plugin-container {
+        border-top: 1px solid #BBBBBB;
+        padding-top: 10px;
+
+        ul.social-plugin {
+          @extend .unstyled;
+        }
+      }
     }
   }
 }

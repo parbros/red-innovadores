@@ -4,39 +4,47 @@
 
 <% content_for :body do %>
   <div class="experience show">
-    <header>
-      <h1><%=raw @experience.title %></h1>
-    </header>
-    
     <aside class='details'>
-      <div class="author">
-        <span><i class="icon-user"></i><%= "#{@experience.user.username.humanize}" if @experience.user.present? %></span>
-      </div>
-      <div class="date">
-        <span><i class="icon-calendar"></i><%= l(@experience.created_at, :format => :long)%></span>
-      </div>
+      <div class="details-container">
+        <div class="date">
+          <%= l(@experience.created_at.to_date, :format => :short)%> <span><%= @experience.created_at.year %></span>
+        </div>
+        
+        <div class="details-separator"></div>
+        
+        <div class="author">
+          <span><i class="icon-user"></i><%= "#{@experience.user.username.humanize}" if @experience.user.present? %></span>
+        </div>
+        
 
-      <div class="other-ideas">
-        <h3>Otras Experiencias</h3>
-        <ul id="experiencias">
-          <% @experiences.each do |experience| %>
-            <li><%= link_to experience.title, refinery.experiences_experience_path(experience) %></li>
-          <% end %>
-        </ul>
-      </div>
+        <div class="other-ideas">
+          <h3>Otras Experiencias</h3>
+          <ul id="experiencias">
+            <% @experiences.each do |experience| %>
+              <li><%= link_to experience.title, refinery.experiences_experience_path(experience) %></li>
+            <% end %>
+          </ul>
+        </div>
       
-      <div class="social-plugin-container">
-        <h3>Comparte</h3>
-        <ul class="social-plugin">
-          <li><span class='st_facebook_hcount' displayText='Facebook'></span></li>
-          <li><span class='st_twitter_hcount' displayText='Tweet'></span></li>
-          <li><span class='st_googleplus_hcount' displayText='Google +'></span></li>
-          <li><span class='st_email_hcount' displayText='Email'></span></li>
-        </ul>
+        <div class="social-plugin-container">
+          <h3>Comparte</h3>
+          <ul class="social-plugin">
+            <li><span class='st_facebook_hcount' displayText='Facebook'></span></li>
+            <li><span class='st_twitter_hcount' displayText='Tweet'></span></li>
+            <li><span class='st_googleplus_hcount' displayText='Google +'></span></li>
+            <li><span class='st_email_hcount' displayText='Email'></span></li>
+          </ul>
+        </div>
       </div>
     </aside>
     
-    <section class="summary"><p><%= content_teaser(@experience).html_safe %></p></section>
+    <section class="summary">
+      <header>
+        <h1><%=raw @experience.title %></h1>
+      </header>
+
+      <p><%= content_teaser(@experience).html_safe %></p>
+    </section>
   </div>
 <% end %>
 
