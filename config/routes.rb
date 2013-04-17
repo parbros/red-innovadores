@@ -8,6 +8,8 @@ RedInnovadores::Application.routes.draw do
   
   match '/administrador' => redirect('/refinery')
   
+  match '/registro' => 'refinery/memberships/members#new'
+  
   resources :comunidad, only: [:index], controller: :community
   
   mount Forem::Engine, :at => "/foros"
