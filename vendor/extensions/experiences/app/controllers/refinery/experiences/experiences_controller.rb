@@ -26,8 +26,13 @@ module Refinery
         if @experience.save
           redirect_to refinery.experiences_experience_url(@experience)
         else
-          redirect_to refinery.experiences_experiences_url
+          redirect_to refinery.experiences_experiences_url(share: true)
         end
+      end
+      
+      def new
+        @experience = Experience.new
+        present(@page)
       end
 
     protected

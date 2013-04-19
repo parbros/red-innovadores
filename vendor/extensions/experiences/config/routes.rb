@@ -2,7 +2,7 @@ Refinery::Core::Engine.routes.append do
 
   # Frontend routes
   namespace :experiences do
-    resources :experiences, :path => '', :only => [:index, :show, :create]
+    resources :experiences, :path => '', :only => [:index, :show, :create, :new]
   end
 
   # Admin routes

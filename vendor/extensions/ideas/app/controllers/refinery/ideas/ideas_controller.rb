@@ -26,8 +26,13 @@ module Refinery
         if @idea.save
           redirect_to refinery.ideas_idea_url(@idea)
         else
-          redirect_to refinery.ideas_ideas_url
+          redirect_to refinery.ideas_ideas_url(share: true)
         end
+      end
+      
+      def new
+        @idea = Idea.new
+        present(@page)
       end
 
     protected

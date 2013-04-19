@@ -2,7 +2,7 @@ Refinery::Core::Engine.routes.append do
 
   # Frontend routes
   namespace :ideas do
-    resources :ideas, :only => [:index, :show, :create] do
+    resources :ideas, :path => '', :only => [:new, :index, :show, :create] do
       resource :votes, :only => [:create]
     end
   end

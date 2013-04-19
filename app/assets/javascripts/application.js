@@ -25,3 +25,15 @@ $('#crearExperienceButton').click(function(event) {
   event.preventDefault();
   $('form#new_experience').submit();
 });
+
+$('#mceAdvImage').click(function() {
+  tinyMCE.activeEditor.execCommand('mceAdvImage');
+});
+
+$('#mceMedia').click(function() {
+  tinyMCE.activeEditor.execCommand('mceMedia');
+});
+
+$('#mcePreview').click(function() {
+  tinyMCE.activeEditor.execCommand('mcePreview');
+});

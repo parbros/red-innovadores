@@ -1,0 +1,27 @@
+<h1>Nueva Idea</h1>
+<%= form_for @idea, url: refinery.ideas_ideas_path do |form|%>
+  <div class="control-group">
+    <%= form.label :title, 'Titulo', class: 'control-label' %>
+    <div class="controls">
+      <%= form.text_field :title, placeholder: 'Titulo de tu experiencia', class: 'input-xxlarge' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>Acceso Rapido</label>
+    <div class="controls">
+      <a href="#" id='mceAdvImage' class="btn btn-mini">Agregar Imagen</a>
+      <a href="#" id='mceMedia' class="btn btn-mini">Agregar Video</a>
+      <a href="#" id='mcePreview' class="btn btn-mini">Previo</a>
+      
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :content, 'Contenido', class: 'control-label' %>
+    <div class="controls">
+      <%= form.text_area :content, placeholder: "Contenido de la idea", class: ["tinymce"], cols: 60 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.submit 'Enviar' %>
+  </div>
+<% end %>
