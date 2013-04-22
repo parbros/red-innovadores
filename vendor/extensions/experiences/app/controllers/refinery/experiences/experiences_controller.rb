@@ -24,9 +24,9 @@ module Refinery
         @experience = Experience.new(params[:experience])
         @experience.user = current_refinery_user
         if @experience.save
-          redirect_to refinery.experiences_experience_url(@experience)
+          redirect_to refinery.experiences_experience_url(@experience, share: true)
         else
-          redirect_to refinery.experiences_experiences_url(share: true)
+          redirect_to refinery.experiences_experiences_url
         end
       end
       

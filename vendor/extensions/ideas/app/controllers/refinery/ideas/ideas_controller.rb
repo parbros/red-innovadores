@@ -24,9 +24,9 @@ module Refinery
         @idea = Idea.new(params[:idea])
         @idea.user = current_refinery_user
         if @idea.save
-          redirect_to refinery.ideas_idea_url(@idea)
+          redirect_to refinery.ideas_idea_url(@idea, share: true)
         else
-          redirect_to refinery.ideas_ideas_url(share: true)
+          redirect_to refinery.ideas_ideas_url
         end
       end
       
