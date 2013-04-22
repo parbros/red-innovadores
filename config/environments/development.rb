@@ -34,4 +34,13 @@ RedInnovadores::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.mandrillapp.com",
+    :port      => 587, 
+    :enable_starttls_auto => true,
+    :user_name => "jorge.parbros@parbros.net",
+    :password  => "HQx21FVvhOb57nIsz7O7pA",
+    :authentication => 'login'
+  }
+  
 end

@@ -20,6 +20,7 @@ module Refinery
 
       before_save :ensure_member_role       # always needs to be a Member or can't sign in, see is_member?
       before_create :confirm_member
+      after_create :sync_with_canvas
 
       def to_param
           id
@@ -235,6 +236,10 @@ module Refinery
       
       def confirm_member
         self.enabled = true
+      end
+      
+      def sync_with_canvas
+        request = RemoteUser.create_user(self.email, self.password) rescue nil
       end
     end
   end

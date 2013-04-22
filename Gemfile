@@ -9,6 +9,7 @@ gem 'activeresource', :require => 'active_resource'
 gem 'pg'
 
 group :development, :test do
+  gem 'debugger', '1.1.3'
 end
 
 
@@ -35,6 +36,7 @@ gem 'tinymce-rails'
 gem 'fog'
 gem 'twitter'
 gem 'fb_graph'
+gem 'typhoid'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
