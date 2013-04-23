@@ -236,6 +236,9 @@ module Refinery
       
       def confirm_member
         self.enabled = true
+        self.seen = true
+        self.rejected = 'NO'
+        self.member_until = 10.year.from_now
       end
       
       def sync_with_canvas

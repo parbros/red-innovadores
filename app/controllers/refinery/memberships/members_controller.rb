@@ -60,7 +60,7 @@ module Refinery
       end
 
       def welcome
-        find_page('/members/welcome')
+        find_page('/')
       end
 
       def activate
@@ -78,7 +78,7 @@ module Refinery
 
       def redirect?
         if current_refinery_user.nil?
-          redirect_to new_user_session_path
+          redirect_to '/refinery/users/login'
         end
       end
 
