@@ -44,7 +44,7 @@
         <h1><%=raw @experience.title %></h1>
       </header>
 
-      <p><%= content_teaser(@experience).html_safe %></p>
+      <p><%= @experience.content.html_safe %></p>
     </section>
   </div>
 <% end %>
