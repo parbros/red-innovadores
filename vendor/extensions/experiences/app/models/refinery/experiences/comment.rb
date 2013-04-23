@@ -1,6 +1,6 @@
 module Refinery
   module Experiences
-    class Experience < Refinery::Core::BaseModel
+    class Comment < Refinery::Core::BaseModel
       self.table_name = 'refinery_experiences_comments'
 
       attr_accessible :name, :email, :comment, :user_id, :experience_id, :position
