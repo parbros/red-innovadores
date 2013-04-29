@@ -1,27 +1,39 @@
-<ul class="nav pull-left">
-  <li><a href="/blog">INNOVANDO</a></li>
-  <li><a href="http://lms.redinnovacion.org/">APRENDIZAJE</a></li>
-  <li><a href="/foros">DISCUSI&Oacute;N</a></li>
-  <li><a href="/comunidad">COMUNIDAD de innovaci&oacute;n</a></li>
+<% unless mobile_device? %>
+  <ul class="nav pull-left">
+    <li><a href="/blog">INNOVANDO</a></li>
+    <li><a href="http://lms.redinnovacion.org/">APRENDIZAJE</a></li>
+    <li><a href="/foros">DISCUSI&Oacute;N</a></li>
+    <li><a href="/comunidad">COMUNIDAD de innovaci&oacute;n</a></li>
   
-  <%
-    # Collect the root items.
-    # ::Refinery::Menu is smart enough to remember all of the items in the original collection.
-    puts Refinery::Menu.new(Refinery::Page.fast_menu)
-    if (roots = local_assigns[:roots] || (collection ||= refinery_menu_pages).roots).present?
-      dom_id ||= 'menu'
-      css = [(css || 'menu clearfix')].flatten.join(' ')
-      hide_children = Refinery::Core.menu_hide_children if hide_children.nil?
-  -%>
-  <%= render :partial => '/refinery/menu_branch', :collection => roots,
-           :locals => {
-             :hide_children => hide_children,
-             :sibling_count => (roots.length - 1),
-             :menu_levels => local_assigns[:menu_levels],
-             :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
-           } -%>
-  <% end -%>
-</ul>
-<form class="navbar-search pull-right" action="/search" method="post">
-  <input type="text" class="search-query" placeholder="Buscar" name="query">
-</form>
+    <%
+      # Collect the root items.
+      # ::Refinery::Menu is smart enough to remember all of the items in the original collection.
+      puts Refinery::Menu.new(Refinery::Page.fast_menu)
+      if (roots = local_assigns[:roots] || (collection ||= refinery_menu_pages).roots).present?
+        dom_id ||= 'menu'
+        css = [(css || 'menu clearfix')].flatten.join(' ')
+        hide_children = Refinery::Core.menu_hide_children if hide_children.nil?
+    -%>
+    <%= render :partial => '/refinery/menu_branch', :collection => roots,
+             :locals => {
+               :hide_children => hide_children,
+               :sibling_count => (roots.length - 1),
+               :menu_levels => local_assigns[:menu_levels],
+               :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
+             } -%>
+    <% end -%>
+  </ul>
+  <form class="navbar-search pull-right" action="/search" method="post">
+    <input type="text" class="search-query" placeholder="Buscar" name="query">
+  </form>
+<% else %>
+  <a class="btn btn-navbar" data-toggle="collapse" data-target=".menu-mobile"><i class="icon icon-white icon-align-justify"></i></a>
+  <div class="nav-collapse menu-mobile">
+    <ul class="nav">
+      <li><a href="/blog">INNOVANDO</a></li>
+      <li><a href="http://lms.redinnovacion.org/">APRENDIZAJE</a></li>
+      <li><a href="/foros">DISCUSI&Oacute;N</a></li>
+      <li><a href="/comunidad">COMUNIDAD de innovaci&oacute;n</a></li>
+    </ul>
+  </div>
+<% end %>

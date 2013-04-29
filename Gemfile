@@ -37,8 +37,8 @@ gem 'fog'
 gem 'twitter'
 gem 'fb_graph'
 gem 'typhoid'
-# gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 
 # To use ActiveModel has_secure_password

@@ -10,9 +10,15 @@
   <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
   <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
   <%= yield :meta %>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <%= stylesheet_link_tag "application", "formatting", "theme" %>
-  <%= stylesheet_link_tag "home" if home_page? %>
+  <% if mobile_device? %>
+    <%= stylesheet_link_tag "mobile", "formatting", "theme" %>
+  <% else %>
+    <%= stylesheet_link_tag "application", "formatting", "theme" %>
+  <% end %>
+
   <%= yield :stylesheets %>
 
   <%= render '/refinery/google_analytics' %>

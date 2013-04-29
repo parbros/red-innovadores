@@ -1,0 +1,19 @@
+section#body_content_right {
+  @extend .hidden;
+}
+
+section#body_content_left {
+  width: auto;
+}
+
+section#blog_posts .post-resume aside.details {
+  @extend .hidden;
+}
+
+section#blog_posts .post-resume section.post-summary {
+  width: auto;
+}
+
+section#blog_posts .post-resume section.post-summary header h1 {
+  @include grid-fluid-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth);
+}

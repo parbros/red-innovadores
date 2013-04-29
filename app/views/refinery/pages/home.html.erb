@@ -12,7 +12,7 @@
         <div class="carousel-inner">
           <% @images.each_with_index do |image, index| %>
             <div class="item <%= 'active' if index == 0 %>">
-              <%= image_tag image.object.url %>
+              <%= image_tag image.object.url unless mobile_device? %>
               <% if image.caption.present?%>
                 <div class="carousel-caption">
                   <%= image.caption.html_safe %>

@@ -1,30 +1,36 @@
 <header>
   <div class="container">
-    <%= link_to refinery.root_path do image_tag 'logo.png', class: ['pull-left'] end%>
+    <%= link_to refinery.root_path, class: ['home-link'] do image_tag 'logo.png', class: ['pull-left'] end%>
     <% if current_refinery_user.blank? %>
-      <%= link_to 'Registrarse', '/registro', class:['btn', 'btn-warning', 'pull-right', 'signup-button']%>
-      <%= link_to 'Entrar', '/refinery/users/login', class:['btn', 'btn-warning', 'pull-right', 'profile-button']%>
+      <% unless mobile_device? %>
+        <%= link_to 'Registrarse', '/registro', class:['btn', 'btn-warning', 'pull-right', 'signup-button']%>
+        <%= link_to 'Entrar', '/refinery/users/login', class:['btn', 'btn-warning', 'pull-right', 'profile-button']%>
+        <% end %>
     <% else %>
-      <div class="btn-group pull-right profile-button">
-        <a class="dropdown-toggle btn btn-warning" data-toggle="dropdown" href="#">
-          <%= current_refinery_user.display_name %><span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-            <li><a tabindex="-1" href="/members/edit">Editar perfil</a></li>
-            <% if current_refinery_user.has_role?(:superuser) -%>
-              <li><a tabindex="-1" href="/administrador">CMS Administrador</a></li>
-              <li><a tabindex="-1" href="/foros/admin">Foro Administrador</a></li>
-            <% end -%>
-            <li class="divider"></li>
-            <li><a tabindex="-1" href="/refinery/users/logout">Logout</a></li>
-        </ul>
-      </div>
+      <% unless mobile_device? %>
+        <div class="btn-group pull-right profile-button">
+          <a class="dropdown-toggle btn btn-warning" data-toggle="dropdown" href="#">
+            <%= current_refinery_user.display_name %><span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><a tabindex="-1" href="/members/edit">Editar perfil</a></li>
+              <% if current_refinery_user.has_role?(:superuser) -%>
+                <li><a tabindex="-1" href="/administrador">CMS Administrador</a></li>
+                <li><a tabindex="-1" href="/foros/admin">Foro Administrador</a></li>
+              <% end -%>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="/refinery/users/logout">Logout</a></li>
+          </ul>
+        </div>
+      <% end %>
     <% end -%>
-    <ul class="pull-right social-network-links">
-      <li><%= link_to image_tag('/assets/twitter-button.png'), 'https://twitter.com/Red_Innovacion', target: :blank %></li>
-      <li><%= link_to image_tag('/assets/facebook-button.png'), 'https://www.facebook.com/RedInnovacion.org', target: :blank %></li>
-      <li><%= link_to image_tag('/assets/slideshare-button.png'), 'http://www.slideshare.net/RedInnovacion', target: :blank %></li>
-    </ul>
+    <% unless mobile_device? %>
+      <ul class="pull-right social-network-links ">
+        <li><%= link_to image_tag('/assets/twitter-button.png'), 'https://twitter.com/Red_Innovacion', target: :blank %></li>
+        <li><%= link_to image_tag('/assets/facebook-button.png'), 'https://www.facebook.com/RedInnovacion.org', target: :blank %></li>
+        <li><%= link_to image_tag('/assets/slideshare-button.png'), 'http://www.slideshare.net/RedInnovacion', target: :blank %></li>
+      </ul>
+    <% end %>
   </div>
 </header>
 <div class="navbar">
