@@ -13,7 +13,7 @@ module Refinery
       end
 
       def new
-        @member = Member.new
+        @member = Member.new(suscribed: true)
       end
 
       # GET /members/:id/edit
