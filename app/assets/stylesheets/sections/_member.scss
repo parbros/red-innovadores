@@ -1,0 +1,14 @@
+#new_member_form{
+  ol {
+    @extend .unstyled;
+  }
+}
+
+input.form-error {
+  border: 1px solid red;
+}
+
+
+div.form-error {
+  color: red;
+}

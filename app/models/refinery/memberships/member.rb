@@ -12,7 +12,8 @@ module Refinery
 
       attr_accessible :membership_level, :first_name, :last_name, :title, :organization,
                       :street_address, :city, :province, :postal_code, :phone, :fax, :website,
-                      :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code
+                      :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code, 
+                      :age_range, :gender
 
       self.inheritance_column = :membership_level
 
@@ -23,6 +24,8 @@ module Refinery
       before_save :ensure_member_role       # always needs to be a Member or can't sign in, see is_member?
       before_create :confirm_member
       after_create :sync_with_canvas
+      
+      AGE_RANGES = {'1' => '16-18', '2' => '19-24',  '3' => '25-34', '4' => '35-44', '5' => '45-54', '6' => '55-64', '7' => '65+'}
 
       def to_param
           id

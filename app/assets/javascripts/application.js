@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require tinymce-jquery
-//= require_tree .
+//= require community
+//= require videojs_loader
+//= require jquery.easyValidate
 
 $('#crearIdeaButton').click(function(event) {
   event.preventDefault();

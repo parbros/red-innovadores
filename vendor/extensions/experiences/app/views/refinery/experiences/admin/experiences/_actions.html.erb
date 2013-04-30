@@ -4,10 +4,6 @@
       <%= render '/refinery/admin/search', :url => refinery.experiences_admin_experiences_path %>
     </li>
   <% end %>
-  <li>
-    <%= link_to t('.create_new'), refinery.new_experiences_admin_experience_path,
-                 :class => "add_icon" %>
-  </li>
 <% if !searching? && ::Refinery::Experiences::Admin::ExperiencesController.sortable? && ::Refinery::Experiences::Experience.any? %>
   <li>
     <%= link_to t('.reorder', :what => "Experiences"),

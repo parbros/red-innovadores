@@ -1,5 +1,14 @@
+<h3>Imagenes de portada</h3>
 <ul id='sortable_list'>
-  <%= render :partial => 'cover', :collection => @covers %>
+  <%= render :partial => 'cover', :collection => @images %>
+</ul>
+<h3>Post de innovacion</h3>
+<ul id='sortable_list'>
+  <%= render :partial => 'cover', :collection => @posts %>
+</ul>
+<h3>Comunidad</h3>
+<ul id='sortable_list'>
+  <%= render :partial => 'cover', :collection => @community %>
 </ul>
 <%= render '/refinery/admin/sortable_list',
             :continue_reordering => (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true %>

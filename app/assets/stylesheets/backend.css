@@ -55,3 +55,37 @@
 .wym_skin_refinery .wym_buttons li.wym_tools_paste a {
   background-image: image_url('wymeditor/skins/refinery/page_paste.png');
 }
+
+.select_video_type {
+  border-bottom: 0 !important;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.select_video_type:hover {
+  background-color: #eee;
+}
+
+.select_video_type.selected {
+  border: 1px solid black;
+  border-bottom: 1px solid white !important;
+}
+
+.select_video_type.selected:hover {
+  background-color: white;
+}
+
+form.new_video {
+  border-top: 1px solid black;
+  margin-top: 9px;
+}
+
+#covers ul#sortable_list {
+  margin-bottom: 20px;
+}

@@ -1,8 +1,8 @@
 <% if searching? %>
   <h2><%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
 <% end %>
-<div class='pagination_container'>
-  <% if @covers.any? %>
+<div class='pagination_container' id="covers">
+  <% if @posts.any? || @community.any? || @images.any? %>
     <%= render 'covers' %>
   <% else %>
     <p>
