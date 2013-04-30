@@ -1,0 +1,57 @@
+.wym_skin_refinery .wym_containers li.wym_tools_strong a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_bold.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_emphasis a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_italic.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_superscript a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_superscript.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_subscript a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_subscript.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_ordered_list a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_list_numbers.png');
+  padding-left: 0;
+}
+.wym_skin_refinery .wym_containers li.wym_tools_unordered_list a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_list_bullets.png');
+  padding-left: 0;
+}
+.wym_skin_refinery .wym_containers li.wym_tools_indent a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_indent.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_outdent a {
+  background-image: url('/assets/wymeditor/skins/refinery/text_indent_remove.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_undo a {
+  background-image: url('/assets/wymeditor/skins/refinery/arrow_undo.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_redo a {
+  background-image: url('/assets/wymeditor/skins/refinery/arrow_redo.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_link a {
+  background-image: url('/assets/wymeditor/skins/refinery/link_add.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_unlink a {
+  background-image: url('/assets/wymeditor/skins/refinery/link_break.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_image a {
+  background-image: url('/assets/wymeditor/skins/refinery/photo_add.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_table a {
+  background-image: url('/assets/wymeditor/skins/refinery/table_add.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_paste a {
+  background-image: url('/assets/wymeditor/skins/refinery/page_paste.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_html a {
+  background-image: url('/assets/wymeditor/skins/refinery/page_code.png');
+}
+.wym_skin_refinery .wym_containers li.wym_tools_preview a {
+  background-image: url('/assets/wymeditor/skins/refinery/eye.png');
+}
+
+.wym_skin_refinery .wym_buttons li.wym_tools_paste a {
+  background-image: image_url('wymeditor/skins/refinery/page_paste.png');
+}

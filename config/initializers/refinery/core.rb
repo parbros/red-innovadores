@@ -48,5 +48,5 @@ Refinery::Core.configure do |config|
   # config.register_javascript "prototype-rails"
 
   # Register extra stylesheet for backend (optional options)
-  # config.register_stylesheet "custom", :media => 'screen'
+  config.register_stylesheet "backend", :media => 'screen'
 end
