@@ -8,6 +8,10 @@
   padding: 5px;
 }
 
+body, html {
+  height: 100%;
+}
+
 html {
   background: url('/assets/background.png');
 }
@@ -57,10 +61,11 @@ a {
     padding: 5px 0;
 
     & > li {
-      border-right: 1px solid #006771;
-      border-left: 1px solid #539EA6;
+      border-right: 1px solid #04525b;
+      border-left: 1px solid #36858e;
       
       &:first-child { border-left: 0;}
+      &:last-child { border-right: 0;}
 
       & > a {
         padding: 5px 15px 5px;
