@@ -12,6 +12,10 @@
       <%= f.text_field :last_name, class:'required' %>
     </li>
     <li>
+      <%= f.required_label 'Nombre de usuario' %>
+      <%= f.text_field :username, class:'required' %>
+    </li>
+    <li>
       <%= f.required_label :email %>
       <%= f.text_field :email, class:'required email' %>
     </li>
@@ -26,7 +30,7 @@
     </li>
     <li>
       <%= f.label 'Pais' %>
-      <%= f.country_select :country_code, {priority: %w(AR BO BR CL CO EC MX PE VE), prompt: 'Seleccione una opción'}, {class:'required'} %>
+      <%= f.country_select :country_code, {priority: %w(AR BO BR CL CO CR EC SV US GT HN MX NI PA PY PE DO UY VE), prompt: 'Seleccione una opción'}, {class:'required'} %>
     </li>
     <li>
       <%= f.label 'Edad' %>

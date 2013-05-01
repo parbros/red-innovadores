@@ -10,3 +10,10 @@
 
 <%= render :partial => "/refinery/content_page", :locals => { :remove_automatic_sections => true }  %>
 
+<% if params[:highlight].present? %>
+  <% content_for :javascripts do %>
+    <script type="text/javascript">
+      $("section.post-summary").highlight("<%= params[:highlight]%>");
+    </script>
+  <% end %>
+<% end %>

@@ -17,6 +17,7 @@
 //= require community
 //= require videojs_loader
 //= require jquery.easyValidate
+//= require jquery.highlight
 
 $('#crearIdeaButton').click(function(event) {
   event.preventDefault();

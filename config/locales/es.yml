@@ -6,3 +6,7 @@ es:
         no_item_yet: 'No videos'
       refinerycms_memberships:
         title: 'Miembros'
+    search:
+      show:
+        search_results_for: "Resultados de la búsqueda: '%{what}'"
+        no_results_for: "No hay resultados para su búsqueda: '%{what}'."

@@ -1,5 +1,6 @@
 <% unless mobile_device? %>
   <ul class="nav pull-left">
+    <li><a href="/">INICIO</a></li>
     <li><a href="/blog">INNOVANDO</a></li>
     <li><a href="http://lms.redinnovacion.org/">APRENDIZAJE</a></li>
     <li><a href="/foros">DISCUSI&Oacute;N</a></li>
@@ -23,7 +24,7 @@
              } -%>
     <% end -%>
   </ul>
-  <form class="navbar-search pull-right" action="/search" method="post">
+  <form class="navbar-search pull-right" action="/search" method="get">
     <input type="text" class="search-query" placeholder="Buscar" name="query">
   </form>
 <% else %>

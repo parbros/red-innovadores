@@ -74,3 +74,11 @@
     </script>
   <% end %>
 <% end %>
+
+<% if params[:highlight].present? %>
+  <% content_for :javascripts do %>
+    <script type="text/javascript">
+      $("section.summary").highlight("<%= params[:highlight]%>");
+    </script>
+  <% end %>
+<% end %>

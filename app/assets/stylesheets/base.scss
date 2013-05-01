@@ -52,8 +52,23 @@ a {
     -moz-border-radius: 0px;
     border-radius: 0px;
   }
+  
+  .nav {
+    padding: 5px 0;
 
-  .container { width: 1120px;}
+    & > li {
+      border-right: 1px solid #006771;
+      border-left: 1px solid #539EA6;
+      
+      &:first-child { border-left: 0;}
+
+      & > a {
+        padding: 5px 15px 5px;
+      }
+    }
+  }
+
+  .container { width: 1120px;} 
 }
 
 h1#body_content_title { display: none;}
@@ -166,4 +181,9 @@ p {
 
 .signup-button {
   margin: 10px 0 0 10px;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
 }

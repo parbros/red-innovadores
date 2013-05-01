@@ -1,0 +1,43 @@
+<h1><%= t('.search_results_for', :what => params[:query]) %></h1>
+
+<% content_for :body do %>
+  <% if @results.empty? %>
+    <%= t('.no_results_for', :what => params[:query]) %>
+  <% else %>
+    <div id="search-results">
+      <div class="span12">
+        <% @results.each do |result| %>
+          <div class="result">
+            <div class="result-container">
+              <aside class="details">
+                <div class="details-container">
+                  <div class="date">
+                    <%= l(result.created_at.to_date, :format => :short)%> <span><%= result.created_at.year%></span>
+                  </div>
+              
+                  <div class="details-separator"></div>
+
+                  <div class="author">
+                    <span><i class="icon-user"></i><%= result_author(result) %></span>
+                  </div>
+                </div>
+              </aside>
+            
+              <section class="summary">
+                <div class="summary-container">
+                  <header><h2><%= result_type result%>: <%= link_to result_title(result).html_safe, result_url(result) %></h2></header>
+                  <p><%= result_content_teaser(result).html_safe %></p>
+                  <%= link_to result_url(result) do %>
+                    Leer más <%= image_tag '/assets/read-more.png'%>
+                  <% end %>
+                </div>
+              </section>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>    
+  <% end %>  
+<% end %>
+
+<%= render :partial => "/refinery/content_page" %>
