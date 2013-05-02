@@ -47,7 +47,10 @@ section#blog_posts {
     border-top: 0;
     margin-bottom: 30px;
     
+    iframe {
+      width: 100%;
     }
+  }
     
     .post-resume {
       @include makeRow();

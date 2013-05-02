@@ -14,10 +14,10 @@ module Refinery
       
       
       def title
-        return "Imagen Principal: #{image.image_name}" if image.present?
-        return "Post: #{post.title}" if post.present?
-        return "Comunidad - Idea: #{idea.title}" if idea.present?
-        return "Comunidad - Experiencia: #{experience.title}" if experience.present?
+        return "<em>Imagen Principal</em>: #{image.image_name}" if image.present?
+        return "<em>Post</em>: #{post.title}" if post.present?
+        return "<em>Comunidad - Idea</em>: #{idea.title}" if idea.present?
+        return "<em>Comunidad - Experiencia</em>: #{experience.title}" if experience.present?
       end
       
       def object
