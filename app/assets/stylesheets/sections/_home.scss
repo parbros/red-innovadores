@@ -16,7 +16,7 @@
     border-right: 0px;
     width: 450px;
     text-align: center;
-    margin: 10px auto;
+    margin: 40px auto 20px auto;
     font-weight: 700;
     line-height: 30px;
   }
@@ -25,34 +25,41 @@
 
 #myCarousel {
   width: 600px;
+  margin: 0 auto;
+
+  .carousel-inner .item {
+    width: 600px;
+    height: 325px;
+  
+    .carousel-caption {
+      color: white;
+      h1, h2, h3, h4, h5 {
+        color: white;
+        border: 0;
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      p {color: white;}
+    }
+  }
+  
+}
+
+#myCarouselComunity, #myCarouselPosts {
+  .carousel-inner .item {
+    height: 180px;
+  }
+  
+  .carousel-indicators { bottom: 15px; top: auto;}
 }
 
 
 .carousel-indicators li {
   background-color: #dedede;
+  cursor: pointer;
   
   &.active {
     background-color: #056772;
   }
-}
-
-.carousel-inner .item {
-  width: 600px;
-  height: 325px;
-  
-  .carousel-caption {
-    color: white;
-    h1, h2, h3, h4, h5 {
-      color: white;
-      border: 0;
-      text-align: left;
-      margin-left: 0;
-      margin-right: 0;
-    }
-    p {color: white;}
-  }
-}
-
-#myCarousel {
-  margin: 0 auto;
 }

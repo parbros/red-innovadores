@@ -31,19 +31,30 @@
       <div class="row">
         <div class="span12">
           <h2>Ultimas publicaciones</h2>
-          <% @posts.in_groups_of(3) do |post_array| %>
-          <div class="row">
-            <% post_array.each do |post| %>
-              <% if post %>
-                <div class="span4">
-                  <h3><%= post.object.title %></h3>
-                  <p><%= blog_post_teaser(post.object).html_safe %></p>
-                  <%= link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post.object) %>
+          <div id="myCarouselPosts" class="carousel slide">
+            <ol class="carousel-indicators">
+              <% @posts.each_with_index do |post_array, index| %>
+                <li data-target="#myCarouselPosts" data-slide-to="<%= index %>"  <% if index==0 %> class="active" <% end %>  ></li>
+              <% end %>          
+            </ol>
+            <div class="carousel-inner">
+              <% @posts.each_with_index do |post_array, index| %>
+                <div class="item <%= 'active' if index == 0 %>">
+                  <div class="row">
+                    <% post_array.each do |post| %>
+                      <% if post %>
+                        <div class="span4">
+                          <h3><%= post.object.title %></h3>
+                          <p><%= blog_post_teaser(post.object).html_safe %></p>
+                          <%= link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post.object) %>
+                        </div>
+                      <% end %>
+                    <% end %>              
+                  </div>
                 </div>
               <% end %>
-            <% end %>
+            </div>
           </div>
-          <% end %>
         </div>
       </div>      
     <% end %>
@@ -52,20 +63,31 @@
       <div class="row">
         <div class="span12">
           <h2>Comunidad</h2>
-            <% @community.in_groups_of(3) do |communities| %>
-              <div class="row">
-                <% communities.each do |community| %>
-                  <% if community %>
-                    <div class="span4">
-                      <h3><%= community.object.title %></h3>
-                      <p><%= content_teaser(community.object).html_safe %></p>
-                      <%= link_to 'Leer más', refinery.experiences_experience_path(community.object) if community.experience? %>
-                      <%= link_to "Ver más", refinery.ideas_idea_path(community.object) if community.idea?%>
+            <div id="myCarouselComunity" class="carousel slide">
+              <ol class="carousel-indicators">
+                <% @community.each_with_index do |community, index| %>
+                  <li data-target="#myCarouselComunity" data-slide-to="<%= index %>"  <% if index==0 %> class="active" <% end %>  ></li>
+                <% end %>          
+              </ol>
+              <div class="carousel-inner">
+                <% @community.each_with_index do |communities, index| %>
+                  <div class="item <%= 'active' if index == 0 %>">
+                    <div class="row">
+                      <% communities.each do |community| %>
+                        <% if community %>
+                          <div class="span4">
+                            <h3><%= community.object.title %></h3>
+                            <p><%= content_teaser(community.object).html_safe %></p>
+                            <%= link_to 'Leer más', refinery.experiences_experience_path(community.object) if community.experience? %>
+                            <%= link_to "Ver más", refinery.ideas_idea_path(community.object) if community.idea?%>
+                          </div>
+                        <% end %>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </div>
                 <% end %>
               </div>
-            <% end %>
+            </div>
         </div>
       </div>
     <% end %>
