@@ -24,6 +24,11 @@
   </body>
 </html>
 
+
+<% if current_refinery_user && !current_refinery_user.registration_completed %>
+  <%= render :partial => 'shared/complete_registration'%>
+<% end %>
+
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "8b836bbb-d237-4ec6-9719-2fef1ccb4ef1", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>

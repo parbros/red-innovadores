@@ -248,6 +248,8 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
+    rails-i18n (0.7.3)
+      i18n (~> 0.5)
     rails_autolink (1.0.9)
       rails (~> 3.1)
     railties (3.2.12)
@@ -402,6 +404,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   rails (= 3.2.12)
+  rails-i18n
   refinerycms (~> 2.0.0)
   refinerycms-blog (~> 2.0.0)
   refinerycms-covers!

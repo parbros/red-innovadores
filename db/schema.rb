@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430105359) do
+ActiveRecord::Schema.define(:version => 20130507065112) do
+
+  create_table "authentications", :force => true do |t|
+    t.string   "provider"
+    t.string   "secret"
+    t.string   "token"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "forem_categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -447,6 +457,7 @@ ActiveRecord::Schema.define(:version => 20130430105359) do
     t.boolean  "suscribed"
     t.string   "gender"
     t.integer  "age_range"
+    t.boolean  "registration_completed"
   end
 
   add_index "refinery_users", ["id"], :name => "index_refinery_users_on_id"

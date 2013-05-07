@@ -9,6 +9,9 @@ module Refinery
     has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
 
     has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
+    has_many :authentications
+    has_one :twitter_authentication, class_name: '::Authentication', conditions: ["authentications.provider = ?",'twitter']
+    has_one :facebook_authentication, class_name: '::Authentication', conditions: ["authentications.provider = ?",'facebook']
     friendly_id :username
 
     # Include default devise modules. Others available are:
@@ -20,10 +23,12 @@ module Refinery
     # :login is a virtual attribute for authenticating by either username or email
     # This is in addition to a real persisted field like 'username'
     attr_accessor :login, :password, :password_confirmation
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login, :registration_completed
 
     validates :username, :presence => true, :uniqueness => true
+    validates :email, :presence => true, :uniqueness => true
     before_validation :downcase_username
+    before_create :complete_registration
 
     class << self
       # Find user by email or username.
@@ -113,6 +118,48 @@ module Refinery
     def forem_admin?
       has_role?(:superuser)
     end
+    
+    def apply_omniauth(omniauth)
+      case omniauth['provider']
+      when 'facebook'
+        self.apply_facebook(omniauth)
+      when 'twitter'
+        self.apply_twitter(omniauth)
+      end
+      authentications.build(hash_from_omniauth(omniauth))
+      save!
+    end
+
+protected
+
+    def apply_facebook(omniauth)
+      if omniauth['extra']['raw_info'].present?
+        self.email = omniauth['extra']['raw_info']['email'] if omniauth['extra']['raw_info']['email'].present? && email.blank?
+        self.first_name = omniauth['extra']['raw_info']['first_name'] if omniauth['extra']['raw_info']['first_name'].present? && first_name.blank?
+        self.last_name = omniauth['extra']['raw_info']['last_name'] if omniauth['extra']['raw_info']['last_name'].present? && last_name.blank?
+      end
+    end
+
+    def apply_twitter(omniauth)
+      if omniauth['extra']['raw_info'].present?
+        self.email = omniauth['extra']['raw_info']['email'] if omniauth['extra']['raw_info']['email'].present? && email.blank?
+        if omniauth['extra']['raw_info']['name'].present?
+          name = extract_name(omniauth['extra']['raw_info']['name'])
+          self.first_name = name[0] if first_name.blank?
+          self.last_name = name[1] if last_name.blank?
+        end
+      end
+    end
+
+    def hash_from_omniauth(omniauth)
+      {
+        :provider => omniauth['provider'],
+        :uid => omniauth['uid'],
+        :token => (omniauth['credentials']['token'] rescue nil),
+        :secret => (omniauth['credentials']['secret'] rescue nil)
+      }
+    end
+
 
     private
     # To ensure uniqueness without case sensitivity we first downcase the username.
@@ -120,6 +167,22 @@ module Refinery
     # SELECT 1 FROM "refinery_users" WHERE LOWER("refinery_users"."username") = LOWER('UsErNAME') LIMIT 1
     def downcase_username
       self.username = self.username.downcase if self.username?
+    end
+    
+    def extract_name(name)
+      name_splited = name.split(' ')
+      case name_splited.size
+      when 2
+        return [name_splited[0], name_splited[1]]
+      when 3
+        return [name_splited[0] , "#{name_splited[1]} #{name_splited[2]}"]
+      when 4
+        return ["#{name_splited[0]} #{name_splited[1]}", "#{name_splited[2]} #{name_splited[3]}"]
+      end
+    end
+    
+    def complete_registration
+      self.registration_completed = true
     end
 
   end

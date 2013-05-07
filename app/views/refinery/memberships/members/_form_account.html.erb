@@ -48,6 +48,22 @@
   </ol>
 </fieldset>
 
+<% if current_refinery_user && current_refinery_user.twitter_authentication %>
+  <%= image_tag '/assets/twitter-connect.png', class: 'authentication-selected'%>
+<% else %>
+  <a href="http://auth.redinnovacion.org/auth/twitter">
+    <%= image_tag '/assets/twitter-connect.png'%>
+  </a>
+<% end %>
+
+<% if current_refinery_user && current_refinery_user.facebook_authentication %>
+  <%= image_tag '/assets/facebook-connect.png', class: 'authentication-selected'%>
+<% else %>
+  <a href="http://auth.redinnovacion.org/auth/facebook">
+    <%= image_tag '/assets/facebook-connect.png'%>
+  </a>
+<% end %>
+
 <% content_for :javascripts do %>
   <script type="text/javascript">
     $(function(){

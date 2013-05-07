@@ -1,0 +1,67 @@
+<div class="modal hide fade" id="complete-registration-modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Completa el registro</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for current_refinery_user, :as => :member, :url => refinery.members_path do |f| %>
+    <fieldset>
+      <ol class="unstyled">
+        <li>
+          <%= f.required_label 'Nombre' %>
+          <%= f.text_field :first_name, class:'required' %>
+        </li>
+        <li>
+          <%= f.required_label 'Apellido' %>
+          <%= f.text_field :last_name, class:'required' %>
+        </li>
+        <li>
+          <%= f.required_label 'Nombre de usuario' %>
+          <%= f.text_field :username, class:'required' %>
+        </li>
+        <li>
+          <%= f.required_label :email %>
+          <%= f.text_field :email, class:'required email', value: '' %>
+        </li>
+        <li>
+          <%= f.required_label :password %>
+          <%= f.password_field :password, :autocomplete => 'off', class:'required' %>
+        </li>
+        <li>
+          <%= f.required_label :password_confirmation %>
+          <%= f.password_field :password_confirmation, :autocomplete => 'off', class:'required' %>
+        </li>
+        <li>
+          <%= f.label 'Pais' %>
+          <%= f.country_select :country_code, {priority: %w(AR BO BR CL CO CR EC SV US GT HN MX NI PA PY PE DO UY VE), prompt: 'Seleccione una opción'}, {class:'required'} %>
+        </li>
+        <li>
+          <%= f.label 'Edad' %>
+          <%= f.select :age_range, Refinery::Memberships::Member::AGE_RANGES.collect {|age_range| age_range.reverse}, { prompt: 'Seleccione una opción'}, {class:'required'} %>
+        </li>
+        <li>
+          <%= f.label 'Genero' %>
+          <%= f.select :gender, ['Femenino','Masculino','Otro'], { prompt: 'Seleccione una opción'}, {class:'required'} %>
+          <%= f.hidden_field :registration_completed, :value => '1' %>
+        </li>
+        <li>
+          <label>
+            <%= f.check_box :suscribed  %> Inscribirse al boletín mensual
+          </label>
+        </li>
+      </ol>
+    </fieldset>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <input type="submit" class="btn btn-primary" value="Completar Registro">
+  </div>
+    <% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $('#complete-registration-modal').modal();
+    $('#edit_member').easyValidate();
+  });
+</script>

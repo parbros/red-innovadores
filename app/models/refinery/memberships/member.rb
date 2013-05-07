@@ -50,7 +50,6 @@ module Refinery
 
       def email=(e)
         write_attribute(:email, e)
-        write_attribute(:username, e)
       end
 
       def enabled=(e)
