@@ -44,9 +44,8 @@ module Refinery
 
         if @member.save
           MembershipMailer::deliver_member_created(@member)
-          redirect_to welcome_members_path
+          redirect_to root_path, :notice => "Se ha registrado exitosamente en el sitio."
         else
-          @member.errors.delete(:username) # this is set to email
           render :action => :new
         end
       end
