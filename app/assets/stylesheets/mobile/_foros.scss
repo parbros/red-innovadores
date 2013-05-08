@@ -1,0 +1,4 @@
+.category table thead tr th.views-count, .category table tbody tr td.views-count {
+  @extend .hidden;
+  display: none;
+}

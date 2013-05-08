@@ -19,15 +19,19 @@
         </div>
       </div>
     </div>
-    <footer>
-       <div class="container">
-         <%= render '/refinery/footer' -%>
-      </div>
-    </footer>
-    <%= render '/refinery/javascripts' %>
-    <%= tinymce_assets %>
-    <%= tinymce :alternate %>
   </body>
+  <footer>
+     <div class="container">
+       <div class="row">
+         <div class="span12">
+           <%= render '/refinery/footer' -%>
+         </div>
+       </div>
+    </div>
+  </footer>
+  <%= render '/refinery/javascripts' %>
+  <%= tinymce_assets %>
+  <%= tinymce :alternate %>
 </html>
 
 

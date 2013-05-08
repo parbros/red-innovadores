@@ -4,6 +4,7 @@ section#body_content_right {
 
 section#body_content_left {
   width: auto;
+  margin-left: 0px;
 }
 
 section#blog_posts .post-resume aside.details {
@@ -17,3 +18,75 @@ section#blog_posts .post-resume section.post-summary {
 section#blog_posts .post-resume section.post-summary header h1 {
   @include grid-fluid-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth);
 }
+
+section#body_content {
+  margin: 0;
+}
+
+section#body {
+  width: 100%;
+  margin-left: 0;
+}
+
+div#show_blog_post aside.details {
+  width: 100%;
+  margin-left: 0;
+}
+
+div#show_blog_post {
+  margin-left: 0;
+}
+
+div#show_blog_post section.post-summary {
+  width: 100% !important;
+  margin-left: 0;
+}
+
+div#show_blog_post section.post-summary header {
+  margin-left: 0;
+}
+
+div#show_blog_post section.post-summary header h1 {
+  margin-left: 0;
+  width: auto;
+}
+
+aside#comments {
+  margin-left: 0;
+}
+
+aside#comments::before {
+  left: 20px;
+}
+
+aside#comments .comments-container {
+  width: 100%;
+  margin-left: 0;
+}
+
+aside#comments .comments-messages-container article.blog_comment_message {
+  width: 100%;
+}
+
+aside#comments form.new_comment {
+  width: auto;
+}
+
+aside#comments form.new_comment div.form_new_comment div.field {
+  width: 100%;
+}
+
+aside#comments form.new_comment h2 {
+  width: auto;
+}
+
+@media screen and (max-width: 320px) {
+  aside#comments .comments-messages-container article.blog_comment_message {
+    max-width: 280px;
+  }
+  
+  aside#comments form.new_comment div.form_new_comment div.field {
+    max-width: 240px;
+  }
+}
+  

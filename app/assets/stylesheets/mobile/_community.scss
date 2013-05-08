@@ -1,0 +1,39 @@
+#experiences .experience .experience-container, #experiences .experience .idea-container, #ideas .idea .experience-container, #ideas .idea .idea-container {
+  margin-left: 0;
+}
+
+#experiences .experience aside.details, #ideas .idea aside.details {
+  @extend .hidden;
+}
+
+#experiences .experience section.summary, #ideas .idea section.summary {
+  margin-left: 0;
+  width: 100%;
+}
+
+#experiences .experience .experience-container .summary-container, #experiences .experience .idea-container .summary-container, 
+#ideas .idea .experience-container .summary-container, #ideas .idea .idea-container .summary-container {
+  margin-left: 0;
+}
+
+.idea.show aside.details .details-container .other-ideas, .experience.show aside.details .details-container .other-ideas {
+  @extend .hidden;
+}
+
+.idea.show, .experience.show {
+  margin-left: 0;
+}
+
+.idea.show aside.details, .experience.show aside.details {
+  margin-left: 0;
+  width: 100%;
+}
+
+.idea.show section.summary, .experience.show section.summary {
+  margin-left: 0;
+  width: 100%;
+}
+
+.idea.show section.summary header h1, .experience.show section.summary header h1 {
+  width: auto;
+}
