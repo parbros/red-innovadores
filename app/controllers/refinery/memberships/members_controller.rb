@@ -68,11 +68,10 @@ module Refinery
 
       def activate
         resource = Member.confirm_by_token(params[:confirmation_token])
+        redirect_to root_url, :notice => "A confirmado su cuenta, puede continuar en el sitio."
 
         if resource.errors.present?
           error_404
-        else
-          redirect_to root_url, :notice => "A confirmado su cuenta, puede continuar en el sitio."
         end
       end
       
