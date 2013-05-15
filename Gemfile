@@ -10,6 +10,7 @@ gem 'pg'
 
 group :development, :test do
   gem 'debugger', '1.1.3'
+  gem "letter_opener"
 end
 
 

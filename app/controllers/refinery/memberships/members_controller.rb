@@ -55,7 +55,7 @@ module Refinery
       end
 
       def login
-        find_page('/members/login')
+        find_page('/')
       end
 
       def welcome

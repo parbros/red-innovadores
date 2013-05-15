@@ -37,13 +37,15 @@ RedInnovadores::Application.configure do
   
   config.action_mailer.default_url_options = { :host => "some.host.com" }
   
-  config.action_mailer.smtp_settings = {
-    :address   => "smtp.mandrillapp.com",
-    :port      => 587, 
-    :enable_starttls_auto => true,
-    :user_name => "jorge.parbros@parbros.net",
-    :password  => "HQx21FVvhOb57nIsz7O7pA",
-    :authentication => 'login'
-  }
+  config.action_mailer.delivery_method = :letter_opener
+  
+  # config.action_mailer.smtp_settings = {
+  #   :address   => "smtp.mandrillapp.com",
+  #   :port      => 587, 
+  #   :enable_starttls_auto => true,
+  #   :user_name => "jorge.parbros@parbros.net",
+  #   :password  => "HQx21FVvhOb57nIsz7O7pA",
+  #   :authentication => 'login'
+  # }
   
 end

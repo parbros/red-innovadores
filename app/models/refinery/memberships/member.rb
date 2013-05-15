@@ -22,7 +22,7 @@ module Refinery
       after_create :set_default_roles
 
       before_save :ensure_member_role       # always needs to be a Member or can't sign in, see is_member?
-      before_create :confirm_member
+      # before_create :confirm_member
       after_create :sync_with_canvas
       
       AGE_RANGES = {'1' => '16-18', '2' => '19-24',  '3' => '25-34', '4' => '35-44', '5' => '45-54', '6' => '55-64', '7' => '65+'}
@@ -187,6 +187,11 @@ module Refinery
       # override... the token was sent with the welcome email
       def send_confirmation_instructions
         generate_confirmation_token! if self.confirmation_token.nil?
+      end
+      
+      def send_on_create_confirmation_instructions
+        RedInnovacionMailer.confirmation(self).deliver
+        # self.devise_mailer.confirmation_instructions(self).deliver
       end
 
       # resend the welcome email
