@@ -145,7 +145,7 @@ module Refinery
       end
 
       def confirm!
-        unless_confirmed do
+        pending_any_confirmation do
           self.enabled = true
         end
         super
@@ -196,7 +196,7 @@ module Refinery
 
       # resend the welcome email
       def resend_confirmation_token
-        unless_confirmed do
+        pending_any_confirmation do
           generate_confirmation_token! if self.confirmation_token.nil?
           member_email('member_created', member).deliver if Refinery::Setting.find_or_set("memberships_deliver_mail_on_member_created", true)
         end
