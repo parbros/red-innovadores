@@ -44,7 +44,7 @@ module Refinery
 
         if @member.save
           MembershipMailer::deliver_member_created(@member)
-          redirect_to root_path, :notice => "Se ha registrado exitosamente en el sitio."
+          redirect_to root_path, :notice => "Se ha registrado exitosamente en el sitio. Por favor, revise su bandeja de entrada para confirmar su cuenta."
         else
           render :action => :new
         end
@@ -55,7 +55,11 @@ module Refinery
       end
 
       def login
-        find_page('/')
+        if params[:member_login].present? && params[:redirect].present?
+          redirect_to root_url, :notice => "Por favor, confirme su cuenta para continuar."
+          return
+        end
+        redirect_to(cas_login_url)
       end
 
       def welcome
@@ -70,6 +74,16 @@ module Refinery
           error_404
         end
       end
+      
+      def cas_login_url
+        ::Devise.cas_client.add_service_to_login_url(::Devise.cas_service_url(request.url, devise_mapping))
+      end
+      helper_method :cas_login_url
+      
+      def devise_mapping
+        Devise.mappings[:refinery_user]
+      end
+      helper_method :devise_mapping
 
       private
 
