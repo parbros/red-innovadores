@@ -72,7 +72,10 @@ module Refinery
 
         if resource.errors.present?
           error_404
+          return
         end
+        
+        redirect_to root_url, :notice => "A confirmado su cuenta, puede continuar en el sitio."
       end
       
       def cas_login_url
