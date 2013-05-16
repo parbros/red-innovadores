@@ -29,11 +29,11 @@
         <div class="social-plugin-container">
           <h3>Comparte</h3>
           <ul class="social-plugin">
-            <li><span class='st_facebook_hcount' displayText='Facebook'></span></li>
+            <li><span class='st_facebook_hcount' displayText='Facebook' st_title="<%= @experience.title %>"></span></li>
             <li><span class='st_fblike_hcount' displayText='Facebook Like'></span></li>
             <li><span class='st_twitter_hcount' displayText='Tweet' st_title="<%= truncate(@experience.title, {:length => 80}) %>"></span></li>
-            <li><span class='st_googleplus_hcount' displayText='Google +'></span></li>
-            <li><span class='st_email_hcount' displayText='Email'></span></li>
+            <li><span class='st_googleplus_hcount' displayText='Google +' st_title="<%= @experience.title %>"></span></li>
+            <li><span class='st_email_hcount' displayText='Email' st_title="<%= @experience.title %>"></span></li>
           </ul>
         </div>
       </div>
@@ -58,10 +58,10 @@
       <h3>Comparte tu experiencia</h3>
     </div>
     <div class="modal-body">
-      <span class='st_facebook_hcount' displayText='Facebook'></span>
+      <span class='st_facebook_hcount' displayText='Facebook' st_title="<%= @experience.title %>"></span>
       <span class='st_twitter_hcount' displayText='Tweet' st_title="<%= truncate(@experience.title, {:length => 80}) %>"></span>
-      <span class='st_googleplus_hcount' displayText='Google +'></span>
-      <span class='st_email_hcount' displayText='Email'></span>
+      <span class='st_googleplus_hcount' displayText='Google +' st_title="<%= @experience.title %>"></span>
+      <span class='st_email_hcount' displayText='Email' st_title="<%= @experience.title %>"></span>
     </div>
     <div class="modal-footer">
       <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</a>
@@ -80,5 +80,28 @@
     <script type="text/javascript">
       $("section.summary").highlight("<%= params[:highlight]%>");
     </script>
+  <% end %>
+<% end %>
+
+<% content_for :meta do %>
+  <% images = extract_images(@experience.content) %>
+  <meta property="og:type"	 content="article"> 
+  <meta property="og:url"		 content="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>">
+  <meta property="og:site_name"	 content="Red Innovacion">
+  <% if images.present? %>
+    <meta property="og:image"	 content="<%= "#{request.protocol}#{request.host_with_port}#{images.first.value}" %>">
+  <% end %>
+  <meta property="og:title"	 content="<%= @experience.title %>">
+  <meta property="og:description"  content="<%= truncate(strip_tags(@experience.content), {:length => 100}) %>"> 
+  <% if @experience.user.present? %>
+    <meta property="article:author"	 content="<%= @experience.user.username.humanize %>">
+  <% end %>
+  
+  <meta name="twitter:card"	 content="summary">
+  <meta name="twitter:url"	 content="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>">
+  <meta name="twitter:title"	 content="<%= @experience.title %>">
+  <meta name="twitter:description" content="<%= truncate(strip_tags(@experience.content), {:length => 100}) %>">
+  <% if images.present? %>
+    <meta name="twitter:image"	 content="<%= "#{request.protocol}#{request.host_with_port}#{images.first.value}" %>">
   <% end %>
 <% end %>

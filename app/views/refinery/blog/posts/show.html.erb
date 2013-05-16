@@ -17,3 +17,26 @@
     </script>
   <% end %>
 <% end %>
+
+<% content_for :meta do %>
+  <% images = extract_images(@post.body) %>
+  <meta property="og:type"	 content="article"> 
+  <meta property="og:url"		 content="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>">
+  <meta property="og:site_name"	 content="Red Innovacion">
+  <% if images.present? %>
+    <meta property="og:image"	 content="<%= "#{request.protocol}#{request.host_with_port}#{images.first.value}" %>">
+  <% end %>
+  <meta property="og:title"	 content="<%= @post.title %>">
+  <meta property="og:description"  content="<%= truncate(strip_tags(@post.body), {:length => 100}) %>"> 
+  <% if @post.author.present? %>
+    <meta property="article:author"	 content="<%= @post.author.username.humanize %>">
+  <% end %>
+  
+  <meta name="twitter:card"	 content="summary">
+  <meta name="twitter:url"	 content="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>">
+  <meta name="twitter:title"	 content="<%= @post.title %>">
+  <meta name="twitter:description" content="<%= truncate(strip_tags(@post.body), {:length => 100}) %>">
+  <% if images.present? %>
+    <meta name="twitter:image"	 content="<%= "#{request.protocol}#{request.host_with_port}#{images.first.value}" %>">
+  <% end %>
+<% end %>

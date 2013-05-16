@@ -18,4 +18,8 @@ module ApplicationHelper
     }).html_safe
     strip_tags(truncated_content)
   end
+  
+  def extract_images(html)
+    Nokogiri::HTML(html).xpath("//img/@src")
+  end
 end
