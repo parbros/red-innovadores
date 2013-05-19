@@ -43,6 +43,7 @@ gem 'omniauth-facebook'
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'carmen-rails', '~> 1.0.0'
 gem 'rails-i18n'
+gem 'gibbon'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

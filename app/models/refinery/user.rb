@@ -5,6 +5,8 @@ require 'bcrypt'
 module Refinery
   class User < Refinery::Core::BaseModel
     extend FriendlyId
+    
+    include Mailchimp
 
     has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
 
@@ -29,6 +31,8 @@ module Refinery
     validates :email, :presence => true, :uniqueness => true
     before_validation :downcase_username
     before_create :complete_registration
+    
+    before_create :suscribe_to_mailchimp
 
     class << self
       # Find user by email or username.
@@ -184,6 +188,9 @@ protected
     def complete_registration
       self.registration_completed = true
     end
-
+    
+    def suscribe_to_mailchimp
+      self.suscribe if self.suscribed?
+    end
   end
 end
