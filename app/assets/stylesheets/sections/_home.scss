@@ -40,7 +40,11 @@
         margin-left: 0;
         margin-right: 0;
       }
-      p {color: white;}
+      p, a {color: white;}
+      
+      a {
+        text-decoration: underline;
+      }
     }
   }
   
