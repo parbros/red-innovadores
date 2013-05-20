@@ -15,6 +15,21 @@ module Mailchimp
     })
   end
   
+  def suscribe_comment
+    client.list_subscribe({
+      :id => '674b5291b2', 
+      :email_address => self.email, 
+      :merge_vars => {
+        :FNAME => self.name, 
+        :LNAME => ''}, 
+      email_type: 'html', 
+      double_optin: false, 
+      update_existing: true, 
+      replace_interests: true, 
+      send_welcome: false
+    })
+  end
+  
   def client
     Gibbon.throws_exceptions = true
     @gb ||= Gibbon.new("9f6ce0c8e1fcd5a431b2c655026edc5e-us7")
