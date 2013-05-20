@@ -25,7 +25,12 @@ module Refinery
     # :login is a virtual attribute for authenticating by either username or email
     # This is in addition to a real persisted field like 'username'
     attr_accessor :login, :password, :password_confirmation
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login, :registration_completed
+
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login, :registration_completed, :first_name, :last_name,
+                    :country_code, :age_range, :gender, :suscribed, :membership_level, :first_name, :last_name, :title, :organization,
+                    :street_address, :city, :province, :postal_code, :phone, :fax, :website,
+                    :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code, 
+                    :age_range, :gender
 
     validates :username, :presence => true, :uniqueness => true
     validates :email, :presence => true, :uniqueness => true
@@ -46,6 +51,10 @@ module Refinery
     
     def display_name
       username || email
+    end
+    
+    def full_name
+      "#{first_name} #{last_name}"
     end
 
     def plugins=(plugin_names)

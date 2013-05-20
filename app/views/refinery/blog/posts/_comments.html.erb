@@ -1,10 +1,5 @@
 <aside id="comments">
   <div class="comments-container">
-    <% flash.each do |key, value| %>
-      <div id='flash' class="flash flash_<%= key %>">
-        <%= value %>
-      </div>
-    <% end %>
 
     <h2><%= t('title', :scope => 'refinery.blog.posts.show.comments') %></h2>
 
@@ -30,12 +25,23 @@
                      :object => f.object,
                      :include_object_name => true
                    } %>
-        <div class='field'>
-          <%= f.text_field :name, placeholder: 'Nombre', class: 'span4' %>
-        </div>
-        <div class='field'>
-          <%= f.email_field :email, placeholder: 'Email', class: 'span4' %>
-        </div>
+        <% unless current_refinery_user %>
+          <div class='field'>
+            <%= f.text_field :name, placeholder: 'Nombre', class: 'span4' %>
+          </div>
+          <div class='field'>
+            <%= f.email_field :email, placeholder: 'Email', class: 'span4' %>
+          </div>
+        <% else %>
+          <div class='field'>
+            <%= current_refinery_user.full_name %>
+            <%= f.hidden_field :name, class: 'span4', value: current_refinery_user.full_name%>
+          </div>
+          <div class='field'>
+            <%= current_refinery_user.email %>
+            <%= f.hidden_field :email, class: 'span4', value: current_refinery_user.email%>
+          </div>
+        <% end %>
         <div class='field message_field'>
           <%= f.text_area :message, placeholder: 'Comentario', class: 'span4' %>
         </div>

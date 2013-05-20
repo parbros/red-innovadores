@@ -35,10 +35,6 @@ module Refinery
         12
       end
 
-      def full_name
-        "#{self.first_name} #{last_name}"
-      end
-
       def add_to_member_until
         @add_to_member_until || ''
       end
