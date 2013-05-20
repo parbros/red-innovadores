@@ -68,7 +68,7 @@ module Refinery
 
       def activate
         resource = Member.confirm_by_token(params[:confirmation_token])
-        notice = resource.errors.present? ? "Ocurrio un error al activar su cuenta. Por favor contacte al administrador." : "A confirmado su cuenta, puede continuar en el sitio."
+        notice = resource.errors.present? ? "Ocurrio un error al activar su cuenta. Por favor contacte al administrador." : "Ha confirmado su cuenta, puede continuar en el sitio."
         redirect_to root_url, :notice => notice
       end
       
