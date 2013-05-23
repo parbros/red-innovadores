@@ -55,6 +55,52 @@
       <p><%= content_teaser(@idea).html_safe %></p>
     </section>
   </div>
+  
+  <aside id="comments">
+    <div class="comments-container">
+
+      <h2><%= t('title', :scope => 'refinery.blog.posts.show.comments') %></h2>
+
+      <div class="comments-messages-container">
+        <% if (comments = @idea.comment_threads).any? %>
+          <%= render :partial => "comment", :collection => comments %>
+        <% else %>
+          <article class='blog_comment_message'>
+            <div class="comment-message-container">
+              <div class='comment_message'>
+                <%= t('none', :scope => 'refinery.blog.shared.comments').humanize %>.
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </div>
+
+      <%= form_for Comment.new, url: refinery.ideas_idea_comments_path(@idea) do |f| %>
+        <div class="form_new_comment">
+          <h2><%= t('add', :scope => 'refinery.blog.posts.show.comments') %></h2>
+          <%= render :partial => "/refinery/admin/error_messages",
+                     :locals => {
+                       :object => f.object,
+                       :include_object_name => true
+                     } %>
+          <% unless current_refinery_user %>
+            <div class='field'>
+              <%= f.text_field :name, placeholder: 'Nombre', class: 'span4' %>
+            </div>
+            <div class='field'>
+              <%= f.email_field :email, placeholder: 'Email', class: 'span4' %>
+            </div>
+          <% end %>
+          <div class='field message_field'>
+            <%= f.text_area :body, placeholder: 'Comentario', class: 'span4' %>
+          </div>
+          <div class='field'>
+            <%= f.submit t('submit', :scope => 'refinery.blog.posts.show') %>
+          </div>
+        </div>
+      <% end %>
+    </div> 
+  </aside>
 <% end %>
 
 <%= render '/refinery/content_page' %>

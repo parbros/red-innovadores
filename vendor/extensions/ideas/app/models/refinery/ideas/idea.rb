@@ -9,6 +9,7 @@ module Refinery
       attr_accessible :title, :content, :user_id, :position
 
       acts_as_indexed :fields => [:title, :content]
+      acts_as_commentable
 
       validates :title, :presence => true, :uniqueness => true
       

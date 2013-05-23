@@ -4,6 +4,7 @@ Refinery::Core::Engine.routes.append do
   namespace :ideas do
     resources :ideas, :path => '', :only => [:new, :index, :show, :create] do
       resource :votes, :only => [:create]
+      resource :comments, :only => [:create]
     end
   end
 
