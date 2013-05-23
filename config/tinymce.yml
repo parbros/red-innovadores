@@ -5,9 +5,6 @@ default:
   theme_advanced_buttons3_add:
     - tablecontrols
     - fullscreen
-  plugins:
-    - table
-    - fullscreen
 
 alternate:
   theme: 'advanced'
@@ -45,6 +42,7 @@ alternate:
     - blockquote
     - separator
     - image
+    - uploadimage
     - media
     - separator
     - forecolor
@@ -58,8 +56,11 @@ alternate:
     - preview
     - media
     - inlinepopups
-    - advimage
     - advlink
     - autolink
     - autoresize
     - paste
+    - table
+    - fullscreen
+    - advimage
+    - uploadimage

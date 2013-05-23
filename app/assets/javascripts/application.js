@@ -33,6 +33,10 @@ $('#mceAdvImage').click(function() {
   tinyMCE.activeEditor.execCommand('mceAdvImage');
 });
 
+$('#mceUploadImage').click(function() {
+  tinyMCE.activeEditor.execCommand('mceUploadImage');
+});
+
 $('#mceMedia').click(function() {
   tinyMCE.activeEditor.execCommand('mceMedia');
 });

@@ -12,6 +12,8 @@ RedInnovadores::Application.routes.draw do
   
   resources :comunidad, only: [:index], controller: :community
   
+  post '/tinymce_assets' => 'tinymce_assets#create'
+  
   mount Forem::Engine, :at => "/foros"
   mount Refinery::Core::Engine, :at => '/'
 

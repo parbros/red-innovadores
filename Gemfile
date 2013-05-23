@@ -34,6 +34,7 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'jquery-rails', '~> 2.0.0'
 gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload'
 gem 'fog'
 gem 'twitter'
 gem 'fb_graph'
@@ -44,6 +45,7 @@ gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'carmen-rails', '~> 1.0.0'
 gem 'rails-i18n'
 gem 'gibbon'
+gem 'carrierwave'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
