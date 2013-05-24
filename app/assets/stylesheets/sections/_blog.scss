@@ -264,6 +264,10 @@ aside#comments {
   
   .comments-messages-container {
     @include makeRow();
+    
+    .comment-link {
+      @extend .pull-right;
+    }
 
     article.blog_comment_message {
       @include makeColumn(9);

@@ -18,6 +18,7 @@
 //= require videojs_loader
 //= require jquery.easyValidate
 //= require jquery.highlight
+//= require jquery.zclip.min
 
 $('#crearIdeaButton').click(function(event) {
   event.preventDefault();
@@ -49,4 +50,13 @@ $('.show-comment-response').click(function(event) {
   event.preventDefault();
   var commentId = $(this).data('comment-id');
   $('#form-response-comment-' + commentId).toggle();
+});
+
+$('.comment-link').zclip({
+    path: '/assets/ZeroClipboard.swf',
+    clickAfter: false,
+    afterCopy: function() {},
+    copy: function(){
+      return $(this).data('comment-link');
+    }
 });

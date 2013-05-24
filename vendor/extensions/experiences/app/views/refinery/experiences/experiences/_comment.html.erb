@@ -1,4 +1,5 @@
 <article class='blog_comment_message' id='<%= "comment-#{comment.to_param}" %>'>
+  <a name="comment-<%= comment.id%>"></a>
   <header class='blog_comment_author'>
     <% if comment.user %>
       <span class="author"><%= comment.user.full_name %></span>
@@ -12,10 +13,14 @@
     <div class='comment_message'>
       <%= simple_format auto_link(comment.body.to_s) %>
     </div>
-    <% if current_refinery_user %>
+    
       <div id="response-comment-<%= comment.id%>">
-        <a href="#" class="show-comment-response" data-comment-id="<%= comment.id%>">Responder este comentario.</a>
+        <% if current_refinery_user %>
+          <a href="#" class="show-comment-response" data-comment-id="<%= comment.id%>">Responder este comentario.</a>
+        <% end %>
+        <a href="#" class="comment-link" data-comment-link="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{comment.id}"%>">Copiar link del comentario.</a>
       </div>
+    <% if current_refinery_user %>
       <%= form_for Comment.new, url: refinery.experiences_experience_comments_path(@experience), html: { class: [:hide, 'new_comment'], id: "form-response-comment-#{comment.id}" } do |f| %>
         <div class="form_new_comment">
           <%= render :partial => "/refinery/admin/error_messages",
@@ -36,7 +41,8 @@
   </div>
   
   <% comment.children.each do |child_comment| %>
-    <article class='blog_comment_message child-comment' id='<%= "comment-#{comment.to_param}" %>'>        
+    <article class='blog_comment_message child-comment' id='<%= "comment-#{child_comment.to_param}" %>'> 
+      <a name="comment-<%= child_comment.id%>"></a>       
       <header class='blog_comment_author'>
         <% if comment.user %>
           <span class="author"><%= comment.user.full_name %></span>
@@ -50,6 +56,7 @@
         <div class='comment_message'>
           <%= simple_format auto_link(child_comment.body.to_s) %>
         </div>
+        <a href="#" class="comment-link" data-comment-link="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>">Copiar link del comentario.</a>
       </div>
     </article>
   <% end %>
