@@ -54,7 +54,7 @@
       <h2><%= t('title', :scope => 'refinery.blog.posts.show.comments') %></h2>
 
       <div class="comments-messages-container">
-        <% if (comments = @experience.comment_threads).any? %>
+        <% if (comments = @experience.root_comments).any? %>
           <%= render :partial => "comment", :collection => comments %>
         <% else %>
           <article class='blog_comment_message'>

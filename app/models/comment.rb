@@ -13,7 +13,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user, class_name: 'Refinery::User'
   
-  attr_accessible :body, :title, :subject, :email, :name
+  attr_accessible :body, :title, :subject, :email, :name, :parent_id
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

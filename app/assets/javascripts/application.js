@@ -44,3 +44,9 @@ $('#mceMedia').click(function() {
 $('#mcePreview').click(function() {
   tinyMCE.activeEditor.execCommand('mcePreview');
 });
+
+$('.show-comment-response').click(function(event) {
+  event.preventDefault();
+  var commentId = $(this).data('comment-id');
+  $('#form-response-comment-' + commentId).toggle();
+});

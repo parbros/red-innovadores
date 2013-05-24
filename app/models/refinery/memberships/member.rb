@@ -1,7 +1,7 @@
 module Refinery
   module Memberships
     class Member < User
-      devise :confirmable
+      devise :confirmable, :recoverable
 
       acts_as_indexed :fields => [:first_name, :last_name]
 

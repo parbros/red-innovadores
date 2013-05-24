@@ -14,6 +14,8 @@ RedInnovadores::Application.routes.draw do
   
   post '/tinymce_assets' => 'tinymce_assets#create'
   
+  resources :passwords, :except => :destroy
+  
   mount Forem::Engine, :at => "/foros"
   mount Refinery::Core::Engine, :at => '/'
 

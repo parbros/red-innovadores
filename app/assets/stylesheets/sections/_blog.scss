@@ -292,6 +292,18 @@ aside#comments {
         }
       }
     
+      &.child-comment {
+        margin: 0 0 10px 0;
+        border-bottom: 0;
+        
+        .comment-message-container {
+          padding-left: 30px;
+        }
+        
+        header {
+          padding-left: 30px;
+        }
+      }
     }
   }
   
