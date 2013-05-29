@@ -8,9 +8,9 @@ module Refinery
 
     # This action is usually accessed with the root path, normally '/'
     def home
-      @posts = ::Refinery::Covers::Cover.where('post_id IS NOT NULL').in_groups_of(3)
-      @community = ::Refinery::Covers::Cover.where('experience_id IS NOT NULL OR idea_id IS NOT NULL').in_groups_of(3)
-      @images = ::Refinery::Covers::Cover.where('image_id IS NOT NULL')
+      @posts = ::Refinery::Covers::Cover.where('post_id IS NOT NULL').order('position ASC').in_groups_of(3)
+      @community = ::Refinery::Covers::Cover.where('experience_id IS NOT NULL OR idea_id IS NOT NULL').order('position ASC').in_groups_of(3)
+      @images = ::Refinery::Covers::Cover.where('image_id IS NOT NULL').order('position ASC')
     end
 
     # This action can be accessed normally, or as nested pages.
