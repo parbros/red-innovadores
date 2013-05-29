@@ -78,6 +78,7 @@ gem 'refinerycms-page-images', '~> 2.0.0'
 
 gem 'devise_cas_authenticatable'
 gem 'forem', :git => "git://github.com/radar/forem.git"
+gem 'forem-textile_formatter'
 gem 'refinerycms-ideas', :path => 'vendor/extensions'
 gem 'refinerycms-experiences', :path => 'vendor/extensions'
 gem 'refinerycms-covers', :path => 'vendor/extensions'
