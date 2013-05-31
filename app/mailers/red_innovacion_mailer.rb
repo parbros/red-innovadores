@@ -7,4 +7,9 @@ class RedInnovacionMailer < ActionMailer::Base
     @member = member
     mail(:to => "#{member.full_name} <#{member.email}>", :subject => "#{member.full_name} Bienvenido a Red Innovación")
   end
+  
+  def reset_password(member)
+    @member = member
+    mail(:to => "#{member.full_name} <#{member.email}>", :subject => "#{member.full_name} Bienvenido a Red Innovación")
+  end
 end

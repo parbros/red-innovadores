@@ -1,0 +1,16 @@
+<h2>¿Olvidaste tu contraseña?</h2>
+
+<%= form_for(resource, :as => resource_name, :url => passwords_path(), :html => { :method => :post, class: 'form-horizontal' }) do |f| %>
+  <%= devise_error_messages! %>
+  
+  <div class="control-group">
+    <div class="control-label">
+      <%= f.label :email %>
+    </div>
+    <div class="controls">
+      <%= f.email_field :email %></div>
+    </div>
+  </div>
+
+  <div><%= f.submit "Enviar instrucciones" %></div>
+<% end %>

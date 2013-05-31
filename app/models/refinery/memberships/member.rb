@@ -197,6 +197,11 @@ module Refinery
           member_email('member_created', member).deliver if Refinery::Setting.find_or_set("memberships_deliver_mail_on_member_created", true)
         end
       end
+      
+      def send_reset_password_instructions
+        generate_reset_password_token! if should_generate_reset_token?
+        RedInnovacionMailer.reset_password(self).deliver
+      end
 
       protected
 

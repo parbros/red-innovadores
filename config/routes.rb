@@ -16,6 +16,8 @@ RedInnovadores::Application.routes.draw do
   
   resources :passwords, :except => :destroy
   
+  get 'sign_in', :to => 'refinery/cas_sessions#new', :as => :new_session
+  
   mount Forem::Engine, :at => "/foros"
   mount Refinery::Core::Engine, :at => '/'
 
