@@ -2,7 +2,7 @@ module Refinery
   module Blog
     class Comment < ActiveRecord::Base
 
-      attr_accessible :name, :email, :message
+      attr_accessible :name, :email, :message, :user_id
 
       filters_spam :author_field => :name,
                    :email_field => :email,
@@ -14,8 +14,9 @@ module Refinery
 
       alias_attribute :message, :body
 
-      validates :name, :message, :presence => true
-      validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+      validates :message, :presence => true
+      validates :name, :presence => true, unless: :user_present?
+      validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }, unless: :user_present?
 
       class << self
         def unmoderated
@@ -38,6 +39,10 @@ module Refinery
         require 'digest/md5'
         size = ("?s=#{options[:size]}" if options[:size])
         "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.to_s.strip.downcase)}#{size}.jpg"
+      end
+      
+      def user_present?
+        user_id.present?
       end
 
       def approve!

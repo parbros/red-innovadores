@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530144319) do
+ActiveRecord::Schema.define(:version => 20130531222929) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20130530144319) do
     t.string   "state"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
 
   add_index "refinery_blog_comments", ["id"], :name => "index_refinery_blog_comments_on_id"
