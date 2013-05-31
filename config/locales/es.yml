@@ -54,3 +54,6 @@ es:
       attributes:
        user:
         membership_level: Nivel de membresía
+  forem:
+    forum:
+      moderator_tools: 'Herramientas de Moderación'

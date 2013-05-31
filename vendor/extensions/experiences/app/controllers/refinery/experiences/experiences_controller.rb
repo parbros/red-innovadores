@@ -32,6 +32,7 @@ module Refinery
       
       def new
         @experience = Experience.new
+        @experience.pdf_files.build
         present(@page)
       end
 

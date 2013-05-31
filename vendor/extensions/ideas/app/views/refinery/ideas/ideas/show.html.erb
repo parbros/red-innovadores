@@ -52,7 +52,20 @@
       <header>
         <h1><%= raw @idea.title%></h1>
       </header>
-      <p><%= content_teaser(@idea).html_safe %></p>
+      <p><%= @idea.content.try(:html_safe) %></p>
+      
+      <% if @idea.pdf_files.any? %>
+        <h3>Documentos adjuntos</h3>
+        <table class="table table-bordered">
+          <% @idea.pdf_files.each do |pdf_file| %>
+            <tr>
+              <td>
+                <%= link_to pdf_file.pdf_file_name, pdf_file.file.to_s, target: '_blank' %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
     </section>
   </div>
   

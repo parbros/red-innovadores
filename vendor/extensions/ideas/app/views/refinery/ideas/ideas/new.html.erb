@@ -1,9 +1,9 @@
 <h1>Nueva Idea</h1>
-<%= form_for @idea, url: refinery.ideas_ideas_path do |form|%>
+<%= form_for @idea, url: refinery.ideas_ideas_path, :html => {:multipart => true} do |form|%>
   <div class="control-group">
     <%= form.label :title, 'Titulo', class: 'control-label' %>
     <div class="controls">
-      <%= form.text_field :title, placeholder: 'Titulo de tu experiencia', class: 'input-xxlarge' %>
+      <%= form.text_field :title, placeholder: 'Titulo de tu idea', class: 'input-xxlarge' %>
     </div>
   </div>
   <div class="control-group">
@@ -15,6 +15,15 @@
       <a href="#" id='mcePreview' class="btn btn-mini"><i class="icon-file"></i>Previo</a>
     </div>
   </div>
+  
+  <div class="control-group">
+    <label>Documentos PDF</label>
+    <div class="controls">
+      <a href="#" id='add-pdf-file' class="btn btn-mini" data-object-type="idea"><i class="icon-plus-sign"></i>Agregar Archivo</a>
+      <table id="pdf-files" class="table table-bordered"></table>
+    </div>
+  </div>
+  
   <div class="control-group">
     <%= form.label :content, 'Contenido', class: 'control-label' %>
     <div class="controls">
@@ -25,3 +34,14 @@
     <%= form.submit 'Enviar' %>
   </div>
 <% end %>
+
+<script id="pdf-file-template" type="text/x-jquery-tmpl">
+  <tr class="pdf-file new-pdf-file-${pdfIndex}">
+    <td>
+      <h5>
+        ${fileName}
+        <a href="#" class="btn btn-mini btn-danger remove-new-pdf-file pull-right" data-pdf-line="new-pdf-file-${pdfIndex}"><i class="icon-remove-sign"></i>Remover</a>
+      </h5>
+    </td>
+  </tr>
+</script>
