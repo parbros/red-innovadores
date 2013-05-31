@@ -14,8 +14,8 @@ module Refinery
 
       alias_attribute :message, :body
 
-      # validates :name, :message, :presence => true
-      # validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+      validates :name, :message, :presence => true
+      validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
       class << self
         def unmoderated

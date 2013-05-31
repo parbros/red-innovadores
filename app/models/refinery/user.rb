@@ -50,11 +50,11 @@ module Refinery
     end
     
     def display_name
-      username || email
+      full_name || username || email
     end
     
     def full_name
-      "#{first_name} #{last_name}"
+      "#{first_name} #{last_name}" if first_name.present? and last_name.present?
     end
 
     def plugins=(plugin_names)
