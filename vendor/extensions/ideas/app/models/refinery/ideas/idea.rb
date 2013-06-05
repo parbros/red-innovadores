@@ -3,6 +3,8 @@ module Refinery
     class Idea < Refinery::Core::BaseModel
       self.table_name = 'refinery_ideas'
       
+      default_scope order('created_at DESC')
+      
       belongs_to :user
       has_many :votes
       has_many :pdf_files, as: :fileable

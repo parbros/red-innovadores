@@ -3,6 +3,8 @@ module Refinery
     class Experience < Refinery::Core::BaseModel
       self.table_name = 'refinery_experiences'
 
+      default_scope order('created_at DESC')
+
       attr_accessible :title, :content, :user_id, :position, :pdf_files_attributes
 
       acts_as_indexed :fields => [:title, :content]
