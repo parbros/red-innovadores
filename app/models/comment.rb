@@ -1,5 +1,8 @@
 class Comment < ActiveRecord::Base
   self.table_name = 'comments'
+  
+  include Mailchimp
+  
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
   validates :body, :presence => true
@@ -14,6 +17,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user, class_name: 'Refinery::User'
   
   attr_accessible :body, :title, :subject, :email, :name, :parent_id
+  
+  after_create :suscribe_comment
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

@@ -1,6 +1,8 @@
 module Refinery
   module Blog
     class Comment < ActiveRecord::Base
+      
+      include Mailchimp
 
       attr_accessible :name, :email, :message, :user_id
 
@@ -17,6 +19,8 @@ module Refinery
       validates :message, :presence => true
       validates :name, :presence => true, unless: :user_present?
       validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }, unless: :user_present?
+      
+      after_create :suscribe_comment
 
       class << self
         def unmoderated
