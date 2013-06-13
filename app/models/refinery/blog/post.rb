@@ -12,8 +12,8 @@ module Refinery
       default_scope :order => 'published_at DESC'
 
       belongs_to :author, :class_name => 'Refinery::User', :foreign_key => :user_id, :readonly => true
-
-      has_many :comments, :dependent => :destroy, :foreign_key => :blog_post_id
+      
+      acts_as_commentable
       acts_as_taggable
 
       has_many :categorizations, :dependent => :destroy, :foreign_key => :blog_post_id

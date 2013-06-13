@@ -50,6 +50,15 @@ GIT
       multi_json (~> 1.0)
       uuidtools
 
+GIT
+  remote: https://github.com/jparbros/acts_as_commentable_with_threading.git
+  revision: ce55edd6e425ef3f68c9cad6135b07e553893ea4
+  specs:
+    acts_as_commentable_with_threading (1.1.2.2)
+      activerecord (>= 3.0)
+      activesupport (~> 3.0)
+      awesome_nested_set (>= 2.0)
+
 PATH
   remote: vendor/extensions
   specs:
@@ -93,10 +102,6 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
-    acts_as_commentable_with_threading (1.1.3)
-      activerecord (>= 3.0)
-      activesupport (~> 3.0)
-      awesome_nested_set (>= 2.0)
     acts_as_indexed (0.7.8)
     addressable (2.3.4)
     arel (3.0.2)
@@ -221,7 +226,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    multi_json (1.7.4)
+    multi_json (1.7.6)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
     net-scp (1.1.0)
@@ -427,7 +432,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeresource
-  acts_as_commentable_with_threading
+  acts_as_commentable_with_threading!
   bootstrap-sass!
   carmen-rails (~> 1.0.0)
   carrierwave

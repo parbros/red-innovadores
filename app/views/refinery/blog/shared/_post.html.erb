@@ -19,7 +19,7 @@
           <% if Refinery::Blog::Post.comments_allowed? %>
             <div class='count_comment'>
               <span>
-                <i class="icon-comment"></i><% if post.comments.any? %><%= pluralize(post.comments.approved.count, t('singular', :scope => 'refinery.blog.shared.comments').humanize) %>
+                <i class="icon-comment"></i><% if post.comments.any? %><%= pluralize(post.comments.count, t('singular', :scope => 'refinery.blog.shared.comments').humanize) %>
                 <% else %><%= t('none', :scope => 'refinery.blog.shared.comments').humanize %>
                 <% end %>
               </span>
