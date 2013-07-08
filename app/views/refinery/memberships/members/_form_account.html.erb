@@ -48,7 +48,7 @@
       <%= f.required_label :email %>
       <%= f.text_field :email, class:'required email' %>
     </li>
-    <%= "<li><span class='preview'>#{t('members.form.blank_password_keeps_current', :scope => 'refinery.memberships')}</span></li>".html_safe if @member.persisted? %>
+    <%= "<li><span class='preview'>#{t('refinery.members.form.blank_password_keeps_current')}</span></li>".html_safe if @member.persisted? %>
     <li>
       <%= f.required_label :password %>
       <%= f.password_field :password, :autocomplete => 'off', class:'required' %>
