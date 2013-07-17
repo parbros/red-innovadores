@@ -5,21 +5,11 @@ es:
       profile: Perfil
       organization: Organización
   refinery:
-    plugins:
-      videos:
-        title: 'Videos'
-        no_item_yet: 'No videos'
-      refinerycms_memberships:
-        title: 'Miembros'
-    search:
-      show:
-        search_results_for: "Resultados de la búsqueda: '%{what}'"
-        no_results_for: "No hay resultados para su búsqueda: '%{what}'."
-    shared:
-      admin:
-        image_picker:
-          image: imagen
     admin:
+      dashboard:
+        additional_dashboard_menu_items:
+          create_new: Añadir nuevo video
+      memberships_settings: Settings
       memberships:
         index:
           title: Miembros
@@ -32,51 +22,96 @@ es:
           view_live_html: Ver este miembro en directo <br/><em>(se abre en una ventana nueva)</em>
           edit: Editar este miembro
           delete: Eliminar este miembro para siempre
-    memberships:
-      show:
-        other: Otros miembros
+        new_members: Nuevos usuarios
+        no_new_members: No hay nuevos usuarios
+        settings_admin_notification:
+          example: "Ingrese su dirección de correo electrónico, por ejemplo: jack@work.com, jill@office.com"
+          hint: Cuando un nuevo usuario se registre, Refinería les enviará una notificación
+        settings:
+          signup_defaults: Defauls
+          signup_confirmation: Confirmacion de registro
+          no_confirmation: No confirmacion
+          email_confirmation: Confirmacion por email
+          admin_confirmation: Confirmacion por admins
+          membership_expiration: Vencimiento de la suscripción
+          no_expiration: Sin vencimiento
+          timed_expiration: Tiempo de vencimiento
+          default_expiration_in: "Caducidad por defecto para los miembros"
+          default_groups: Grupos predeterminados para los miembros
+          assign_new_users_to_the_selected_groups: Asignar nuevo usuario al grupo seleccionado
+          no_groups_found: "No se encontraron grupos"
+      roles:
+        delete: Eliminar grupo
+        no_roles_yet: No hay roles creados
+        edit: Editar grupo
+        new_role: Grupo nuevo
+        roles_administration: Administración de grupos
       members:
-        profile:
-          edit_profile: 'Editar perfil'
-    members:
-      shared:
-        account: Cuenta
+        accept: "Acepta el registro de usuario"
+        reject: "Rechazar el registro de usuario"
+        edit: Editar usuario
+        delete: Eliminar el usuario
+        member_until: Válido hasta
+        membership_expired: Registro expiró el
+        not_yet_member: "Aún no se activa"
+        activate_member_for: "Activar usuario"
+        account_active: Usuario activo
+        new_account: Nuevo usuario
+        account_disabled: Usuario deshabilitado
+        account_expired: Usuario caducado
+        account_rejected: Usuario rechazado
+        account_not_activated: Registro aún no activado
+        disable: Desactivar usuario
+        enable: Permitir al usuario
+        delete: Eliminar el usuario
+        no_members_yet: No hay usuarios registrados
+        all_members: Todos los usuarios
+        members_administration: Administración de usuarios
+        account: Registro
+        organization: Organizacion
         profile: Perfil
-        organization: Organización
-      error_messages:
-        problems_in_following_fields: Hay problemas con los siguientes campos
-      form_actions:
-        save: Guardar
-        cancel: Cancelar
-      form:
-        blank_password_keeps_current: Deja en blanco la contraseña para mantener la contraseña actual
-        state_province: Estado/Provincia
-        postal_code: Codigo Postal
-      new:
-        title: Formulario de incorporación
-        instructions: Por favor completa la información. Serás notificado cuando se apruebe la petición.
-        submit_application: Enviar la aplicación
-      shared:
-        account: Cuenta
-        profile: Perfil
-        organization: Organización
-    activerecord:
-      attributes:
-       user:
-        membership_level: Nivel de membresía
-  forem:
-    forum:
-      moderator_tools: 'Herramientas de Moderación'
-  wym_tools:
-    add_video: Video 
-  refinery:
-    admin:
-      dashboard:
-        additional_dashboard_menu_items:
-          create_new: Añadir nuevo video
-    plugins:
-      videos:
-        title: Videos
+        activation: Activacion
+        user_roles: "Grupos de usuarios"
+        user_can_login: El usuario puede iniciar sesión
+        extend: Extender el registro de usuario
+        extend_membership_for: Extender el registro de usuarios de
+        filter_by: Filtrar
+        member_actions: Acciones del usuario
+        filter:
+          all: Todos
+          active: Activos
+          rejected: Rechazados
+          disabled: Deshabilitados
+          unconfirmed: Sin confirmar
+      membership_email_parts:
+        email_header: Email header
+        email_footer: Email footer
+      membership_emails:
+        member_activated: User registration activate
+        member_accepted: User registration accepted
+        member_created: User created
+        member_deleted: User deleted
+        member_rejected: User rejected
+        membership_extended: User registration extended
+        edit: Edit email
+        no_emails_yet: No emails yet
+        emails_administration: Email administration
+        membership_email: Membership email
+        email_settings: Email settings
+        toggle_email_body_help: Toggle help
+        email_body_help_title: Email body help
+        shared_email_parts: Shared email parts
+        email_body_help:
+          email_body_help: "In the message body you can insert special tags that will be replaced by user properties (name, organization, etc)."
+          available_tags: Available tags
+          user_data: User data
+          member_until: Registration remain active until
+          activation_url: "URL to follow to activate the registration"
+        settings:
+          deliver_notifications_on: Notify the user when
+          deliver_admin_notifications_to: Notify admins when
+          email_delivery: Email delivery
+          admin_notifications: Admin notifications
     videos:
       admin:
         videos:
@@ -139,9 +174,61 @@ es:
       videos:
         show:
           other: Otros Videos
+    plugins:
+      videos:
+        title: 'Videos'
+        no_item_yet: 'No videos'
+      refinerycms_memberships:
+        title: 'Miembros'
+    search:
+      show:
+        search_results_for: "Resultados de la búsqueda: '%{what}'"
+        no_results_for: "No hay resultados para su búsqueda: '%{what}'."
+    shared:
+      admin:
+        image_picker:
+          image: imagen
+    memberships:
+      show:
+        other: Otros miembros
+      members:
+        profile:
+          edit_profile: 'Editar perfil'
+    members:
+      shared:
+        account: Cuenta
+        profile: Perfil
+        organization: Organización
+      error_messages:
+        problems_in_following_fields: Hay problemas con los siguientes campos
+      form_actions:
+        save: Guardar
+        cancel: Cancelar
+      form:
+        blank_password_keeps_current: Deja en blanco la contraseña para mantener la contraseña actual
+        state_province: Estado/Provincia
+        postal_code: Codigo Postal
+      new:
+        title: Formulario de incorporación
+        instructions: Por favor completa la información. Serás notificado cuando se apruebe la petición.
+        submit_application: Enviar la aplicación
+      shared:
+        account: Cuenta
+        profile: Perfil
+        organization: Organización
+    activerecord:
+      attributes:
+       user:
+        membership_level: Nivel de membresía
+  forem:
+    forum:
+      moderator_tools: 'Herramientas de Moderación'
+  wym_tools:
+    add_video: Video 
   activerecord:
     attributes:
       'refinery/videos/video':
         file_name: Nombre de archivo
         file_size: Tamaño de archivo
         file_ext: Extensión de archivo
+  roles_administration: Administracion de Roles

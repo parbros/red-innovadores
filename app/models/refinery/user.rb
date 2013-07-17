@@ -129,7 +129,7 @@ module Refinery
     end
     
     def forem_admin?
-      has_role?(:superuser)
+      has_role?(:superuser) || has_role?(:administrador)
     end
     
     def apply_omniauth(omniauth)
