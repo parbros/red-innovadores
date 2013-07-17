@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user, class_name: 'Refinery::User'
   
-  attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id
+  attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id, :spam, :commentable
   
   after_create :suscribe_comment
 
@@ -71,11 +71,11 @@ class Comment < ActiveRecord::Base
   end
   
   def name
-    self.user.full_name
+    user.present? ? self.user.full_name : attributes['name']
   end
   
   def email
-    self.user.email
+    user.present? ? self.user.email : attributes['email']
   end
   
   def approve!
