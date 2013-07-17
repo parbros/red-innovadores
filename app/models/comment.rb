@@ -105,11 +105,11 @@ class Comment < ActiveRecord::Base
     Refinery::Setting.set(:comments_allowed, {:value => !currently, :scoping => 'blog'})
   end
 
-  before_create do |comment|
-    unless Moderation.enabled?
-      comment.state = comment.ham? ? 'approved' : 'rejected'
-    end
-  end
+  # before_create do |comment|
+  #   unless Moderation.enabled?
+  #     comment.state = comment.ham? ? 'approved' : 'rejected'
+  #   end
+  # end
 
   module Moderation
     class << self
