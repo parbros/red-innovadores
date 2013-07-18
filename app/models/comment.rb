@@ -97,6 +97,10 @@ class Comment < ActiveRecord::Base
   def unmoderated?
     self.state.nil?
   end
+  
+  def ham?
+    true
+  end
 
   def self.toggle!
     currently = Refinery::Setting.find_or_set(:comments_allowed, true, {
@@ -105,11 +109,11 @@ class Comment < ActiveRecord::Base
     Refinery::Setting.set(:comments_allowed, {:value => !currently, :scoping => 'blog'})
   end
 
-  # before_create do |comment|
-  #   unless Moderation.enabled?
-  #     comment.state = comment.ham? ? 'approved' : 'rejected'
-  #   end
-  # end
+  before_create do |comment|
+    unless Moderation.enabled?
+      comment.state = comment.ham? ? 'approved' : 'rejected'
+    end
+  end
 
   module Moderation
     class << self
