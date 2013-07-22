@@ -19,7 +19,7 @@
                 <li><a tabindex="-1" href="/foros/admin">Foro Administrador</a></li>
               <% end -%>
               <li class="divider"></li>
-              <li><a tabindex="-1" href="/refinery/users/logout">Logout</a></li>
+              <li><%= link_to 'Logout', '/refinery/users/logout', method: :delete %></li>
           </ul>
         </div>
       <% end %>

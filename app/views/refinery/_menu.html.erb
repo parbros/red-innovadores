@@ -36,7 +36,7 @@
       <li><a href="/foros">DISCUSI&Oacute;N</a></li>
       <li><a href="/comunidad">COMUNIDAD de innovaci&oacute;n</a></li>
       <% if current_refinery_user %>
-        <li><a href="/refinery/users/logout">Logout</a></li>
+        <li><%= link_to 'Logout', destroy_refinery_user_session_path, method: :delete %></li>
       <% else %>
         <li><a href="/registro">Registrarse</a></li>
         <li><a href="/refinery/users/login">Entrar</a></li>
