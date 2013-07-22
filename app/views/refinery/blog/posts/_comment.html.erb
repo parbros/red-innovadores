@@ -1,6 +1,9 @@
 <article class='blog_comment_message' id='<%= "comment-#{comment.to_param}" %>'>
   <header class='blog_comment_author'>
-    <span class="author"><%= comment.name %></span>
+    <span class="author">
+      <%= comment.name %> 
+      <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+    </span>
     <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
   </header>
   <div class="comment-message-container">
@@ -14,6 +17,7 @@
       <% end %>
       <a href="#" class="comment-link" data-comment-link="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{comment.id}"%>">Copiar link del comentario.</a>
     </div>
+    
     <% if current_refinery_user %>
       <%= form_for [refinery, :blog, Comment.new], html: { class: [:hide, 'new_comment'], id: "form-response-comment-#{comment.id}" } do |f| %>
         <div class="form_new_comment">
@@ -40,10 +44,16 @@
       <a name="comment-<%= child_comment.id%>"></a>       
       <header class='blog_comment_author'>
         <% if comment.user %>
-          <span class="author"><%= comment.user.full_name %></span>
+          <span class="author">
+            <%= comment.user.full_name %>
+            <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+          </span>
           <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
         <% else %>
-          <span class="author"><%= comment.name %></span>
+          <span class="author">
+            <%= comment.name %>
+            <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+          </span>
           <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
         <% end %>
       </header>

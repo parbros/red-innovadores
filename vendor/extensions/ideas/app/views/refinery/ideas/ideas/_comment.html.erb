@@ -2,7 +2,10 @@
   <a name="comment-<%= comment.id%>"></a>
   <header class='blog_comment_author'>
     <% if comment.user %>
-      <span class="author"><%= comment.user.full_name %></span>
+      <span class="author">
+        <%= comment.user.full_name %>
+        <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+      </span>
       <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
     <% else %>
       <span class="author"><%= comment.name %></span>
@@ -42,10 +45,16 @@
       <a name="comment-<%= child_comment.id%>"></a>
       <header class='blog_comment_author'>
         <% if comment.user %>
-          <span class="author"><%= comment.user.full_name %></span>
+          <span class="author">
+            <%= comment.user.full_name %>
+            <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+          </span>
           <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
         <% else %>
-          <span class="author"><%= comment.name %></span>
+          <span class="author">
+            <%= comment.name %>
+            <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+          </span>
           <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
         <% end %>
       </header>
