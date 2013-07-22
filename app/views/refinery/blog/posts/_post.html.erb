@@ -65,6 +65,19 @@
         <h1><%= link_to @post.title, refinery.blog_post_path(@post) %></h1>
       </header>
       <%= @post.body.html_safe %>
+      
+      <% if @post.pdf_files.any? %>
+        <h3>Documentos adjuntos</h3>
+        <table class="table table-bordered">
+          <% @post.pdf_files.each do |pdf_file| %>
+            <tr>
+              <td>
+                <%= link_to pdf_file.pdf_file_name, pdf_file.file.to_s, target: '_blank' %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
     </section>      
   </div>
 

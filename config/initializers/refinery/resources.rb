@@ -16,6 +16,10 @@ Refinery::Resources.configure do |config|
   # config.s3_access_key_id = ENV['S3_KEY']
   # config.s3_secret_access_key = ENV['S3_SECRET']
   # config.s3_region = ENV['S3_REGION]
+  config.s3_backend = Refinery::Core.s3_backend
+  config.s3_bucket_name = "red-innovacion"
+  config.s3_access_key_id = "AKIAIMYIAP4I5LHK7TWQ"
+  config.s3_secret_access_key = "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"
 
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware

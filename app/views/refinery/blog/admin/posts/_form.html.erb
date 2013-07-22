@@ -1,4 +1,4 @@
-<%= form_for [refinery, :blog_admin, @post] do |f| -%>
+<%= form_for [refinery, :blog_admin, @post], :html => {:multipart => true} do |f| -%>
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
                :object => f.object,
@@ -55,6 +55,25 @@
       <%= f.check_box :facebook_publish, disabled: facebook_disabled %>
       <%= f.label :facebook_publish, "Publicar en facebook", :class => "stripped" %>
     </span>
+  </div>
+  
+  <div class="field">
+    <label>Archivos</label>
+    <div class="controls">
+      <a href="#" id='add-pdf-file' class="button" data-object-type="post"><i class="icon-plus-sign"></i>Agregar Archivo</a>
+      <table id="pdf-files" class="table table-bordered">
+        <% @post.pdf_files.each_with_index do |pdf_file, index| %>
+          <tr class="pdf-file new-pdf-file-<%= index %>">
+            <td>
+              <h5>
+                <%= pdf_file.pdf_file_name %>
+                <a href="#" class="button confirm-delete remove-new-pdf-file" data-pdf-line="new-pdf-file-<%= index %>">Remover</a>
+              </h5>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 
   <div id='more_options_field'>
@@ -142,5 +161,82 @@
 <% end -%>
 
 <% content_for :stylesheets, stylesheet_link_tag('refinery/blog/backend') %>
+<% content_for :stylesheets do %>
+  <style type="text/css">
+    .remove-new-pdf-file {
+      float: right;
+    }
+    
+    .hide {
+      display: none;
+    }
+    
+    
+    .table, table {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .table-bordered {
+      border: 1px solid #dddddd;
+      border-collapse: separate;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+    
+    table#pdf-files {
+      width: 100%;
+      margin: 10px 0;
+    }
+  </style>
+<% end %>
 <% content_for :javascripts, javascript_include_tag('refinery/blog/backend') %>
+<% content_for :javascripts, javascript_include_tag('jquery.tmpl.min') %>
 <%= render 'refinery/shared/admin/autocomplete', :dom_id => '#blog_post_tag_list', :url => refinery.tags_blog_admin_posts_url %>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#add-pdf-file').click(function(event) {
+        event.preventDefault();
+        var objectType = $(this).data('object-type');
+        var fileUploadInput = $('<input/>').attr('type', 'file').attr('accept','application/pdf').addClass('hide').attr('name', objectType + '[pdf_files_attributes][][file]');
+        var pdfFiles = $('table#pdf-files');
+        var pdfTemplate = $('#pdf-file-template');
+        var pdfIndex = pdfFiles.find('tr').length + 1;
+
+        fileUploadInput.click();
+        fileUploadInput.change(function(evt) {
+          var reader = new FileReader();
+          var input = this;
+          if (input.files && input.files[0]) {
+            reader.onload = function(e) {
+              var pdfLine = pdfTemplate.tmpl({fileName: input.files[0].name, pdfIndex: pdfIndex});
+              pdfLine.append(fileUploadInput).appendTo(pdfFiles)
+            };
+            reader.readAsDataURL(input.files[0]);
+          };
+        });
+      });
+      
+      $('.remove-new-pdf-file').live('click', function(event) {
+        event.preventDefault();
+        var pdfLine = $(this).data('pdf-line');
+        $('.' + pdfLine).remove();
+      });
+    });
+  </script>
+<% end %>
+
+
+<script id="pdf-file-template" type="text/x-jquery-tmpl">
+  <tr class="pdf-file new-pdf-file-${pdfIndex}">
+    <td>
+      <h5>
+        ${fileName}
+        <a href="#" class="button confirm-delete remove-new-pdf-file" data-pdf-line="new-pdf-file-${pdfIndex}">Remover</a>
+      </h5>
+    </td>
+  </tr>
+</script>

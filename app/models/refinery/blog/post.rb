@@ -12,6 +12,7 @@ module Refinery
       default_scope :order => 'published_at DESC'
 
       belongs_to :author, :class_name => 'Refinery::User', :foreign_key => :user_id, :readonly => true
+      has_many :pdf_files, as: :fileable
       
       acts_as_commentable
       acts_as_taggable
@@ -32,7 +33,9 @@ module Refinery
 
       attr_accessible :title, :body, :custom_teaser, :tag_list, :draft, :published_at, :custom_url, :author
       attr_accessible :browser_title, :meta_keywords, :meta_description, :user_id, :category_ids
-      attr_accessible :source_url, :source_url_title, :twitter_publish, :facebook_publish
+      attr_accessible :source_url, :source_url_title, :twitter_publish, :facebook_publish, :pdf_files_attributes
+      
+      accepts_nested_attributes_for :pdf_files
       
       attr_accessor :twitter_publish, :facebook_publish
       
