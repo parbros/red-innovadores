@@ -195,18 +195,15 @@ module Refinery
     end
     
     def social_points
-      social_pts = points.where(type_id: Type.where(name: "Social").first.id).last
-      social_pts.present? ? social_pts.value : 0
+      points.where(type_id: Type.where(name: "Social").first.id).sum(:value)
     end
     
     def comment_points
-      comment_pts = points.where(type_id: Type.where(name: "Comentador").first.id).last
-      comment_pts.present? ? comment_pts.value : 0
+      points.where(type_id: Type.where(name: "Comentador").first.id).sum(:value)
     end
     
     def innovation_points
-      innovation_pts = points.where(type_id: Type.where(name: "Innovador").first.id).last
-      innovation_pts.present? ? innovation_pts.value : 0
+      points.where(type_id: Type.where(name: "Innovador").first.id).sum(:value)
     end
 
 protected

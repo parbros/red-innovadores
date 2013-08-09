@@ -10,7 +10,12 @@ module Refinery
       belongs_to :user
 
       acts_as_indexed :fields => [:idea_id]
-
+      
+      after_create :add_points
+      
+      def add_points
+        user.change_points({points: 5, type:  Type.where(name: "Innovador").first.id})
+      end
     end
   end
 end

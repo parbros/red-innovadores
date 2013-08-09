@@ -18,8 +18,14 @@ module Refinery
       
       accepts_nested_attributes_for :pdf_files
       
+      after_create :add_points
+      
       def self.recent(count)
         order('created_at DESC').limit(count)
+      end
+      
+      def add_points
+        user.change_points({points: 15, type:  Type.where(name: "Innovador").first.id})
       end
     end
   end

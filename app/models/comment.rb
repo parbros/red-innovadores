@@ -18,7 +18,7 @@ class Comment < ActiveRecord::Base
   
   attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id, :spam, :commentable
   
-  after_create :suscribe_comment
+  after_create :suscribe_comment, :add_points
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -113,6 +113,11 @@ class Comment < ActiveRecord::Base
     unless Moderation.enabled?
       comment.state = comment.ham? ? 'approved' : 'rejected'
     end
+  end
+  
+  def add_points
+    user.change_points({points: 10, type:  Type.where(name: "Comentador").first.id})
+    user.change_points({points: 5, type:  Type.where(name: "Innovador").first.id}) if commentable_type == 'Refinery::Experiences::Experience' || commentable_type == 'Refinery::Ideas:Idea'
   end
 
   module Moderation
