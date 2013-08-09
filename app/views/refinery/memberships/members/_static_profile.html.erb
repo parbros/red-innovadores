@@ -1,0 +1,21 @@
+<fieldset>
+  <legend><%=t('members.shared.profile')%></legend>
+  <ol>
+    <li>
+      <label>Nombre:</label>
+      <%= @member.first_name %>&nbsp;
+    </li>
+    <li>
+      <label>Apellido:</label>
+      <%= @member.last_name %>&nbsp;
+    </li>
+    <li>
+      <label>Telefono:</label>
+      <%= @member.phone %>&nbsp;
+    </li>
+    <li>
+      <label>Fax:</label>
+      <%= @member.fax %>&nbsp;
+    </li>
+  </ol>
+</fieldset>

@@ -2,24 +2,25 @@
   <p class='lead text-center'>
     Regisrate usando tus redes sociales .
   </p>
-<% end %>
-<p class="text-center">
-  <% if current_refinery_user && current_refinery_user.twitter_authentication %>
-    <%= image_tag '/assets/twitter-connect.png', class: 'authentication-selected'%>
-  <% else %>
-    <a href="http://auth.redinnovacion.org/auth/twitter">
-      <%= image_tag '/assets/twitter-connect.png'%>
-    </a>
-  <% end %>
+  
+  <p class="text-center">
+    <% if current_refinery_user && current_refinery_user.twitter_authentication %>
+      <%= image_tag '/assets/twitter-connect.png', class: 'authentication-selected'%>
+    <% else %>
+      <a href="http://auth.redinnovacion.org/auth/twitter">
+        <%= image_tag '/assets/twitter-connect.png'%>
+      </a>
+    <% end %>
 
-  <% if current_refinery_user && current_refinery_user.facebook_authentication %>
-    <%= image_tag '/assets/facebook-connect.png', class: 'authentication-selected'%>
-  <% else %>
-    <a href="http://auth.redinnovacion.org/auth/facebook">
-      <%= image_tag '/assets/facebook-connect.png'%>
-    </a>
-  <% end %>
-</p>
+    <% if current_refinery_user && current_refinery_user.facebook_authentication %>
+      <%= image_tag '/assets/facebook-connect.png', class: 'authentication-selected'%>
+    <% else %>
+      <a href="http://auth.redinnovacion.org/auth/facebook">
+        <%= image_tag '/assets/facebook-connect.png'%>
+      </a>
+    <% end %>
+  </p>
+<% end %>
 
 <% if @member.new_record? %>
   <p class='lead text-center'>
@@ -27,10 +28,10 @@
   </p>
 <% end %>
 
-<p class='text-center'>
+<fieldset>
   <% unless @member.new_record? %>
-    <h1><%=t('refinery.members.shared.account')%></h1>
-    <% end %>
+    <legend><%=t('refinery.members.shared.account')%></legend>
+  <% end %>
   <ol class="unstyled">
     <li>
       <%= f.required_label 'Nombre' %>
@@ -75,7 +76,7 @@
       </label>
     </li>
   </ol>
-</p>
+</fieldset>
 
 <% content_for :javascripts do %>
   <script type="text/javascript">

@@ -32,3 +32,4 @@ Refinery::Portfolio::Engine.load_seed
 
 # Added by Refinery CMS Covers extension
 Refinery::Covers::Engine.load_seed
+require "#{Rails.root}/db/gioco/db.rb"

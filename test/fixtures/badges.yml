@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  type_id: 1
+  points: 1
+  default: false
+
+two:
+  name: MyString
+  type_id: 1
+  points: 1
+  default: false

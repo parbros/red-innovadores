@@ -15,11 +15,16 @@ module Refinery
     has_one :twitter_authentication, class_name: '::Authentication', conditions: ["authentications.provider = ?",'twitter']
     has_one :facebook_authentication, class_name: '::Authentication', conditions: ["authentications.provider = ?",'facebook']
     friendly_id :username
+    has_many :levels
+    has_many :badges, through: :levels
+    has_many :points
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
     
     devise :cas_authenticatable, :recoverable
+    
+    mount_uploader :avatar, AvatarUploader
 
     # Setup accessible (or protected) attributes for your model
     # :login is a virtual attribute for authenticating by either username or email
@@ -51,6 +56,10 @@ module Refinery
     
     def display_name
       full_name || username || email
+    end
+    
+    def display_avatar
+      avatar.present? ? avatar : '/assets/avatar.png'
     end
     
     def full_name
@@ -142,6 +151,63 @@ module Refinery
       authentications.build(hash_from_omniauth(omniauth))
       save!
     end
+    
+    def change_points(options)
+      if Gioco::Core::TYPES
+        type_id = options[:type]
+        points  = options[:points]
+      else
+        points  = options
+      end
+      type      = (type_id) ? Type.find(type_id) : false
+
+      if Gioco::Core::TYPES
+        raise "Missing Type Identifier argument" if !type_id
+        old_pontuation  = self.points.where(:type_id => type_id).sum(:value)
+      else
+        old_pontuation  = self.points.to_i
+      end
+      new_pontuation    = old_pontuation + points
+      Gioco::Core.sync_resource_by_points(self, new_pontuation, type)
+    end
+
+    def next_badge?(type_id = false)
+      type              = (type_id) ? Type.find(type_id) : false
+      if Gioco::Core::TYPES
+        raise "Missing Type Identifier argument" if !type_id
+        old_pontuation  = self.points.where(:type_id => type_id).sum(:value)
+      else
+        old_pontuation  = self.points.to_i
+      end
+      next_badge       = Badge.where("points > #{old_pontuation}").order("points ASC").first
+      last_badge_point = self.badges.last.try('points')
+      last_badge_point ||= 0
+
+      if next_badge
+        percentage      = (old_pontuation - last_badge_point)*100/(next_badge.points - last_badge_point)
+        points          = next_badge.points - old_pontuation
+        next_badge_info = { 
+                            :badge      => next_badge,
+                            :points     => points,
+                            :percentage => percentage
+                          }
+      end
+    end
+    
+    def social_points
+      social_pts = points.where(type_id: Type.where(name: "Social").first.id).last
+      social_pts.present? ? social_pts.value : 0
+    end
+    
+    def comment_points
+      comment_pts = points.where(type_id: Type.where(name: "Comentador").first.id).last
+      comment_pts.present? ? comment_pts.value : 0
+    end
+    
+    def innovation_points
+      innovation_pts = points.where(type_id: Type.where(name: "Innovador").first.id).last
+      innovation_pts.present? ? innovation_pts.value : 0
+    end
 
 protected
 
@@ -172,7 +238,6 @@ protected
         :secret => (omniauth['credentials']['secret'] rescue nil)
       }
     end
-
 
     private
     # To ensure uniqueness without case sensitivity we first downcase the username.

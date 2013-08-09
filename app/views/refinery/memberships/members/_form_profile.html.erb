@@ -1,5 +1,5 @@
 <fieldset>
-  <h1><%=t('refinery.members.shared.profile')%></h1>
+  <legend><%=t('refinery.members.shared.profile')%></legend>
   <ol class="unstyled">
     <li>
       <%= f.required_label :first_name %>
@@ -8,10 +8,6 @@
     <li>
       <%= f.required_label :last_name %>
       <%= f.text_field :last_name %>&nbsp;
-    </li>
-    <li>
-      <%= f.label :title %>
-      <%= f.text_field :title %>&nbsp;
     </li>
     <li>
       <%= f.label :phone %>

@@ -24,6 +24,27 @@
       </ol>
     </fieldset>
   <% end %>
+  
+  <fieldset id="redes_sociales" class="">
+    <legend>Redes Sociales</legend>
+      <% if current_refinery_user && current_refinery_user.twitter_authentication %>
+        <%= image_tag '/assets/twitter-connect.png', class: 'authentication-selected'%>
+      <% else %>
+        <a href="http://auth.redinnovacion.org/auth/twitter">
+          <%= image_tag '/assets/twitter-connect.png'%>
+        </a>
+      <% end %>
+
+      <% if current_refinery_user && current_refinery_user.facebook_authentication %>
+        <%= image_tag '/assets/facebook-connect.png', class: 'authentication-selected'%>
+      <% else %>
+        <a href="http://auth.redinnovacion.org/auth/facebook">
+          <%= image_tag '/assets/facebook-connect.png'%>
+        </a>
+      <% end %>
+  </fieldset>
+  
+  
   <fieldset class="submit">
     <%= render :partial => "form_actions",
       :locals => {
@@ -31,6 +52,5 @@
       :continue_editing => false,
       :hide_delete => true
     }%>
-
   </fieldset>
 <% end %>

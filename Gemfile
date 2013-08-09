@@ -47,6 +47,8 @@ gem 'rails-i18n'
 gem 'gibbon'
 gem 'carrierwave'
 gem 'acts_as_commentable_with_threading', git: 'https://github.com/jparbros/acts_as_commentable_with_threading.git'
+gem 'gioco'
+gem 'mini_magick'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

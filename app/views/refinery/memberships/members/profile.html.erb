@@ -1,0 +1,35 @@
+<div class="row">
+  <%= render :partial => 'message' %>
+  <div id="member-info">
+    <div id="member-container">
+      <div class='member-avatar'>
+        <%= image_tag @member.display_avatar %>
+      </div>
+      
+      <div class="member-points">
+        <h3>Puntos</h3>
+        <ul>
+          <li>Sociales: <%= @member.social_points %> pts</li>
+          <li>Participaci&oacute;n: <%= @member.comment_points %> pts</li>
+          <li>Innovaci&oacute;n: <%= @member.innovation_points %> pts</li>
+          
+        </ul>
+      </div>
+      
+      <div class="member-badges">
+        <h3>Medallas</h3>
+      </div>
+    
+      
+      
+    </div>
+  </div>
+  <div id="member">
+    <%= link_to t('.edit_profile'), edit_members_path %>
+    <%= render :partial => "static_account" %>
+    <%= render :partial => "static_profile" %>
+    <%= render :partial => "static_organization" %>
+  </div>
+</div>
+
+<%= render :partial => "/refinery/content_page", :locals => {:hide_sections => [:bodybelow, :bodyabove]} %>

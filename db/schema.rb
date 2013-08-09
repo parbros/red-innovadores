@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531222929) do
+ActiveRecord::Schema.define(:version => 20130809143110) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20130531222929) do
     t.string   "token"
     t.string   "uid"
     t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "badges", :force => true do |t|
+    t.string   "name"
+    t.integer  "type_id"
+    t.integer  "points"
+    t.boolean  "default"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -139,12 +148,27 @@ ActiveRecord::Schema.define(:version => 20130531222929) do
   add_index "forem_views", ["user_id"], :name => "index_forem_views_on_user_id"
   add_index "forem_views", ["viewable_id"], :name => "index_forem_views_on_topic_id"
 
+  create_table "levels", :force => true do |t|
+    t.integer  "badge_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "pdf_files", :force => true do |t|
     t.string   "fileable_type"
     t.integer  "fileable_id"
     t.string   "file"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "points", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "type_id"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "refinery_blog_categories", :force => true do |t|
@@ -488,6 +512,7 @@ ActiveRecord::Schema.define(:version => 20130531222929) do
     t.string   "gender"
     t.integer  "age_range"
     t.boolean  "registration_completed"
+    t.string   "avatar"
   end
 
   add_index "refinery_users", ["id"], :name => "index_refinery_users_on_id"
@@ -544,6 +569,12 @@ ActiveRecord::Schema.define(:version => 20130531222929) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
