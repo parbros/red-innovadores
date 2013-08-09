@@ -21,6 +21,7 @@
 //= require jquery.zclip.min
 //= require jquery.gdocsviewer.min
 //= require jquery.tmpl.min
+//= require social_points
 
 $('#crearIdeaButton').click(function(event) {
   event.preventDefault();
@@ -88,4 +89,8 @@ $('.comment-link').zclip({
     copy: function(){
       return $(this).data('comment-link');
     }
+});
+
+$(document).ready(function() {
+  SocialPoints.init()
 });

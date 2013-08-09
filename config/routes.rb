@@ -11,6 +11,7 @@ RedInnovadores::Application.routes.draw do
   match '/registro' => 'refinery/memberships/members#new'
   
   resources :comunidad, only: [:index], controller: :community
+  resources :add_points, only: [:index]
   
   post '/tinymce_assets' => 'tinymce_assets#create'
   

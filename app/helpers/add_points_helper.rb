@@ -1,0 +1,2 @@
+module AddPointsHelper
+end
