@@ -43,18 +43,18 @@
     <article class='blog_comment_message child-comment' id='<%= "comment-#{child_comment.to_param}" %>'> 
       <a name="comment-<%= child_comment.id%>"></a>       
       <header class='blog_comment_author'>
-        <% if comment.user %>
+        <% if child_comment.user %>
           <span class="author">
-            <%= comment.user.full_name %>
+            <%= child_comment.user.full_name %>
             <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
           </span>
-          <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
+          <span class="date"><%= l(child_comment.created_at.to_date, :format => :long)%></span>
         <% else %>
           <span class="author">
-            <%= comment.name %>
+            <%= child_comment.name %>
             <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
           </span>
-          <span class="date"><%= l(comment.created_at.to_date, :format => :long)%></span>
+          <span class="date"><%= l(child_comment.created_at.to_date, :format => :long)%></span>
         <% end %>
       </header>
       <div class="comment-message-container">
