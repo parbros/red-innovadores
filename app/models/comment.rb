@@ -116,8 +116,8 @@ class Comment < ActiveRecord::Base
   end
   
   def add_points
-    user.change_points({points: 10, type:  Type.where(name: "Comentador").first.id})
-    user.change_points({points: 5, type:  Type.where(name: "Innovador").first.id}) if commentable_type == 'Refinery::Experiences::Experience' || commentable_type == 'Refinery::Ideas:Idea'
+    user.change_points({points: 10, type:  Type.where(name: "Comentador").first.id}) if user
+    user.change_points({points: 5, type:  Type.where(name: "Innovador").first.id}) if user && commentable_type == 'Refinery::Experiences::Experience' || commentable_type == 'Refinery::Ideas:Idea'
   end
 
   module Moderation
