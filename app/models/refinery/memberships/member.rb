@@ -202,6 +202,10 @@ module Refinery
         generate_reset_password_token! if should_generate_reset_token?
         RedInnovacionMailer.reset_password(self).deliver
       end
+      
+      def sync_with_canvas
+        request = RemoteUser.create_user(self.email, self.password) rescue nil
+      end
 
       protected
 
@@ -249,10 +253,6 @@ module Refinery
         self.seen = true
         self.rejected = 'NO'
         self.member_until = 10.year.from_now
-      end
-      
-      def sync_with_canvas
-        request = RemoteUser.create_user(self.email, self.password) rescue nil
       end
     end
   end
