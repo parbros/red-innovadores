@@ -401,9 +401,6 @@ GEM
       simple_oauth (~> 0.2)
     typhoeus (0.6.3)
       ethon (~> 0.5.11)
-    typhoid (0.0.3)
-      ffi
-      typhoeus (~> 0.4)
     tzinfo (0.3.37)
     uglifier (2.1.2)
       execjs (>= 0.3.0)
@@ -468,6 +465,6 @@ DEPENDENCIES
   tinymce-rails
   tinymce-rails-imageupload
   twitter
-  typhoid
+  typhoeus
   uglifier (>= 1.0.3)
   unicorn

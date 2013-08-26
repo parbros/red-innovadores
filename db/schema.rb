@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809143110) do
+ActiveRecord::Schema.define(:version => 20130825181940) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -513,6 +513,8 @@ ActiveRecord::Schema.define(:version => 20130809143110) do
     t.integer  "age_range"
     t.boolean  "registration_completed"
     t.string   "avatar"
+    t.integer  "canvas_user_id"
+    t.string   "canvas_access_token"
   end
 
   add_index "refinery_users", ["id"], :name => "index_refinery_users_on_id"

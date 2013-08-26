@@ -1,26 +1,34 @@
-require 'net/http'
-require 'uri'
+module RemoteUser
 
-class RemoteUser < Typhoid::Resource
-
-  self.site = 'http://lms.redinnovacion.org'  # The base-url for where we plan to retrieve data
-  # self.site = 'http://localhost:3020'  # The base-url for where we plan to retrieve data
-  self.path = '/api/v1/accounts/1/users' # Specific path to get the data for this Class
+  # CANVAS_SITE = 'http://lms.redinnovacion.org'  # The base-url for where we plan to retrieve data
+  CANVAS_SITE = 'http://localhost:3020'  # The base-url for where we plan to retrieve data
   
   # development access token
-  # ACCESS_TOKEN = 'NKcZzqdkrjLzvu8j7anK5yMs2og2wMCh3BDSgO72W9ZU08eqXDrFzQXOLHnhOCoR'
+  ACCESS_TOKEN = 'SKnDkEZuzp85ByfCGrkrIWrr15tHzPJJkkTRtaaWWgtaDLCCW37tUpELaUnbPWSz'
   
   #production access token
-  ACCESS_TOKEN = '1XHwVBPAnk46sLXw1B8NBEzZBYD8HQAgtLMvBDCHQ6HAuqHNNWglkBb9BWqARDDW'
+  # ACCESS_TOKEN = '1XHwVBPAnk46sLXw1B8NBEzZBYD8HQAgtLMvBDCHQ6HAuqHNNWglkBb9BWqARDDW'
+  
 
-  def self.create_user(pseudonym_unique_id, pseudonym_password)
-    # request = build_request("#{site}#{path}?user[name]=#{username}&pseudonym[unique_id]=#{pseudonym_unique_id}&pseudonym[password]=#{pseudonym_password}&access_token=skSXWvkSeLotRT1ecatzN0oedHuRDt9d2gch3qxpBkpdvU8OvtbDTPceBNaIUOUu", {method: :post})
-    # puts request.request_uri
-    # user = self.run(request)
-    postData = Net::HTTP.post_form(URI.parse("#{site}#{path}"), 
-                                   {'pseudonym[unique_id]' => pseudonym_unique_id,
-                                     'pseudonym[password]' => pseudonym_password,
-                                     'access_token' => ACCESS_TOKEN})
+  def create_canvas_user
+    response = Typhoeus.post("#{CANVAS_SITE}/api/v1/accounts/1/users", body: { 
+      pseudonym: {
+        unique_id: self.username,
+        password: self.password
+      },
+      access_token: ACCESS_TOKEN
+    })
+    JSON.parse(response.body)
   end
   
+  def update_canvas_user
+    response = Typhoeus.post("#{CANVAS_SITE}/api/v1/users/#{self.canvas_user_id}/pseudonym",
+      body: {
+        pseudonym: {unique_id: self.username},
+        "_method"=>"put"
+      },
+      
+      headers: {'Authorization' => "Bearer #{self.canvas_access_token}"}
+    )
+  end
 end
