@@ -1,13 +1,13 @@
 module RemoteUser
 
-  # CANVAS_SITE = 'http://lms.redinnovacion.org'  # The base-url for where we plan to retrieve data
-  CANVAS_SITE = 'http://localhost:3020'  # The base-url for where we plan to retrieve data
+  CANVAS_SITE = 'http://lms.redinnovacion.org'  # The base-url for where we plan to retrieve data
+  # CANVAS_SITE = 'http://localhost:3020'  # The base-url for where we plan to retrieve data
   
   # development access token
-  ACCESS_TOKEN = 'SKnDkEZuzp85ByfCGrkrIWrr15tHzPJJkkTRtaaWWgtaDLCCW37tUpELaUnbPWSz'
+  # ACCESS_TOKEN = 'SKnDkEZuzp85ByfCGrkrIWrr15tHzPJJkkTRtaaWWgtaDLCCW37tUpELaUnbPWSz'
   
   #production access token
-  # ACCESS_TOKEN = '1XHwVBPAnk46sLXw1B8NBEzZBYD8HQAgtLMvBDCHQ6HAuqHNNWglkBb9BWqARDDW'
+  ACCESS_TOKEN = '1XHwVBPAnk46sLXw1B8NBEzZBYD8HQAgtLMvBDCHQ6HAuqHNNWglkBb9BWqARDDW'
   
 
   def create_canvas_user
