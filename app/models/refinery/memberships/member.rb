@@ -23,8 +23,8 @@ module Refinery
 
       before_save :ensure_member_role       # always needs to be a Member or can't sign in, see is_member?
       # before_create :confirm_member
-      after_create :sync_with_canvas
-      after_update :sync_with_canvas
+      after_create :create_with_canvas
+      after_update :update_with_canvas
       
       AGE_RANGES = {'1' => '16-18', '2' => '19-24',  '3' => '25-34', '4' => '35-44', '5' => '45-54', '6' => '55-64', '7' => '65+'}
       
@@ -206,14 +206,14 @@ module Refinery
         RedInnovacionMailer.reset_password(self).deliver
       end
       
-      def sync_with_canvas
-        if canvas_user_id.nil?
-          response = create_canvas_user rescue nil
-          self.update_attribute :canvas_user_id, response['id']
-          self.update_attribute :canvas_access_token, response['access_token']
-        else
-          update_canvas_user
-        end
+      def create_with_canvas
+        response = create_canvas_user rescue nil
+        self.update_attribute :canvas_user_id, response['id']
+        self.update_attribute :canvas_access_token, response['access_token']
+      end
+      
+      def update_with_canvas
+        update_canvas_user
       end
 
       protected
