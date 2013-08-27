@@ -13,8 +13,7 @@ module RemoteUser
   def create_canvas_user
     response = Typhoeus.post("#{CANVAS_SITE}/api/v1/accounts/1/users", body: { 
       user: {
-        name: self.email,
-        email: self.email,
+        name: self.email
       },
       pseudonym: {
         unique_id: self.username,
