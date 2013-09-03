@@ -19,6 +19,9 @@ module Refinery
       validates :message, :presence => true
       validates :name, :presence => true, unless: :user_present?
       validates :email, :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }, unless: :user_present?
+      validate :validate_is_spam
+  
+      attr_accessor :email_other
       
       after_create :suscribe_comment
 
@@ -43,6 +46,10 @@ module Refinery
         require 'digest/md5'
         size = ("?s=#{options[:size]}" if options[:size])
         "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.to_s.strip.downcase)}#{size}.jpg"
+      end
+      
+      def validate_is_spam
+        errors.add(:email_other, "spam!!!!") if email_other.present?
       end
       
       def user_present?
