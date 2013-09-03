@@ -76,6 +76,10 @@ aside#comments form.new_comment div.form_new_comment div.field {
   width: 100%;
 }
 
+aside#comments form.new_comment div.form_new_comment div.field.other {
+  display: none;
+}
+
 aside#comments form.new_comment h2 {
   width: auto;
 }
@@ -87,10 +91,6 @@ aside#comments form.new_comment h2 {
   
   aside#comments form.new_comment div.form_new_comment div.field {
     max-width: 240px;
-  }
-  
-  aside#comments form.new_comment div.form_new_comment div.field.other {
-    display: none;
   }
 }
   
