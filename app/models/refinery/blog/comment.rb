@@ -4,7 +4,7 @@ module Refinery
       
       include Mailchimp
 
-      attr_accessible :name, :email, :message, :user_id
+      attr_accessible :name, :email, :message, :user_id, :email_other
 
       filters_spam :author_field => :name,
                    :email_field => :email,

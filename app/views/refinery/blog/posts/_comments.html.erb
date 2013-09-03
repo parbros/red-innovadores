@@ -32,6 +32,9 @@
           <div class='field'>
             <%= f.email_field :email, placeholder: 'Email', class: 'span4' %>
           </div>
+          <div class='field hidden'>
+            <%= f.email_field :email_other, placeholder: 'Email', class: 'span4' %>
+          </div>
         <% else %>
           <div class='field'>
             <%= current_refinery_user.full_name %>

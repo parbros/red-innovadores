@@ -16,9 +16,13 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user, class_name: 'Refinery::User'
   
-  attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id, :spam, :commentable
+  attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id, :spam, :commentable, :email_other
   
   after_create :suscribe_comment, :add_points
+  
+  validate :validate_is_spam
+  
+  attr_accessor :email_other
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -52,6 +56,10 @@ class Comment < ActiveRecord::Base
     self.children.any?
   end
 
+  def validate_is_spam
+    errors.add(:email_other, "spam!!!!") if email_other.present?
+  end
+  
   # Helper class method to lookup all comments assigned
   # to all commentable types for a given user.
   scope :find_comments_by_user, lambda { |user|
