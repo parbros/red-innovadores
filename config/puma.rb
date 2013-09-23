@@ -35,7 +35,7 @@ environment 'production'
 # The default is “false”.
 #
 # daemonize
-# daemonize false
+daemonize true
 
 # Store the pid of the server in the file at “path”.
 #
@@ -112,6 +112,8 @@ workers 2
 # on_worker_boot do
 #   puts 'On worker boot...'
 # end
+
+port 3000
 
 # === Puma control rack application ===
 
