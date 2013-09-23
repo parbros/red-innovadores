@@ -15,7 +15,7 @@ end
 
 
 group :production do
-  gem 'unicorn'
+  gem 'puma'
 end
 
 # Gems used only for assets and not required

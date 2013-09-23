@@ -210,7 +210,6 @@ GEM
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
-    kgio (2.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     letter_opener (1.1.2)
@@ -263,6 +262,8 @@ GEM
       railties (~> 3.0)
     pg (0.15.1)
     polyglot (0.3.3)
+    puma (2.5.1)
+      rack (>= 1.1, < 2.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -295,7 +296,6 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    raindrops (0.11.0)
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -406,10 +406,6 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicode_utils (1.4.0)
-    unicorn (4.6.3)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     uuidtools (2.1.4)
     warden (1.1.1)
       rack (>= 1.0)
@@ -446,6 +442,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   pg
+  puma
   rails (= 3.2.12)
   rails-i18n
   refinerycms (~> 2.0.0)
@@ -467,4 +464,3 @@ DEPENDENCIES
   twitter
   typhoeus
   uglifier (>= 1.0.3)
-  unicorn
