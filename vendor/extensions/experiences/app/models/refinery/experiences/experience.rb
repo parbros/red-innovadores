@@ -24,7 +24,7 @@ module Refinery
       end
       
       def add_points
-        user.change_points({points: 15, type:  Type.where(name: "Innovador").first.id})
+        user.change_points({points: 15, type:  Type.where(name: "Innovador").first.id}) if user.present?
       end
     end
   end
