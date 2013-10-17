@@ -102,7 +102,7 @@ stdout_redirect "/home/red-innovadores/red-innovadores/shared/logs/puma.stdout.l
 #
 # The default is “0”.
 #
-workers 2
+workers 1
 
 # Code to run when a worker boots to setup the process before booting
 # the app.
