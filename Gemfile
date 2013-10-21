@@ -11,11 +11,13 @@ gem 'pg'
 group :development, :test do
   gem 'debugger', '1.1.3'
   gem "letter_opener"
+  gem 'newrelic_rpm'
 end
 
 
 group :production do
   gem 'puma'
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required
