@@ -12,6 +12,7 @@ group :development, :test do
   gem 'debugger', '1.1.3'
   gem "letter_opener"
   gem 'newrelic_rpm'
+  gem 'unicorn'
 end
 
 
@@ -52,6 +53,7 @@ gem 'acts_as_commentable_with_threading', git: 'https://github.com/jparbros/acts
 gem 'gioco'
 gem 'mini_magick'
 gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
+gem 'humanizer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

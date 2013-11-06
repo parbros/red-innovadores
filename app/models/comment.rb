@@ -3,6 +3,9 @@ class Comment < ActiveRecord::Base
   
   include Mailchimp
   
+  include Humanizer
+  require_human_on :create
+  
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
   validates :body, :presence => true
@@ -16,7 +19,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user, class_name: 'Refinery::User'
   
-  attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id, :spam, :commentable, :email_other
+  attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id, :spam, :commentable, :email_other, :humanizer_answer, :humanizer_question_id
   
   after_create :suscribe_comment, :add_points
   

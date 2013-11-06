@@ -24,7 +24,7 @@
         <a href="#" class="comment-link" data-comment-link="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{comment.id}"%>">Copiar link del comentario.</a>
       </div>
     <% if current_refinery_user %>
-      <%= form_for Comment.new, url: refinery.experiences_experience_comments_path(@experience), html: { class: [:hide, 'new_comment'], id: "form-response-comment-#{comment.id}" } do |f| %>
+      <%= form_for comment = Comment.new, url: refinery.experiences_experience_comments_path(@experience), html: { class: [:hide, 'new_comment'], id: "form-response-comment-#{comment.id}" } do |f| %>
         <div class="form_new_comment">
           <%= render :partial => "/refinery/admin/error_messages",
                      :locals => {
@@ -34,6 +34,11 @@
           <div class='field message_field'>
             <%= f.hidden_field :parent_id, value: comment.id %>
             <%= f.text_area :body, placeholder: 'Respuesta al comentario', class: 'span4' %>
+          </div>
+          <div class='field'>
+            <%= f.label :humanizer_answer, comment.humanizer_question %>
+            <%= f.text_field :humanizer_answer %>
+            <%= f.hidden_field :humanizer_question_id %>
           </div>
           <div class='field'>
             <%= f.submit t('submit', :scope => 'refinery.blog.posts.show') %>

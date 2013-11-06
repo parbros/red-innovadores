@@ -4,6 +4,7 @@ module Refinery
 
       before_filter :find_all_ideas
       before_filter :find_page
+      before_filter :registered_user, only: [:new, :create]
 
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -44,6 +45,11 @@ module Refinery
       def find_page
         @page = ::Refinery::Page.where(:link_url => "/ideas").first
       end
+      
+      def registered_user
+        redirect_to "/refinery/users/login" unless current_refinery_user
+      end
+      
 
     end
   end

@@ -1,0 +1,41 @@
+es:
+  humanizer:
+    validation:
+      error: No eres un humano
+    questions:
+      - question: ¿2 + 2?
+        answers: ["4", "cuatro"]
+      - question: ¿Cual es el numero anterior a doce?
+        answers: ["11", "once"]
+      - question: ¿cinco veces dos?
+        answers: ["10", "diez"]
+      - question: "Cual es el siguiente numero: 10, 11, 12, 13, 14, .."
+        answers: ["15", "quince"]
+      - question: "¿Cinco veces cinco?"
+        answers: ["25", "veinticinco"]
+      - question: "¿Diez dividido en dos?"
+        answers: ["5", "cinco"]
+      - question: ¿Que dia es despues de Lunes?
+        answer: ["martes", "Martes"]
+      - question: ¿Cual es el ultimo mes del año?
+        answer: ["diciembre", "Diciembre"]
+      - question: ¿Cuantos minutos tiene una hora?
+        answers: ["60", "secenta"]
+      - question: ¿Que es lo opuesto de abajo?
+        answer: "arriba"
+      - question: ¿Que es lo opuesto de norte?
+        answer: "sur"
+      - question: ¿Que es lo opuesto de malo?
+        answer: "bueno"
+      - question: ¿Cuanto es cuatro veces cuatro?
+        answers: ["16", "diesiceis"]
+      - question: ¿Que numero es despues de 20?
+        answers: ["21", "veintiuno"]
+      - question: ¿Que es es antes de Julio?
+        answer: ["junio", "Junio"]
+      - question: ¿Cuanto es 15 entre 3?
+        answer: ["cinco", "5"]
+      - question: ¿Cuanto es 14 menos 4?
+        answers: ["10", "diez", "Diez"]
+      - question: "¿Que viene despues? Lunes, Martes, Miercoles.."
+        answer: ["Jueves", "jueves"]

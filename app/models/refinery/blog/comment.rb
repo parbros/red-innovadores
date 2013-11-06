@@ -3,8 +3,11 @@ module Refinery
     class Comment < ActiveRecord::Base
       
       include Mailchimp
+      
+      include Humanizer
+      require_human_on :create
 
-      attr_accessible :name, :email, :message, :user_id, :email_other
+      attr_accessible :name, :email, :message, :user_id, :email_other, :humanizer_answer, :humanizer_question_id
 
       filters_spam :author_field => :name,
                    :email_field => :email,
@@ -23,7 +26,12 @@ module Refinery
   
       attr_accessor :email_other
       
-      after_create :suscribe_comment
+      after_create :suscribe_comment, :add_points
+      
+      def add_points
+        user.change_points({points: 10, type:  Type.where(name: "Comentador").first.id}) if user
+        user.change_points({points: 5, type:  Type.where(name: "Innovador").first.id}) if user && commentable_type == 'Refinery::Experiences::Experience' || commentable_type == 'Refinery::Ideas:Idea'
+      end
 
       class << self
         def unmoderated

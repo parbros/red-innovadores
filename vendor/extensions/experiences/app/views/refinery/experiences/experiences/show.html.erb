@@ -80,7 +80,7 @@
         <% end %>
       </div>
 
-      <%= form_for Comment.new, url: refinery.experiences_experience_comments_path(@experience) do |f| %>
+      <%= form_for comment = Comment.new, url: refinery.experiences_experience_comments_path(@experience) do |f| %>
         <div class="form_new_comment">
           <h2><%= t('add', :scope => 'refinery.blog.posts.show.comments') %></h2>
           <%= render :partial => "/refinery/admin/error_messages",
@@ -98,6 +98,11 @@
           <% end %>
           <div class='field message_field'>
             <%= f.text_area :body, placeholder: 'Comentario', class: 'span4' %>
+          </div>
+          <div class='field'>
+            <%= f.label :humanizer_answer, comment.humanizer_question %>
+            <%= f.text_field :humanizer_answer %>
+            <%= f.hidden_field :humanizer_question_id %>
           </div>
           <div class='field'>
             <%= f.submit t('submit', :scope => 'refinery.blog.posts.show') %>
