@@ -1,0 +1,27 @@
+nl:
+  refinery:
+    plugins:
+      gamifications:
+        title: Gamifications
+    gamifications:
+      admin:
+        gamifications:
+          actions:
+            create_new: Maak een nieuwe Gamification
+            reorder: Wijzig de volgorde van de Gamifications
+            reorder_done: Klaar met het wijzingen van de volgorde van de Gamifications
+          records:
+            title: Gamifications
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Gamifications. Druk op 'Maak een nieuwe Gamification' om de eerste aan te maken.
+          gamification:
+            view_live_html: Bekijk deze gamification op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze gamification
+            delete: Verwijder deze gamification voor eeuwig
+      gamifications:
+        show:
+          other: Andere Gamifications
+  activerecord:
+    attributes:
+      'refinery/gamifications/gamification':
+        some: Some

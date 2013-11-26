@@ -1,0 +1,27 @@
+en:
+  refinery:
+    plugins:
+      gamifications:
+        title: Gamifications
+    gamifications:
+      admin:
+        gamifications:
+          actions:
+            create_new: Add New Gamification
+            reorder: Reorder Gamifications
+            reorder_done: Done Reordering Gamifications
+          records:
+            title: Gamifications
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Gamifications yet. Click "Add New Gamification" to add your first gamification.
+          gamification:
+            view_live_html: View this gamification live <br/><em>(opens in a new window)</em>
+            edit: Edit this gamification
+            delete: Remove this gamification forever
+      gamifications:
+        show:
+          other: Other Gamifications
+  activerecord:
+    attributes:
+      'refinery/gamifications/gamification':
+        some: Some

@@ -1,0 +1,27 @@
+sk:
+  refinery:
+    plugins:
+      gamifications:
+        title: Gamifications
+    gamifications:
+      admin:
+        gamifications:
+          actions:
+            create_new: Pridať Gamification
+            reorder: Preusporiadať Gamifications
+            reorder_done: Koniec radenia Gamifications
+          records:
+            title: Gamifications
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Gamifications. Kliknite na "Pridať Gamification" pre pridanie prvého gamification.
+          gamification:
+            view_live_html: Zobraziť náhľad gamification<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť gamification
+            delete: Zmazať gamification
+      gamifications:
+        show:
+          other: Daľšie Gamifications
+  activerecord:
+    attributes:
+      'refinery/gamifications/gamification':
+        some: Some

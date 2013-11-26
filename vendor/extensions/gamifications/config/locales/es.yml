@@ -1,0 +1,28 @@
+es:
+  refinery:
+    plugins:
+      gamifications:
+        title: Gamifications
+#        article: masculino/femenino
+    gamifications:
+      admin:
+        gamifications:
+          actions:
+            create_new: Crear nuevo gamification
+            reorder: Reordenar gamifications
+            reorder_done: Reordenación de gamifications completada
+          records:
+            title: Gamifications
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay gamifications todavía. Pulsa en "Crear nuevo Gamification" para crear tu primer gamification.
+          gamification:
+            view_live_html: Ver este gamification como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este gamification
+            delete: Borrar este gamification para siempre
+      gamifications:
+        show:
+          other: Otros gamifications
+  activerecord:
+    attributes:
+      'refinery/gamifications/gamification':
+        some: Some

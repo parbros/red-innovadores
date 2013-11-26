@@ -64,6 +64,8 @@ PATH
       refinerycms-core (~> 2.0.9)
     refinerycms-experiences (1.0)
       refinerycms-core (~> 2.0.9)
+    refinerycms-gamifications (1.0)
+      refinerycms-core (~> 2.0.10)
     refinerycms-ideas (1.0)
       refinerycms-core (~> 2.0.9)
 
@@ -466,6 +468,7 @@ DEPENDENCIES
   refinerycms-blog (~> 2.0.0)
   refinerycms-covers!
   refinerycms-experiences!
+  refinerycms-gamifications!
   refinerycms-i18n (~> 2.0.0)
   refinerycms-ideas!
   refinerycms-inquiries (~> 2.0.0)

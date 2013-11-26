@@ -1,0 +1,27 @@
+nb:
+  refinery:
+    plugins:
+      gamifications:
+        title: Gamifications
+    gamifications:
+      admin:
+        gamifications:
+          actions:
+            create_new: Lag en ny Gamification
+            reorder: Endre rekkefølgen på Gamifications
+            reorder_done: Ferdig å endre rekkefølgen Gamifications
+          records:
+            title: Gamifications
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Gamifications enda. Klikk på "Lag en ny Gamification" for å legge til din første gamification.
+          gamification:
+            view_live_html: Vis hvordan denne gamification ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne gamification
+            delete: Fjern denne gamification permanent
+      gamifications:
+        show:
+          other: Andre Gamifications
+  activerecord:
+    attributes:
+      'refinery/gamifications/gamification':
+        some: Some

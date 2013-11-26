@@ -89,3 +89,5 @@ gem 'forem-textile_formatter'
 gem 'refinerycms-ideas', :path => 'vendor/extensions'
 gem 'refinerycms-experiences', :path => 'vendor/extensions'
 gem 'refinerycms-covers', :path => 'vendor/extensions'
+
+gem 'refinerycms-gamifications', :path => 'vendor/extensions'
