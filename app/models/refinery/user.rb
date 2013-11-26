@@ -216,7 +216,7 @@ module Refinery
                           points.type_id, SUM(points.value) AS type_points")
                  .where("points.type_id = #{t.id}")
                  .joins(:points)
-                 .group("type_id, #{RESOURCE_NAME}_id")
+                 .group("type_id, refinery_user_id")
                  .order("type_points DESC")
 
          ranking << { :type => t, :ranking => data }
