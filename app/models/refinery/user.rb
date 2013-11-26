@@ -205,6 +205,39 @@ module Refinery
     def innovation_points
       points.where(type_id: Type.where(name: "Innovador").first.id).sum(:value)
     end
+    
+    def self.generate_rankings
+     ranking = []
+     
+     if Gioco::Core::POINTS && Gioco::Core::TYPES
+       Type.find(:all).each do |t|
+         data = self
+                 .select("#{self.table_name}.*, 
+                          points.type_id, SUM(points.value) AS type_points")
+                 .where("points.type_id = #{t.id}")
+                 .joins(:points)
+                 .group("type_id, #{RESOURCE_NAME}_id")
+                 .order("type_points DESC")
+
+         ranking << { :type => t, :ranking => data }
+       
+       end
+
+     elsif Gioco::Core::POINTS && !Gioco::Core::TYPES
+       ranking = self.order("points DESC")
+
+     elsif !Gioco::Core::POINTS && !Gioco::Core::TYPES
+       ranking = self
+                   .select("#{self.table_name}.*,
+                            COUNT(levels.badge_id) AS number_of_levels")
+                   .joins(:levels)
+                   .group("refinery_user_id")
+                   .order("number_of_levels DESC")
+
+     end
+
+     ranking
+   end
 
 protected
 

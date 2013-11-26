@@ -450,7 +450,7 @@ DEPENDENCIES
   forem!
   forem-textile_formatter
   gibbon
-  gioco
+  gioco (= 1.0.1)
   haml-rails
   humanizer
   jquery-rails (~> 2.0.0)
