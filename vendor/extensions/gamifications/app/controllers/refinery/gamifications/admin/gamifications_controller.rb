@@ -4,7 +4,7 @@ module Refinery
       class GamificationsController < ::Refinery::AdminController
 
         def index
-          
+          @users = Refinery::User.generate_rankings
         end
 
       end

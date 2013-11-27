@@ -216,7 +216,7 @@ module Refinery
                           points.type_id, SUM(points.value) AS type_points")
                  .where("points.type_id = #{t.id}")
                  .joins(:points)
-                 .group("type_id, user_id")
+                 .group("type_id, refinery_users.id")
                  .order("type_points DESC")
 
          ranking << { :type => t, :ranking => data }
@@ -231,7 +231,7 @@ module Refinery
                    .select("#{self.table_name}.*,
                             COUNT(levels.badge_id) AS number_of_levels")
                    .joins(:levels)
-                   .group("user_id")
+                   .group("refinery_users.id")
                    .order("number_of_levels DESC")
 
      end
