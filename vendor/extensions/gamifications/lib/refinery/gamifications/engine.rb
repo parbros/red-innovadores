@@ -11,10 +11,6 @@ module Refinery
           plugin.name = "gamifications"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.gamifications_admin_gamifications_path }
           plugin.pathname = root
-          plugin.activity = {
-            :class_name => :'refinery/gamifications/gamification'
-          }
-          
         end
       end
 
