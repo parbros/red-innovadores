@@ -13,6 +13,8 @@ RedInnovadores::Application.routes.draw do
   resources :comunidad, only: [:index], controller: :community
   resources :add_points, only: [:index]
   
+  resources :users, only: [:index, :destroy]
+  
   post '/tinymce_assets' => 'tinymce_assets#create'
   
   resources :passwords, :except => :destroy
