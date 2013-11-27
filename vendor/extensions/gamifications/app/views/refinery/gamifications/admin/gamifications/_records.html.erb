@@ -1,6 +1,15 @@
 <div class='pagination_container'>
-  <% if @users.any? %>
-    <%= render 'gamifications' %>
+  <% if @rankings.any? %>
+    <% @rankings.each do |ranking|%>
+      <h3><%= ranking[:type].name%></h3>
+      <% ranking[:ranking].each do |user| %>
+      <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(gamification) -%>">
+        <span class='title'><%= user.full_name %></span>
+        <span><%= user.type_points %></span>
+      </li>
+        
+      <% end %>
+    <% end %>
   <% else %>
     <p>
       <strong>
