@@ -23,9 +23,10 @@ module RemoteCourse
         user_id: self.canvas_user_id,
         type: 'StudentEnrollment',
         enrollment_state: 'active',
-        notify: true,
-        access_token: ACCESS_TOKEN
+        notify: true
       }
+    },
+      headers: {'Authorization' => "Bearer #{self.canvas_access_token}"
     })
     JSON.parse(response.body)
   end
