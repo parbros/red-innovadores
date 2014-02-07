@@ -27,7 +27,7 @@ module RemoteCourse
       }
     },
       headers: {
-        'Authorization' => "Bearer ACCESS_TOKEN"
+        'Authorization' => "Bearer ACCESS_TOKEN",
         'Content-Type' => 'application/x-www-form-urlencoded'
     })
     JSON.parse(response.body)
