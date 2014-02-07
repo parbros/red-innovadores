@@ -11,7 +11,10 @@ module RemoteCourse
   
 
   def get_courses
-    response = Typhoeus.get("#{CANVAS_SITE}/api/v1/courses?state=available")
+    response = Typhoeus.get("#{CANVAS_SITE}/api/v1/courses?state=available", body: { 
+      access_token: ACCESS_TOKEN
+    })
+    JSON.parse(response.body)
   end
   
   def enroll_to_course(course_id)
