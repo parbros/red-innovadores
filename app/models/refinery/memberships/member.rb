@@ -29,6 +29,7 @@ module Refinery
       AGE_RANGES = {'1' => '16-18', '2' => '19-24',  '3' => '25-34', '4' => '35-44', '5' => '45-54', '6' => '55-64', '7' => '65+'}
       
       include RemoteUser
+      include RemoteCourse
 
       def to_param
           id

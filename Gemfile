@@ -9,7 +9,6 @@ gem 'activeresource', :require => 'active_resource'
 gem 'pg'
 
 group :development, :test do
-  gem 'debugger', '1.1.3'
   gem "letter_opener"
   gem 'newrelic_rpm'
   gem 'unicorn'
