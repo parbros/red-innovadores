@@ -20,12 +20,14 @@ module RemoteCourse
   def enroll_to_course(course_id)
     response = Typhoeus.post("#{CANVAS_SITE}/api/v1/courses/#{course_id}/enrollments", body: {
       enrollment: {
-        user_id: self.user_canvas_id,
+        user_id: self.canvas_user_id,
         type: 'StudentEnrollment',
         enrollment_state: 'active',
-        notify: true
+        notify: true,
+        access_token: ACCESS_TOKEN
       }
     })
+    JSON.parse(response.body)
   end
 
 end
