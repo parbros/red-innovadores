@@ -7,6 +7,7 @@ module Refinery
     extend FriendlyId
     
     include Mailchimp
+    include RemoteCourse
 
     has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
 
