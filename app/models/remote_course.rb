@@ -24,10 +24,11 @@ module RemoteCourse
         type: 'StudentEnrollment',
         enrollment_state: 'active',
         notify: true
-      },
-      access_token: ACCESS_TOKEN
+      }
     },
-      headers: {'Authorization' => "Bearer #{self.canvas_access_token}"
+      headers: {
+        'Authorization' => "Bearer ACCESS_TOKEN"
+        'Content-Type' => 'application/x-www-form-urlencoded'
     })
     JSON.parse(response.body)
   end
