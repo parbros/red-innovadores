@@ -32,6 +32,11 @@
             <%= f.text_area :body, placeholder: 'Respuesta al comentario', class: 'span4' %>
           </div>
           <div class='field'>
+            <%= f.label :humanizer_answer, f.object.humanizer_question %>
+            <%= f.text_field :humanizer_answer %>
+            <%= f.hidden_field :humanizer_question_id %>
+          </div>
+          <div class='field'>
             <%= f.submit t('submit', :scope => 'refinery.blog.posts.show') %>
           </div>
         </div>
