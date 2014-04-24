@@ -5,6 +5,9 @@ module Refinery
   module Blog
     class Post < ActiveRecord::Base
       extend FriendlyId
+      
+      self.per_page = 50
+
       friendly_id :friendly_id_source, :use => [:slugged]
 
       is_seo_meta if self.table_exists?

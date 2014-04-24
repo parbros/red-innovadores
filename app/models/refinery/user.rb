@@ -8,6 +8,8 @@ module Refinery
     
     include Mailchimp
     include RemoteCourse
+    
+    self.per_page = 50
 
     has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
 
