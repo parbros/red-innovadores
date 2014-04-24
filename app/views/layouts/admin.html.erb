@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='<%= Rails.application.config.encoding %>' />
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+    <title><%= browser_title(yield(:title)) %></title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+    <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
+    <%= yield :meta %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= stylesheet_link_tag "application", "formatting", "theme" %>
+
+    <%= yield :stylesheets %>
+
+    <%= javascript_include_tag 'modernizr-min' %>
+  </head>
+  <body>
+
+    <header>
+      <div class="container">
+        <%= link_to refinery.root_path, class: ['home-link'] do image_tag 'logo.png', class: ['pull-left'] end%>
+        <% if current_refinery_user.blank? %>
+          <% unless mobile_device? %>
+            <%= link_to 'Registrarse', '/registro', class:['btn', 'btn-warning', 'pull-right', 'signup-button']%>
+            <%= link_to 'Entrar', '/refinery/users/login', class:['btn', 'btn-warning', 'pull-right', 'profile-button']%>
+            <% end %>
+        <% else %>
+          <% unless mobile_device? %>
+            <div class="btn-group pull-right profile-button">
+              <a class="dropdown-toggle btn btn-warning" data-toggle="dropdown" href="#">
+                <%= current_refinery_user.display_name %><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <li><a tabindex="-1" href="/members/edit">Editar perfil</a></li>
+                  <% if current_refinery_user.has_role?(:superuser) -%>
+                    <li><a tabindex="-1" href="/administrador">CMS Administrador</a></li>
+                    <li><a tabindex="-1" href="/foros/admin">Foro Administrador</a></li>
+                  <% end -%>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Logout', '/refinery/users/logout', method: :delete %></li>
+              </ul>
+            </div>
+          <% end %>
+        <% end -%>
+      </div>
+    </header>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav pull-left">
+            <li><%= link_to 'Usuarios', admin_users_path %></li>
+
+          </ul>
+          <form class="navbar-search pull-right" action="/search" method="get">
+            <input type="text" class="search-query" placeholder="Buscar" name="query">
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container main-container">
+      <div class="row">
+        <div class="span12">
+          <% flash.each do |name, msg| %>
+            <div class="alert alert-<%= name == :notice ? 'success' : 'error' %>">
+              <a class="close" data-dismiss="alert">&times;</a>
+              <%= msg %>
+            </div>
+          <% end%>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer>
+     <div class="container">
+       <div class="row">
+         <div class="span12">
+           <%= render '/refinery/footer' -%>
+         </div>
+       </div>
+    </div>
+  </footer>
+  <%= javascript_include_tag 'new_admin' %>
+  <%= tinymce_assets %>
+  <%= tinymce :alternate %>
+</html>
