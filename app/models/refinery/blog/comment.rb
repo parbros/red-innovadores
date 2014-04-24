@@ -3,11 +3,15 @@ module Refinery
     class Comment < Comment
 
       def message
-        body
+        self.body
       end
       
       def message=(new_message)
-        body = new_message
+        self.body = new_message
+      end
+      
+      def post
+        commentable
       end
     end
   end
