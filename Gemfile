@@ -90,4 +90,4 @@ gem 'refinerycms-experiences', :path => 'vendor/extensions'
 gem 'refinerycms-covers', :path => 'vendor/extensions'
 
 gem 'refinerycms-gamifications', :path => 'vendor/extensions'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap', '0.2.5'
