@@ -392,9 +392,9 @@ GEM
     tilt (1.4.1)
     tinymce-rails (3.5.8.3)
       railties (>= 3.1.1)
-    tinymce-rails-imageupload (3.5.8.5)
+    tinymce-rails-imageupload (3.5.8.3)
       railties (>= 3.1)
-      tinymce-rails (~> 3.5.8.1)
+      tinymce-rails (>= 3.4.9)
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
@@ -470,8 +470,8 @@ DEPENDENCIES
   refinerycms-videojs
   sass-rails (~> 3.2.3)
   sentry-raven!
-  tinymce-rails
-  tinymce-rails-imageupload
+  tinymce-rails (= 3.5.8.3)
+  tinymce-rails-imageupload (= 3.5.8.3)
   twitter
   typhoeus
   uglifier (>= 1.0.3)

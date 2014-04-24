@@ -35,8 +35,8 @@ end
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'jquery-rails', '~> 2.0.0'
-gem 'tinymce-rails'
-gem 'tinymce-rails-imageupload'
+gem 'tinymce-rails', '3.5.8.3'
+gem 'tinymce-rails-imageupload', '3.5.8.3'
 gem 'fog'
 gem 'twitter'
 gem 'fb_graph'
