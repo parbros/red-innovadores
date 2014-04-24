@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-    Refinery::User.delete_all(params[:id])
+    Refinery::User.delete(params[:id])
     redirect_to admin_users_url
   end
 end
