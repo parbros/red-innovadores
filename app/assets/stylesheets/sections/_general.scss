@@ -1,0 +1,191 @@
+.content-title {
+  color: #052E3F;
+  font-size: 23px;
+  font-weight: 400;
+  padding: 5px;
+}
+
+body, html {
+  height: 100%;
+}
+
+html {
+  background: url('/assets/background.png');
+}
+
+body {
+  background-color: transparent;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body > header {
+  background-color: white;
+  display: inline-block;
+  height: 50px;
+  margin: 0;
+  padding: 10px 0;
+  width: 100%;
+
+  ul.social-network-links {
+    @extend .unstyled;
+    @extend .inline;
+
+    margin: 13px 20px 0 0;
+  }
+
+  .profile-button {
+    margin-top: 10px;
+  }
+}
+
+a {
+  color: #056672;
+  font-weight: 600;
+  font-size: 12px;
+  -webkit-transition: all .25s linear;
+  transition: all .25s linear;
+}
+
+.navbar {
+
+  .navbar-inner {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+  }
+
+  .nav {
+    padding: 5px 0;
+
+    & > li {
+      border-right: 1px solid #04525b;
+      border-left: 1px solid #36858e;
+
+      &:first-child { border-left: 0;}
+      &:last-child { border-right: 0;}
+
+      & > a {
+        padding: 5px 15px 5px;
+      }
+    }
+  }
+
+  .container { width: 1120px;}
+}
+
+h1#body_content_title { display: none;}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Open Sans', sans-serif;
+  color: #888888;
+  font-weight: 600;
+  margin: 10px 0 30px 0;
+  line-height: 1;
+}
+
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+
+  a {
+    font-size: 20px;
+  }
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+p {
+  color: #545454;
+  font-size: 12px;
+}
+
+body > footer {
+  background: #056772;
+  color: #052E3F;
+  height: 75px;
+  font-family: 'Open Sans Condesend', sans-serif;
+  font-size: 12px;
+  margin: 10px 0 0 0;
+
+  p {
+    color: #052E3F;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 12px;
+    margin: 16px 0;
+  }
+
+  a {
+    color: #052C3F;
+    font-size: 12px;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
+  img.footer-logo {
+    @extend .pull-right;
+    margin-top: -20px;
+  }
+}
+
+table {
+  @extend .table;
+}
+
+menu { padding: 0;}
+
+input[type=submit] {
+  @extend .btn;
+}
+
+p {
+  color: #444444;
+  font-size: 13px;
+}
+
+.flash {
+  @include makeRow();
+}
+
+.navbar-search .search-query {
+  background-color: #007783;
+  border: 0;
+  color: white;
+
+  &::-webkit-input-placeholder {
+     color: white;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+     color: white;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: white;
+  }
+
+  &:-ms-input-placeholder {
+     color: white;
+  }
+}
+
+.signup-button {
+  margin: 10px 0 0 10px;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}

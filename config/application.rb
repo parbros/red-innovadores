@@ -64,13 +64,15 @@ module RedInnovadores
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
     config.assets.initialize_on_precompile = true
-    
+
+    config.assets.precompile += ['admin.js', 'admin.css']
+
     config.to_prepare do
       Refinery.searchable_models = [Refinery::Page, Refinery::Blog::Post, Refinery::Experiences::Experience, Refinery::Ideas::Idea]
     end
-    
+
     config.middleware.use ::Rack::PerftoolsProfiler, :default_printer => 'gif', :bundler => true
   end
 end

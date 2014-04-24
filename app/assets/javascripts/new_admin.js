@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require tinymce-jquery
+//= require admin/users

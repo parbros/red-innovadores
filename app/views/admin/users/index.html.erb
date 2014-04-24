@@ -1,6 +1,6 @@
 <%= form_tag '/admin/users', method: :delete do %>
   <button type="submit" class="btn btn-danger">Borrar seleccionados</button>
-  <table class="table-bordered table-hover">
+  <table class="table table-bordered table-hover">
     <thead>
         <tr>
           <th></th>
@@ -12,7 +12,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= check_box_tag 'id[]', user.id %></td>
+          <td class="user_check_box"><%= check_box_tag 'id[]', user.id %></td>
           <td><%= user.full_name %></td>
           <td><%= user.email %></td>
           <td><%= link_to "Borrar", admin_user_path(user), method: :delete, class: 'btn btn-danger btn-mini' %></td>
