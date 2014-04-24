@@ -4,7 +4,7 @@
   <% if @posts.any? %>
     <section id="blog_posts">
       <%= render :partial => "/refinery/blog/shared/post", :collection => @posts %>
-      <%= will_paginate @posts %>
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
     </section>
   <% else %>
     <p><%= t('.no_blog_articles_yet') %></p>
