@@ -5,25 +5,27 @@ RedInnovadores::Application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
-  
+
   match '/administrador' => redirect('/refinery')
-  
+
   match '/registro' => 'refinery/memberships/members#new'
-  
+
   resources :comunidad, only: [:index], controller: :community
   resources :cursos, only: [:index, :update], controller: :courses
   resources :add_points, only: [:index]
   resources :comments, only: [:destroy]
-  
-  get "special" => "users#index", as: "users"
-  delete "special" => "users#destroy", as: "user"
-  
+
+  namespace :admin do
+    delete '/users', to: 'users#destroy'
+    resources :users, only: [:index, :destroy]
+  end
+
   post '/tinymce_assets' => 'tinymce_assets#create'
-  
+
   resources :passwords, :except => :destroy
-  
+
   get 'sign_in', :to => 'refinery/cas_sessions#new', :as => :new_session
-  
+
   mount Forem::Engine, :at => "/foros"
   mount Refinery::Core::Engine, :at => '/'
 

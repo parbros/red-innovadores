@@ -10,7 +10,7 @@ module ApplicationHelper
       strip_tags(truncated_content)
     end
   end
-  
+
   def content_teaser(content)
     truncated_content = truncate(content.content, {
       :length => Refinery::Blog.post_teaser_length,
@@ -18,8 +18,13 @@ module ApplicationHelper
     }).html_safe
     strip_tags(truncated_content)
   end
-  
+
   def extract_images(html)
     Nokogiri::HTML(html).xpath("//img/@src")
   end
+
+  def extend_admin_member_path(*arguments)
+
+  end
+
 end

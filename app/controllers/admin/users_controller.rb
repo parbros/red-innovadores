@@ -1,9 +1,8 @@
-class UsersController < ApplicationController
-  
+class Admin::UsersController < ApplicationController
   def index
-    @users = Refinery::User.all
+    @users = Refinery::User.order('email ASC')
   end
-  
+
   def destroy
     Refinery::User.find(params[:id]).delete
     redirect_to users_url
