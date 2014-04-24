@@ -13,6 +13,7 @@ RedInnovadores::Application.routes.draw do
   resources :comunidad, only: [:index], controller: :community
   resources :cursos, only: [:index, :update], controller: :courses
   resources :add_points, only: [:index]
+  resources :comments, only: [:destroy]
   
   get "special" => "users#index", as: "users"
   delete "special" => "users#destroy", as: "user"

@@ -19,6 +19,14 @@
     <% if current_refinery_user %>
       <div id="response-comment-<%= comment.id%>">
         <a href="#" class="show-comment-response" data-comment-id="<%= comment.id%>">Responder este comentario.</a>
+        
+        <% if current_refinery_user.has_role?(:superuser)%>
+          <%= link_to "/comments/#{comment.id}", class: 'btn btn-danger btn-mini',
+          method: :delete, confirm: "¿Esta seguro que desea eliminar el comentario?" do %>
+            <i class="icon-remove icon-white"></i> Borrar comentario
+          <% end %>
+        <% end %>
+        
         <a href="#" class="comment-link" data-comment-link="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{comment.id}"%>">Copiar link del comentario.</a>
       </div>
       <%= form_for comment = Comment.new, url: refinery.ideas_idea_comments_path(@idea), html: { class: [:hide, 'new_comment'], id: "form-response-comment-#{comment.id}" } do |f| %>
@@ -67,6 +75,12 @@
         <div class='comment_message'>
           <%= simple_format auto_link(child_comment.body.to_s) %>
         </div>
+        <% if current_refinery_user && current_refinery_user.has_role?(:superuser)%>
+          <%= link_to "/comments/#{child_comment.id}", class: 'btn btn-danger btn-mini',
+            method: :delete, confirm: "¿Esta seguro que desea eliminar el comentario?" do %>
+            <i class="icon-remove icon-white"></i> Borrar comentario
+          <% end %>
+        <% end %>
         <a href="#" class="comment-link" data-comment-link="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}#comment-#{child_comment.id}"%>">Copiar link del comentario.</a>
       </div>
     </article>
