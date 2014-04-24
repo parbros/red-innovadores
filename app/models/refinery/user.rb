@@ -45,7 +45,7 @@ module Refinery
     before_validation :downcase_username
     before_create :complete_registration
     
-    before_create :suscribe_to_mailchimp
+    # before_create :suscribe_to_mailchimp
 
     class << self
       # Find user by email or username.
@@ -290,6 +290,10 @@ protected
       when 4
         return ["#{name_splited[0]} #{name_splited[1]}", "#{name_splited[2]} #{name_splited[3]}"]
       end
+    end
+    
+    def after_confirmation
+      suscribe_to_mailchimp
     end
     
     def complete_registration
