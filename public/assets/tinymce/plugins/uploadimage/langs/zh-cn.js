@@ -1,0 +1,1 @@
+tinyMCE.addI18n("zh-cn.uploadimage",{desc:"上传图片"});

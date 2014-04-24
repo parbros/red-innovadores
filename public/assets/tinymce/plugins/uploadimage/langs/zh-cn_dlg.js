@@ -1,0 +1,1 @@
+tinyMCE.addI18n("zh-cn.uploadimage_dlg",{title:"插入图片",header:"插入图片",input:"选择图片",uploading:"上传中…",blank_input:"必须选择文件",bad_response:"服务器返回错误",blank_response:"服务器没有响应",insert:"插入",cancel:"取消",alt_text:"图片描述"});
