@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   
   attr_accessible :body, :title, :subject, :email, :name, :parent_id, :user_id, :spam, :commentable, :email_other, :humanizer_answer, :humanizer_question_id
   
-  after_create :suscribe_comment, :add_points
+  after_create :suscribe_comment, :add_points, :send_notification_for_respond
   
   validate :validate_is_spam
   
@@ -129,6 +129,12 @@ class Comment < ActiveRecord::Base
   def add_points
     user.change_points({points: 10, type:  Type.where(name: "Comentador").first.id}) if user
     user.change_points({points: 5, type:  Type.where(name: "Innovador").first.id}) if user && commentable_type == 'Refinery::Experiences::Experience' || commentable_type == 'Refinery::Ideas:Idea'
+  end
+  
+  private
+  
+  def send_notification_for_respond
+    RedInnovacionMailer.comment_has_respond(self.parent).deliver! if self.parent
   end
 
   module Moderation

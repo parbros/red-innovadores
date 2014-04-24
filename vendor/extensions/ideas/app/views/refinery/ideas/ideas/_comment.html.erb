@@ -54,7 +54,7 @@
   </div>
   
   <% comment.children.each do |child_comment| %>
-    <article class='blog_comment_message child-comment' id='<%= "comment-#{child_comment.to_param}" %>'>        
+    <article class='blog_comment_message child-comment' id='<%= "comment-#{child_comment.to_param}" %>'>
       <a name="comment-<%= child_comment.id%>"></a>
       <header class='blog_comment_author'>
         <% if comment.user %>
