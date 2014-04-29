@@ -32,7 +32,6 @@ module Refinery
 
         if @member.update_attributes(params[:member])
           flash[:notice] = t('successful', :scope => 'members.update', :email => @member.email)
-          MembershipMailer.deliver_member_profile_updated(@member).deliver unless @member.has_role?(:admin)
           redirect_to profile_members_path
         else
           render :action => 'edit'
@@ -43,7 +42,6 @@ module Refinery
         @member = Member.new(params[:member])
 
         if @member.save
-          MembershipMailer::deliver_member_created(@member)
           redirect_to root_path, :notice => "Se ha registrado exitosamente en el sitio. Por favor, revise su bandeja de entrada para confirmar su cuenta."
         else
           render :action => :new
@@ -71,12 +69,12 @@ module Refinery
         notice = resource.errors.present? ? "Ocurrio un error al activar su cuenta. Por favor contacte al administrador." : "Ha confirmado su cuenta, puede continuar en el sitio."
         redirect_to root_url, :notice => notice
       end
-      
+
       def cas_login_url
         ::Devise.cas_client.add_service_to_login_url(::Devise.cas_service_url(request.url, devise_mapping))
       end
       helper_method :cas_login_url
-      
+
       def devise_mapping
         Devise.mappings[:refinery_user]
       end
