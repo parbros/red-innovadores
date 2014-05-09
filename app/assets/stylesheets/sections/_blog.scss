@@ -8,26 +8,26 @@ section#body_content_left {
 
 section#body_content_right {
   @include makeColumn(3);
-  
+
   .inner {
     @extend .sidebar-nav;
-    
+
     ul#tags, ul#categories, ul#blog_posts {
       border-bottom: 1px solid #d2d2d2;
       padding-bottom: 20px;
       margin-bottom: 20px;
     }
-    
+
     ul#tags, ul#categories {
       @extend .unstyled;
-      
+
       li {
         i {
           margin-right: 10px;
         }
       }
     }
-    
+
     h2 {
       margin-bottom: 10px;
       margin-top: 10px;
@@ -42,41 +42,41 @@ section#blog_posts {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    
+
 
     border-top: 0;
     margin-bottom: 30px;
-    
+
     iframe {
       width: 100%;
     }
   }
-    
+
     .post-resume {
       @include makeRow();
-      
+
       aside.details {
         @include makeColumn(3);
         background-color: #F4F4F4;
-        
+
         .details-container {
           border-left: 1px solid #d2d2d2;
           height: 270px;
           padding-left: 10px;
           padding-top: 10px;
         }
-        
+
         .date {
           font-size: 22px;
           font-weight: 300;
-          
+
           span {
             color: #878787;
             font-size: 14px;
             margin-left: 10px;
           }
         }
-        
+
         .details-separator {
           background-color: #E1E1E1;
           width: 100px;
@@ -84,11 +84,11 @@ section#blog_posts {
           margin-top: 30px;
           margin-bottom: 10px;
         }
-        
+
         h3 {
           margin: 0 0 10px 0;
         }
-        
+
         span {
           color: #052D3F;
           display: inline-block;
@@ -102,35 +102,35 @@ section#blog_posts {
             font-size: 14px;
             font-weight: 300;
           }
-          
-          i { margin-right: 10px;} 
+
+          i { margin-right: 10px;}
         }
-        
+
         aside {
           margin-top: 8px;
         }
-        
+
         ul.social-plugin {
           @extend .unstyled;
 
           span {opacity: 1;}
         }
       }
-      
+
       section.post-summary {
         @include makeColumn(6);
         background-color: white;
-        
+
         .post-summary-container {
           min-height: 280px;
           border-right: 1px solid #d2d2d2;
           padding-left: 10px;
           padding-right: 10px;
         }
-        
+
         header {
           @include makeRow();
-      
+
           h1 {
             @include makeColumn(5);
 
@@ -149,23 +149,23 @@ div#show_blog_post {
 
   aside.details {
     @include makeColumn(3);
-    
+
     .details-container {
       border-right: 1px solid #BBBBBB;
     }
-    
-    
+
+
     .date {
       font-size: 22px;
       font-weight: 300;
-      
+
       span {
         color: #878787;
         font-size: 14px;
         margin-left: 10px;
       }
     }
-    
+
     .details-separator {
       background-color: #E1E1E1;
       width: 100px;
@@ -173,11 +173,11 @@ div#show_blog_post {
       margin-top: 30px;
       margin-bottom: 10px;
     }
-    
+
     h3 {
       margin: 0 0 10px 0;
     }
-    
+
     span {
       color: #052D3F;
       display: inline-block;
@@ -191,38 +191,37 @@ div#show_blog_post {
         font-size: 14px;
         font-weight: 300;
       }
-      
-      i { margin-right: 10px;} 
+
+      i { margin-right: 10px;}
     }
-    
+
     aside {
       margin-top: 8px;
     }
-    
+
     .social-plugin-container {
       margin: 10px 0 0 0;
       padding: 10px 0 0 0;
 
       border-top: 1px solid #BBBBBB;
-      
+
       ul.social-plugin {
         @extend .unstyled;
 
         span {opacity: 1;}
       }
     }
-    
-    
+
+
   }
-  
+
   section.post-summary {
     @include makeColumn(9);
-    width: 700px !important;
     background-color: transparent;
-    
+
     header {
       @include makeRow();
-  
+
       h1 {
         @include makeColumn(8);
 
@@ -230,6 +229,14 @@ div#show_blog_post {
           @extend .content-title;
         }
       }
+    }
+
+    .post-summary-container {
+      @include makeColumn(6);
+    }
+
+    .related-posts {
+      @include makeColumn(3);
     }
   }
 
@@ -247,24 +254,24 @@ section#body {
 aside#comments {
   @include makeRow();
   margin-top: 50px;
-  
+
   &:before {
     content: url('/assets/comments-arrow.png');
     position: relative;
     left: 350px;
     top: 0px;
   }
-  
+
   h2 { margin-left: 20px}
-  
+
   .comments-container {
     @include makeColumn(9, 3);
     background-color: #E4E4E4;
   }
-  
+
   .comments-messages-container {
     @include makeRow();
-    
+
     .comment-link {
       @extend .pull-right;
     }
@@ -273,87 +280,87 @@ aside#comments {
       @include makeColumn(9);
       border-bottom: 1px solid #d2d2d2;
       background-color: #ECECEC;
-      
+
       .comment-message-container {
         padding: 10px;
       }
-    
+
       header {
         padding: 10px;
         margin-bottom: 10px;
-        
+
         span {
           color: #444444;
           font-weight: 600;
         }
-        
+
         span.author {
           @extend .pull-left;
         }
-  
+
         span.date {
           @extend .pull-right;
         }
       }
-    
+
       &.child-comment {
         margin: 0 0 10px 0;
         border-bottom: 0;
-        
+
         .comment-message-container {
           padding-left: 30px;
         }
-        
+
         header {
           padding-left: 30px;
         }
       }
     }
   }
-  
+
   form.new_comment {
     @include makeColumn(4);
-    
-    h2 { 
+
+    h2 {
       @include makeColumn(4);
     }
-    
+
     div.form_new_comment {
       @include makeRow();
-      
+
       div.field {
         @include makeColumn(4);
 
         input, textarea {
           background-color: #eee;
-      
+
           &:focus {
             background-color: white;
           }
-      
+
           &::-webkit-input-placeholder {
              color: #aaa;
           }
 
           &:-moz-placeholder { /* Firefox 18- */
-             color: aaa;  
+             color: aaa;
           }
 
           &::-moz-placeholder {  /* Firefox 19+ */
-             color: aaa;  
+             color: aaa;
           }
 
-          &:-ms-input-placeholder {  
-             color: aaa;  
+          &:-ms-input-placeholder {
+             color: aaa;
           }
         }
-        
+
         &.message_field {
           textarea {
             height: 200px;
           }
         }
-        
+
         &.other { display: none;}
       }
     }

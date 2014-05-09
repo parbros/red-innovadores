@@ -10,15 +10,15 @@
         <div class="date">
           <%= l(@post.published_at.to_date, :format => :short)%><span><%= @post.published_at.year%></span>
         </div>
-      
+
         <div class="details-separator">
-        
+
         </div>
-      
+
         <div class="author">
           <span><i class="icon-user"></i><%= "#{@post.author.username.humanize}" if @post.author.present? %></span>
         </div>
-      
+
         <% if Refinery::Blog::Post.comments_allowed? %>
           <div class='count_comment'>
             <span>
@@ -38,7 +38,7 @@
             <% end %>
           </aside>
         <% end %>
-      
+
         <% if (categories = @post.categories).any? %>
           <aside class='filed_in'>
             <% categories.each do |category| %>
@@ -46,7 +46,7 @@
             <% end %>
           </aside>
         <% end %>
-      
+
         <div class="social-plugin-container">
           <h3>Comparte</h3>
           <ul class="social-plugin">
@@ -64,21 +64,34 @@
       <header>
         <h1><%= link_to @post.title, refinery.blog_post_path(@post) %></h1>
       </header>
-      <%= @post.body.html_safe %>
-      
-      <% if @post.pdf_files.any? %>
-        <h3>Documentos adjuntos</h3>
-        <table class="table table-bordered">
-          <% @post.pdf_files.each do |pdf_file| %>
-            <tr>
-              <td>
-                <%= link_to pdf_file.pdf_file_name, pdf_file.file.to_s, target: '_blank' %>
-              </td>
-            </tr>
+      <div class="row">
+        <div class="post-summary-container">
+          <%= @post.body.html_safe %>
+
+          <% if @post.pdf_files.any? %>
+            <h3>Documentos adjuntos</h3>
+            <table class="table table-bordered">
+              <% @post.pdf_files.each do |pdf_file| %>
+                <tr>
+                  <td>
+                    <%= link_to pdf_file.pdf_file_name, pdf_file.file.to_s, target: '_blank' %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
           <% end %>
-        </table>
-      <% end %>
-    </section>      
+        </div>
+
+        <div class="related-posts">
+          <h3>Articulos relacionados</h3>
+          <ul>
+            <% @post.related_posts.each do |related_post| %>
+              <li><%= link_to related_post.title, refinery.blog_post_url(related_post) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </section>
   </div>
 
 </article>

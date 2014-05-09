@@ -23,6 +23,9 @@ module Refinery
       has_many :categorizations, :dependent => :destroy, :foreign_key => :blog_post_id
       has_many :categories, :through => :categorizations, :source => :blog_category
 
+      has_many :relateds
+      has_many :related_posts, through: :relateds
+
       acts_as_indexed :fields => [:title, :body]
 
       validates :title, :presence => true, :uniqueness => true

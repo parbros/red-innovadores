@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825181940) do
+ActiveRecord::Schema.define(:version => 20140509144145) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -31,6 +31,49 @@ ActiveRecord::Schema.define(:version => 20130825181940) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "casserver_lt", :force => true do |t|
+    t.string   "ticket",          :null => false
+    t.datetime "created_on",      :null => false
+    t.datetime "consumed"
+    t.string   "client_hostname", :null => false
+  end
+
+  add_index "casserver_lt", ["ticket"], :name => "index_casserver_lt_on_ticket"
+
+  create_table "casserver_pgt", :force => true do |t|
+    t.string   "ticket",            :null => false
+    t.datetime "created_on",        :null => false
+    t.string   "client_hostname",   :null => false
+    t.string   "iou",               :null => false
+    t.integer  "service_ticket_id", :null => false
+  end
+
+  add_index "casserver_pgt", ["ticket"], :name => "index_casserver_pgt_on_ticket"
+
+  create_table "casserver_st", :force => true do |t|
+    t.string   "ticket",            :null => false
+    t.text     "service",           :null => false
+    t.datetime "created_on",        :null => false
+    t.datetime "consumed"
+    t.string   "client_hostname",   :null => false
+    t.string   "username",          :null => false
+    t.string   "type",              :null => false
+    t.integer  "granted_by_pgt_id"
+    t.integer  "granted_by_tgt_id"
+  end
+
+  add_index "casserver_st", ["ticket"], :name => "index_casserver_st_on_ticket"
+
+  create_table "casserver_tgt", :force => true do |t|
+    t.string   "ticket",           :null => false
+    t.datetime "created_on",       :null => false
+    t.string   "client_hostname",  :null => false
+    t.string   "username",         :null => false
+    t.text     "extra_attributes"
+  end
+
+  add_index "casserver_tgt", ["ticket"], :name => "index_casserver_tgt_on_ticket"
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -223,6 +266,13 @@ ActiveRecord::Schema.define(:version => 20130825181940) do
   add_index "refinery_blog_posts", ["access_count"], :name => "index_refinery_blog_posts_on_access_count"
   add_index "refinery_blog_posts", ["id"], :name => "index_refinery_blog_posts_on_id"
   add_index "refinery_blog_posts", ["slug"], :name => "index_refinery_blog_posts_on_slug"
+
+  create_table "refinery_blog_relateds", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "related_post_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "refinery_covers", :force => true do |t|
     t.integer  "image_id"
