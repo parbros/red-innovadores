@@ -1,3 +1,5 @@
+<%= form.hidden_field(:user_id,  current_refinery_user.id) if @post.user_id.nil?%>
+
 <div class="control-group">
   <label class="control-label">Titulo</label>
   <div class="controls">
