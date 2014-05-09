@@ -5,6 +5,9 @@ module Refinery
 
       acts_as_indexed :fields => [:first_name, :last_name]
 
+      include Humanizer
+      require_human_on :create
+
       # validates :first_name, :last_name, :presence => true
       validates :email, :presence => true
       validates :first_name, :presence => true
@@ -12,7 +15,7 @@ module Refinery
 
       attr_accessible :membership_level, :first_name, :last_name, :title, :organization,
                       :street_address, :city, :province, :postal_code, :phone, :fax, :website,
-                      :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code, 
+                      :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code,
                       :age_range, :gender
 
       self.inheritance_column = :membership_level
@@ -25,9 +28,9 @@ module Refinery
       # before_create :confirm_member
       after_create :create_with_canvas
       after_update :update_with_canvas
-      
+
       AGE_RANGES = {'1' => '16-18', '2' => '19-24',  '3' => '25-34', '4' => '35-44', '5' => '45-54', '6' => '55-64', '7' => '65+'}
-      
+
       include RemoteUser
       include RemoteCourse
 
@@ -188,7 +191,7 @@ module Refinery
       def send_confirmation_instructions
         generate_confirmation_token! if self.confirmation_token.nil?
       end
-      
+
       def send_on_create_confirmation_instructions
         RedInnovacionMailer.confirmation(self).deliver
         # self.devise_mailer.confirmation_instructions(self).deliver
@@ -201,18 +204,18 @@ module Refinery
           member_email('member_created', member).deliver if Refinery::Setting.find_or_set("memberships_deliver_mail_on_member_created", true)
         end
       end
-      
+
       def send_reset_password_instructions
         generate_reset_password_token! if should_generate_reset_token?
         RedInnovacionMailer.reset_password(self).deliver
       end
-      
+
       def create_with_canvas
         response = create_canvas_user rescue nil
         self.update_attribute :canvas_user_id, response['id']
         self.update_attribute :canvas_access_token, response['access_token']
       end
-      
+
       def update_with_canvas
         update_canvas_user
       end
@@ -257,7 +260,7 @@ module Refinery
       def remove_member_role
         self.roles.delete(Refinery::Role[:member]) if has_role?(:member)
       end
-      
+
       def confirm_member
         self.enabled = true
         self.seen = true

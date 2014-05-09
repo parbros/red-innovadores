@@ -2,7 +2,7 @@
   <p class='lead text-center'>
     Regisrate usando tus redes sociales .
   </p>
-  
+
   <p class="text-center">
     <% if current_refinery_user && current_refinery_user.twitter_authentication %>
       <%= image_tag '/assets/twitter-connect.png', class: 'authentication-selected'%>
@@ -76,6 +76,11 @@
       </label>
     </li>
   </ol>
+</fieldset>
+<fieldset>
+  <%= f.label :humanizer_answer, @member.humanizer_question %>
+  <%= f.text_field :humanizer_answer %>
+  <%= f.hidden_field :humanizer_question_id %>
 </fieldset>
 
 <% content_for :javascripts do %>
