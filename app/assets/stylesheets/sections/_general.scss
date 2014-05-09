@@ -68,6 +68,16 @@ a {
         padding: 5px 15px 5px;
       }
     }
+
+    a.dropdown-toggle {
+      color: white;
+      padding: 5px 15px 5px;
+
+      .caret {
+        border-top-color: white;
+        border-bottom-color: white;
+      }
+    }
   }
 
   .container { width: 1120px;}

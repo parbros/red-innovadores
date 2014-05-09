@@ -5,7 +5,7 @@ module Refinery
   module Blog
     class Post < ActiveRecord::Base
       extend FriendlyId
-      
+
       self.per_page = 50
 
       friendly_id :friendly_id_source, :use => [:slugged]
@@ -16,7 +16,7 @@ module Refinery
 
       belongs_to :author, :class_name => 'Refinery::User', :foreign_key => :user_id, :readonly => true
       has_many :pdf_files, as: :fileable
-      
+
       acts_as_commentable
       acts_as_taggable
 
@@ -37,12 +37,12 @@ module Refinery
       attr_accessible :title, :body, :custom_teaser, :tag_list, :draft, :published_at, :custom_url, :author
       attr_accessible :browser_title, :meta_keywords, :meta_description, :user_id, :category_ids
       attr_accessible :source_url, :source_url_title, :twitter_publish, :facebook_publish, :pdf_files_attributes
-      
+
       accepts_nested_attributes_for :pdf_files
-      
+
       attr_accessor :twitter_publish, :facebook_publish
-      
-      after_create :publish_to_social_networks
+
+      after_create :publish_to_social_networks, :edit_links
 
       self.per_page = Refinery::Blog.posts_per_page
 
@@ -113,9 +113,17 @@ module Refinery
           Refinery::Setting.set(:teasers_enabled, :value => !currently, :scoping => 'blog')
         end
       end
-      
+
+      def sanitize_body
+        content = Nokogiri::HTML::fragment(body).xpath("//div").present? ?
+            Nokogiri::HTML::fragment(body).xpath("//div") :
+            Nokogiri::HTML::fragment(body)
+        content.xpath('//@style').remove
+        content
+      end
+
       protected
-      
+
       def publish_to_social_networks
         if twitter_publish
           twitter_client.update("#{self.title[0..29]}... http://www.redinnovacion.org/blog/posts/#{self.slug}")
@@ -128,11 +136,11 @@ module Refinery
           )
         end
       end
-      
+
       def facebook_client
         @cfacebook_client ||= ::FbGraph::User.me(Refinery::Setting.get(:facebook_token))
       end
-      
+
       def twitter_client
         @twitter_client ||= ::Twitter::Client.new(
             :oauth_token => Refinery::Setting.get(:twitter_token),

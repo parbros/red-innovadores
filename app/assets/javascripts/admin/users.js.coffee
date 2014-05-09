@@ -2,8 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$('td.user_check_box').click (event) ->
-  event.preventDefault();
-  checkbox = $($(@).find('input'))
-  isChecked = !checkbox.is(':checked');
-  checkbox.attr('checked', isChecked);
+$('.delete-selected-users').click (event) ->
+  event.preventDefault
+  $('form').attr('action', '/admin/users').attr('method', 'delete').submit()
+
+$('.subscribe-selected-users').click (event) ->
+  event.preventDefault
+  $('form').attr('action', '/admin/users/bulk_subscribe_to_courses').submit()
+

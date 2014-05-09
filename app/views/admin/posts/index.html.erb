@@ -1,0 +1,39 @@
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+
+<div class="actions-container">
+  <a href="#" class="btn btn-danger delete-selected-users">Borrar seleccionados</a>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Publicado</th>
+        <th>Acciones</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td>
+          <% if !post.draft %>
+            <i class="icon-ok"></i>
+          <% else %>
+            <i class="icon-delete"></i>
+          <% end %>
+          </td>
+        <td>
+          <%= link_to "Editar", edit_admin_post_path(post), class: 'btn btn-mini' %>
+          <%= link_to "Borrar", admin_post_path(post), method: :delete, class: 'btn btn-danger btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="actions-container">
+  <a href="#" class="btn btn-danger delete-selected-users">Borrar seleccionados</a>
+</div>
+
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>

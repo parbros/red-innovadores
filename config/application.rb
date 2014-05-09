@@ -67,7 +67,7 @@ module RedInnovadores
 
     config.assets.initialize_on_precompile = true
 
-    config.assets.precompile += ['admin.js', 'admin.css']
+    config.assets.precompile += ['admin.js', 'admin.css', 'mobile.css', 'new_admin.js']
 
     config.to_prepare do
       Refinery.searchable_models = [Refinery::Page, Refinery::Blog::Post, Refinery::Experiences::Experience, Refinery::Ideas::Idea]

@@ -5,10 +5,10 @@ require 'bcrypt'
 module Refinery
   class User < Refinery::Core::BaseModel
     extend FriendlyId
-    
+
     include Mailchimp
     include RemoteCourse
-    
+
     self.per_page = 50
 
     has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
@@ -24,9 +24,9 @@ module Refinery
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
-    
-    devise :cas_authenticatable, :recoverable
-    
+
+    devise :cas_authenticatable, :recoverable, :trackable
+
     mount_uploader :avatar, AvatarUploader
 
     # Setup accessible (or protected) attributes for your model
@@ -37,14 +37,14 @@ module Refinery
     attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login, :registration_completed, :first_name, :last_name,
                     :country_code, :age_range, :gender, :suscribed, :membership_level, :first_name, :last_name, :title, :organization,
                     :street_address, :city, :province, :postal_code, :phone, :fax, :website,
-                    :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code, 
+                    :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code,
                     :age_range, :gender
 
     validates :username, :presence => true, :uniqueness => true
     validates :email, :presence => true, :uniqueness => true
     before_validation :downcase_username
     before_create :complete_registration
-    
+
     # before_create :suscribe_to_mailchimp
 
     class << self
@@ -56,15 +56,15 @@ module Refinery
       end
 
     end
-    
+
     def display_name
       full_name || username || email
     end
-    
+
     def display_avatar
       avatar.present? ? avatar : '/assets/avatar.png'
     end
-    
+
     def full_name
       "#{first_name} #{last_name}" if first_name.present? and last_name.present?
     end
@@ -139,11 +139,11 @@ module Refinery
     def to_param
       to_s.parameterize
     end
-    
+
     def forem_admin?
       has_role?(:superuser) || has_role?(:administrador)
     end
-    
+
     def apply_omniauth(omniauth)
       case omniauth['provider']
       when 'facebook'
@@ -154,7 +154,7 @@ module Refinery
       authentications.build(hash_from_omniauth(omniauth))
       save!
     end
-    
+
     def change_points(options)
       if Gioco::Core::TYPES
         type_id = options[:type]
@@ -189,33 +189,33 @@ module Refinery
       if next_badge
         percentage      = (old_pontuation - last_badge_point)*100/(next_badge.points - last_badge_point)
         points          = next_badge.points - old_pontuation
-        next_badge_info = { 
+        next_badge_info = {
                             :badge      => next_badge,
                             :points     => points,
                             :percentage => percentage
                           }
       end
     end
-    
+
     def social_points
       points.where(type_id: Type.where(name: "Social").first.id).sum(:value)
     end
-    
+
     def comment_points
       points.where(type_id: Type.where(name: "Comentador").first.id).sum(:value)
     end
-    
+
     def innovation_points
       points.where(type_id: Type.where(name: "Innovador").first.id).sum(:value)
     end
-    
+
     def self.generate_rankings
      ranking = []
-     
+
      if Gioco::Core::POINTS && Gioco::Core::TYPES
        Type.find(:all).each do |t|
          data = self
-                 .select("#{self.table_name}.*, 
+                 .select("#{self.table_name}.*,
                           points.type_id, SUM(points.value) AS type_points")
                  .where("points.type_id = #{t.id}")
                  .joins(:points)
@@ -223,7 +223,7 @@ module Refinery
                  .order("type_points DESC")
 
          ranking << { :type => t, :ranking => data }
-       
+
        end
 
      elsif Gioco::Core::POINTS && !Gioco::Core::TYPES
@@ -279,7 +279,7 @@ protected
     def downcase_username
       self.username = self.username.downcase if self.username?
     end
-    
+
     def extract_name(name)
       name_splited = name.split(' ')
       case name_splited.size
@@ -291,15 +291,15 @@ protected
         return ["#{name_splited[0]} #{name_splited[1]}", "#{name_splited[2]} #{name_splited[3]}"]
       end
     end
-    
+
     def after_confirmation
       suscribe_to_mailchimp
     end
-    
+
     def complete_registration
       self.registration_completed = true
     end
-    
+
     def suscribe_to_mailchimp
       self.suscribe if self.suscribed?
     end

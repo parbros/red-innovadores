@@ -17,7 +17,9 @@ RedInnovadores::Application.routes.draw do
 
   namespace :admin do
     delete '/users', to: 'users#destroy'
+    post '/users/bulk_subscribe_to_courses', to: 'users#bulk_subscribe_to_courses'
     resources :users, only: [:index, :destroy]
+    resources :posts
   end
 
   post '/tinymce_assets' => 'tinymce_assets#create'
