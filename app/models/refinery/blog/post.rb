@@ -45,7 +45,7 @@ module Refinery
 
       attr_accessor :twitter_publish, :facebook_publish
 
-      after_create :publish_to_social_networks, :edit_links
+      after_create :publish_to_social_networks
 
       self.per_page = Refinery::Blog.posts_per_page
 
