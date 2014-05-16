@@ -15,3 +15,23 @@
 //= require bootstrap
 //= require tinymce-jquery
 //= require admin/users
+
+$('#mceAdvImage').click(function(event) {
+  event.preventDefault();
+  tinyMCE.activeEditor.execCommand('mceAdvImage');
+});
+
+$('#mceUploadImage').click(function() {
+  event.preventDefault();
+  tinyMCE.activeEditor.execCommand('mceUploadImage');
+});
+
+$('#mceMedia').click(function() {
+  event.preventDefault();
+  tinyMCE.activeEditor.execCommand('mceMedia');
+});
+
+$('#mcePreview').click(function() {
+  event.preventDefault();
+  tinyMCE.activeEditor.execCommand('mcePreview');
+});

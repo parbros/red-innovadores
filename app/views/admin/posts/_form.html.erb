@@ -13,3 +13,27 @@
     <%= form.text_area :body, class: 'tinymce' %>
   </div>
 </div>
+
+<div class="control-group">
+  <label>Acceso Rapido</label>
+  <div class="controls">
+    <a href="#" id='mceAdvImage' class="btn btn-mini"><i class="icon-picture"></i> Agregar Imagen</a>
+    <a href="#" id='mceUploadImage' class="btn btn-mini"><i class="icon-upload"></i> Subir Imagen</a>
+    <a href="#" id='mceMedia' class="btn btn-mini"><i class="icon-film"></i> Agregar Video</a>
+    <a href="#" id='mcePreview' class="btn btn-mini"><i class="icon-file"></i>Previo</a>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label">Categorias</label>
+  <div class="controls">
+    <% @categories.each do |category| %>
+      <label class="checkbox"><%= check_box_tag 'post[category_ids][]', category.id,  @post.category_ids.include?(category.id) %> <%= category.title %></label>
+    <% end %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="button" class="btn">Cancelar</button>
+</div>
