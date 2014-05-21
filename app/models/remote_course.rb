@@ -9,12 +9,17 @@ module RemoteCourse
   #production access token
   ACCESS_TOKEN = '1XHwVBPAnk46sLXw1B8NBEzZBYD8HQAgtLMvBDCHQ6HAuqHNNWglkBb9BWqARDDW'
 
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
 
-  def self.get_courses
-    response = Typhoeus.get("#{CANVAS_SITE}/api/v1/courses?state=available", body: {
-      access_token: ACCESS_TOKEN
-    })
-    JSON.parse(response.body)
+  module ClassMethods
+    def get_courses
+      response = Typhoeus.get("#{CANVAS_SITE}/api/v1/courses?state=available&include=syllabus_body", body: {
+        access_token: ACCESS_TOKEN
+      })
+      JSON.parse(response.body)
+    end
   end
 
   def enroll_to_course(course_id)

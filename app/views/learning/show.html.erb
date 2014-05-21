@@ -1,0 +1,48 @@
+<section id="body">
+  <div class="inner">
+    <div id="show_blog_post">
+      <article class="blog_post">
+        <div class="post-resume">
+          <aside class='details'>
+            <div class="details-container">
+              <div class="date">
+                <% if @course.start_at %>
+                  <%= l(@course.start_at.to_date, :format => :short)%><span><%= @course.start_at.to_date.year%></span>
+                <% end %>
+              </div>
+
+              <div class="details-separator">
+
+              </div>
+
+              <div class="social-plugin-container">
+                <h3>Comparte</h3>
+                <ul class="social-plugin">
+                  <li><span class='st_facebook_hcount' displayText='Facebook' st_title="<%= @course.name %>"></span></li>
+                  <li><span class='st_fblike_hcount' displayText='Facebook Like'></span></li>
+                  <li><span class='st_twitter_hcount' displayText='Tweet' st_title="<%= truncate(@course.name, {:length => 80}) %>"></span></li>
+                  <li><span class='st_googleplus_hcount' displayText='Google +' st_title="<%= @course.name %>"></span></li>
+                  <li><span class='st_email_hcount' displayText='Email' st_title="<%= @course.name %>"></span></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <section class='post-summary'>
+          <header>
+            <h1><%= @course.name %></h1>
+          </header>
+          <div class="post-summary-container">
+            <%= raw @course.syllabus_body %>
+
+            <% @course.pages.each do |page| %>
+              <%= page['title']%>
+              <br/>
+            <% end %>
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
+</section>

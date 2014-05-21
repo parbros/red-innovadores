@@ -15,6 +15,9 @@ RedInnovadores::Application.routes.draw do
   resources :add_points, only: [:index]
   resources :comments, only: [:destroy]
 
+  match '/aprendizaje' => 'learning#index'
+  match '/aprendizaje/:id' => 'learning#show', as: :aprendizaje_show
+
   namespace :admin do
     delete '/users', to: 'users#destroy'
     post '/users/bulk_subscribe_to_courses', to: 'users#bulk_subscribe_to_courses'
