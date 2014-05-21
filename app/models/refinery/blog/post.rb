@@ -66,7 +66,7 @@ module Refinery
       end
 
       def related_post_by_categories
-        Refinery::Blog::Post.where(refinery_blog_categories: {id: self.category_ids}).includes(:categories).limit(10) - [self]
+        Refinery::Blog::Post.where(refinery_blog_categories: {id: self.category_ids}, draft: false).includes(:categories).order('access_count DESC').limit(10).select {|p| p != self}
       end
 
       class << self
