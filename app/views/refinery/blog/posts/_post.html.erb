@@ -85,7 +85,7 @@
         <div class="related-posts">
           <h3>Articulos relacionados</h3>
           <ul>
-            <% @post.related_posts.each do |related_post| %>
+            <% @post.related_post_by_categories.each do |related_post| %>
               <li><%= link_to related_post.title, refinery.blog_post_url(related_post) %></li>
             <% end %>
           </ul>
