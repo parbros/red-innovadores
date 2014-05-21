@@ -43,7 +43,7 @@
     <%= f.label :tag_list, t('refinery.blog.shared.tags.title') -%>
     <%= f.text_field :tag_list, :class => 'larger' -%>
   </div>
-  
+
   <div class='field'>
     <span>
       <% twitter_disabled = ::Refinery::Setting.get('twitter_token').blank? && ::Refinery::Setting.get('twitter_secret').blank? %>
@@ -56,7 +56,7 @@
       <%= f.label :facebook_publish, "Publicar en facebook", :class => "stripped" %>
     </span>
   </div>
-  
+
   <div class="field">
     <label>Archivos</label>
     <div class="controls">
@@ -75,6 +75,17 @@
       </table>
     </div>
   </div>
+
+  <% if @post.categories.present? %>
+    <div class="field">
+      <label>Articulos Relacionados</label>
+      <div class="controls">
+        <% @post.post_by_categories do |post| %>
+          <%= check_box_tag 'related_post_ids[]', post.id %> <%= post.title %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
   <div id='more_options_field'>
     <p>
@@ -137,7 +148,7 @@
           <%= f.collection_select :user_id, ::Refinery::User.all, :id, :username %>
         </span>
       </div>
-      
+
       <div class='field'>
         <span class='label_with_help'>
           <%= f.label :user_id, t('.author') %>
@@ -166,12 +177,12 @@
     .remove-new-pdf-file {
       float: right;
     }
-    
+
     .hide {
       display: none;
     }
-    
-    
+
+
     .table, table {
       width: 100%;
       margin-bottom: 20px;
@@ -184,7 +195,7 @@
       -moz-border-radius: 4px;
       border-radius: 4px;
     }
-    
+
     table#pdf-files {
       width: 100%;
       margin: 10px 0;
@@ -219,7 +230,7 @@
           };
         });
       });
-      
+
       $('.remove-new-pdf-file').live('click', function(event) {
         event.preventDefault();
         var pdfLine = $(this).data('pdf-line');

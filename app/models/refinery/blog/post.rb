@@ -65,6 +65,10 @@ module Refinery
         custom_url.present? ? custom_url : title
       end
 
+      def related_post_by_categories
+        Refinery::Blog::Post.where(refinery_blog_categories: {id: self.category_ids}).includes(:categories).limit(10) - [self]
+      end
+
       class << self
         def by_archive(date)
           where(:published_at => date.beginning_of_month..date.end_of_month)
