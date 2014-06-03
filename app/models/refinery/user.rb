@@ -245,7 +245,7 @@ module Refinery
 
    def enroll_to_course(course)
      enroll = enrolls.by_course_id(course.id).first
-     remote_enroll = enroll_to_remote_course(course.remote_courses_id)
+     remote_enroll = enroll_to_remote_course(course.remote_courses_id, enroll.id)
      if remote_enroll['id'].present?
        enroll.update_attribute(remote_enroll_id: remote_enroll['id'])
        enroll.update_attribute(enrolled: true)
