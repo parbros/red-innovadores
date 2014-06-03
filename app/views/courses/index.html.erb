@@ -7,7 +7,7 @@
 
   <div class="span12">
     <h1> Cursos </h1>
-    
+
     <div id="experiences" class="row">
       <% @courses.each do |course| %>
       <div class="span6">
@@ -16,9 +16,9 @@
             <aside class='details'>
               <div class="details-container">
                 <div class="date">
-                  <% if course['start_at'].present? %>
-                    <%= l(course['start_at'].to_date, :format => :short) %> 
-                    <span><%= course['start_at'].to_date.year %></span>
+                  <% if course.get_remote_attribute('start_at').present? %>
+                    <%= l(course.get_remote_attribute('start_at').to_date, :format => :short) %>
+                    <span><%= course.get_remote_attribute('start_at').to_date.year %></span>
                   <% end %>
                 </div>
 
@@ -27,14 +27,15 @@
             <section class="summary">
               <div class="summary-container">
                 <header>
-                  <h2><%= course['name'] %> </h2>
+                  <h2><%= course.get_remote_attribute('name') %> </h2>
                 </header>
 
-                
 
-                <%= link_to curso_path(course['id']), class: 'btn btn-warning', method: :put do %>
+
+                <%= link_to curso_path(course.get_remote_attribute('id')), class: 'btn btn-warning', method: :put do %>
                   Enrolarse <i class="icon-plus icon-white"></i>
                 <% end %>
+                <br/>
               </div>
             </section>
           </div>

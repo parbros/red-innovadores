@@ -17,12 +17,16 @@ RedInnovadores::Application.routes.draw do
 
   match '/aprendizaje' => 'learning#index'
   match '/aprendizaje/:id' => 'learning#show', as: :aprendizaje_show
+  match '/aprendizaje/:course_id/inscripcion' => 'enrolls#create', as: :enrolls, method: :post
 
   namespace :admin do
     delete '/users', to: 'users#destroy'
     post '/users/bulk_subscribe_to_courses', to: 'users#bulk_subscribe_to_courses'
     resources :users, only: [:index, :destroy]
     resources :posts
+    resources :courses do
+      resources :enrolls
+    end
   end
 
   post '/tinymce_assets' => 'tinymce_assets#create'

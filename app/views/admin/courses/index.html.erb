@@ -1,0 +1,26 @@
+<table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Inscripciones</th>
+        <th>Acciones</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.get_remote_attribute('name') %></td>
+        <td>
+          <% if course.enroll_available? %>
+            <%= course.enrolls.count %>
+          <% else %>
+            <span class="label label-important">Inscripción cerrada</span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Detalles', admin_course_path(course.remote_courses_id), class: 'btn btn-primary btn-mini'%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

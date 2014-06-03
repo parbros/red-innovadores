@@ -6,8 +6,8 @@
           <aside class='details'>
             <div class="details-container">
               <div class="date">
-                <% if @course.start_at %>
-                  <%= l(@course.start_at.to_date, :format => :short)%><span><%= @course.start_at.to_date.year%></span>
+                <% if @course.get_remote_attribute('start_at') %>
+                  <%= l(@course.get_remote_attribute('start_at').to_date, :format => :short)%><span><%= @course.get_remote_attribute('start_at').to_date.year%></span>
                 <% end %>
               </div>
 
@@ -18,11 +18,11 @@
               <div class="social-plugin-container">
                 <h3>Comparte</h3>
                 <ul class="social-plugin">
-                  <li><span class='st_facebook_hcount' displayText='Facebook' st_title="<%= @course.name %>"></span></li>
+                  <li><span class='st_facebook_hcount' displayText='Facebook' st_title="<%= @course.get_remote_attribute('name') %>"></span></li>
                   <li><span class='st_fblike_hcount' displayText='Facebook Like'></span></li>
-                  <li><span class='st_twitter_hcount' displayText='Tweet' st_title="<%= truncate(@course.name, {:length => 80}) %>"></span></li>
-                  <li><span class='st_googleplus_hcount' displayText='Google +' st_title="<%= @course.name %>"></span></li>
-                  <li><span class='st_email_hcount' displayText='Email' st_title="<%= @course.name %>"></span></li>
+                  <li><span class='st_twitter_hcount' displayText='Tweet' st_title="<%= truncate(@course.get_remote_attribute('name'), {:length => 80}) %>"></span></li>
+                  <li><span class='st_googleplus_hcount' displayText='Google +' st_title="<%= @course.get_remote_attribute('name') %>"></span></li>
+                  <li><span class='st_email_hcount' displayText='Email' st_title="<%= @course.get_remote_attribute('name') %>"></span></li>
                 </ul>
               </div>
             </div>
@@ -31,14 +31,26 @@
 
         <section class='post-summary'>
           <header>
-            <h1><%= @course.name %></h1>
+            <h1><%= @course.get_remote_attribute('name') %></h1>
           </header>
           <div class="post-summary-container">
-            <%= raw @course.syllabus_body %>
+            <% if @course.front_page['body'].present? %>
+              <%= raw @course.front_page['body']%>
+            <% else %>
+              <%= raw @course.get_remote_attribute('syllabus_body')%>
+            <% end%>
 
             <% @course.pages.each do |page| %>
               <%= page['title']%>
               <br/>
+            <% end %>
+            <% if @course.enroll_available? and current_refinery_user %>
+              <br/> <br/>
+              <% if current_refinery_user.enrolls.by_course_id(@course.id).present? %>
+                <div class="alert alert-info">Usted se encuentra aplicando para tomar este curso.</div>
+              <% else %>
+                <%= link_to 'Aplicar para el curso', enrolls_path(course_id: @course.remote_courses_id), method: :post, class: 'btn btn-primary'%>
+              <% end%>
             <% end %>
           </div>
         </section>

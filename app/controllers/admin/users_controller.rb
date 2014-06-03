@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::BaseController
   def index
     @users = Refinery::User.order('email ASC').paginate(page: params[:page] || 1)
-    @courses = RemoteCourse.get_courses.select {|course| course['account_id'] == 3}
+    @courses = Course.get_courses.select {|course| course['account_id'] == 3}
   end
 
   def destroy

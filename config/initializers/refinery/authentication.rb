@@ -1,4 +1,4 @@
-Devise.setup do |config| 
+Devise.setup do |config|
 
   if Rails.env.production?
     config.cas_base_url = "http://auth.redinnovacion.org/"
@@ -7,5 +7,5 @@ Devise.setup do |config|
   end
 
   config.cas_create_user = false
-end 
+end
 

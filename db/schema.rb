@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140509144145) do
+ActiveRecord::Schema.define(:version => 20140603142320) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -95,6 +95,22 @@ ActiveRecord::Schema.define(:version => 20140509144145) do
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "courses", :force => true do |t|
+    t.integer  "remote_courses_id"
+    t.boolean  "enroll_available"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "enrolls", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.boolean  "enrolled"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "remote_enroll_id"
+  end
 
   create_table "forem_categories", :force => true do |t|
     t.string   "name",       :null => false

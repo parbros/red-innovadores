@@ -8,21 +8,17 @@ module RemoteCourse
 
   #production access token
   ACCESS_TOKEN = 'KlrctVpGTEejZN1M6e4CA6JvFUuOOaEpxZUhUnlSDdMuVMwBIx9AEPk7lZXS3tZ8'
+  # ACCESS_TOKEN = 'y9kCw6lTxN0G0PRaGz7vXDFCq2snEovVNSlMWSIczO6DRKJPEQ7W1XnnOeT4hRzZ'
 
   def self.included(base)
     base.extend(ClassMethods)
   end
 
   module ClassMethods
-    def get_courses
-      response = Typhoeus.get("#{CANVAS_SITE}/api/v1/courses?state=available&include=syllabus_body", body: {
-        access_token: ACCESS_TOKEN
-      })
-      JSON.parse(response.body)
-    end
+
   end
 
-  def enroll_to_course(course_id)
+  def enroll_to_remote_course(course_id)
     response = Typhoeus.post("#{CANVAS_SITE}/api/v1/courses/#{course_id}/enrollments", body: {
       enrollment: {
         user_id: self.canvas_user_id,
@@ -32,7 +28,16 @@ module RemoteCourse
       }
     },
       headers: {
-        'Authorization' => "Bearer ACCESS_TOKEN",
+        'Authorization' => "Bearer #{self.canvas_access_token}",
+        'Content-Type' => 'application/x-www-form-urlencoded'
+    })
+    JSON.parse(response.body)
+  end
+
+  def conclude_a_remote_course(course_id, enroll_id)
+    response = Typhoeus.delete("#{CANVAS_SITE}/api/v1/courses/#{course_id}/enrollments/#{enroll_id}",
+      headers: {
+        'Authorization' => "Bearer #{self.canvas_access_token}",
         'Content-Type' => 'application/x-www-form-urlencoded'
     })
     JSON.parse(response.body)

@@ -10,8 +10,7 @@ gem 'pg'
 
 group :development, :test do
   gem "letter_opener"
-  gem 'newrelic_rpm'
-  gem 'unicorn'
+  gem 'debugger'
 end
 
 

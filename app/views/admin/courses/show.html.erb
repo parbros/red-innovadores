@@ -1,0 +1,61 @@
+<h1> Curso: <%= @course.get_remote_attribute('name') %></h1>
+
+<div class="row">
+  <div class="span6">
+    <dl>
+      <dt>Estado de las inscripciones:</dt>
+      <dd>
+        <% if @course.enroll_available? %>
+          <span class="label label-info">Inscripciones abiertas</span>
+        <% else %>
+          <span class="label label-important">Inscripciones cerradas</span>
+        <% end %>
+      </dd>
+
+      <dt>Inscritos al curso:</dt>
+      <dd>
+        <%= @course.enrolls.count %> Inscritos
+      </dd>
+    </dl>
+  </div>
+  <div class="span6">
+    <% if @course.enroll_available? %>
+      <%= link_to 'Cerrar Inscripciones', admin_course_path(@course.remote_courses_id, course: {enroll_available: false}), class: 'btn btn-danger', method: :put%>
+    <% else %>
+      <%= link_to 'Abrir Inscripciones', admin_course_path(@course.remote_courses_id, course: {enroll_available: true}), class: 'btn btn-primary', method: :put%>
+    <% end %>
+  </div>
+</div>
+
+<h3>Aplicaciones al curso:</h3>
+
+<table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Estado de la Inscripción</th>
+        <th>Acciones</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @course.enrolls.each do |enroll| %>
+      <tr>
+        <td><%= enroll.user.display_name %></td>
+        <td>
+          <% if enroll.enrolled? %>
+            <span class="label label-info">Inscrito al curso</span>
+          <% else %>
+            <span class="label label-important">No Inscrito al curso</span>
+          <% end %>
+        </td>
+        <td>
+          <% if enroll.enrolled? %>
+            <%= link_to 'Remover del curso', admin_course_enrolls_path(course_id: @course.remote_courses_id, user_id: enroll.user.id), method: :delete, class: 'btn btn-mini btn-danger' %>
+          <% else %>
+            <%= link_to 'Inscribir al curso', admin_course_enrolls_path(course_id: @course.remote_courses_id, user_id: enroll.user.id), method: :post, class: 'btn btn-mini btn-primary' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

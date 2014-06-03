@@ -3,13 +3,13 @@
     <section id="body_content_left">
       <section id="blog_posts">
         <% @courses.each do |course| %>
-          <article class="blog_post" id="<%= course['id'] %>">
+          <article class="blog_post" id="<%= course.get_remote_attribute('id') %>">
             <div class="post-resume">
               <aside class='details'>
                 <div class="details-container">
                   <div class="date">
-                    <% if course['start_at'] %>
-                      <%= l(course['start_at'].to_date, :format => :short)%><span><%= course['start_at'].to_date.year%></span>
+                    <% if course.get_remote_attribute('start_at') %>
+                      <%= l(course.get_remote_attribute('start_at').to_date, :format => :short)%><span><%= course.get_remote_attribute('start_at').to_date.year%></span>
                     <% end %>
                   </div>
 
@@ -19,10 +19,14 @@
               <section class='post-summary'>
                 <div class="post-summary-container">
                   <header>
-                    <h1><%= course['name'] %></h1>
+                    <h1><%= course.get_remote_attribute('name')%></h1>
                   </header>
-                  <%= raw course['syllabus_body']%>
-                  <%= link_to "Mas informacion", aprendizaje_show_path(course['id'])%>
+                  <% if course.front_page['body'].present? %>
+                    <%= raw course.front_page['body']%>
+                  <% else %>
+                    <%= raw course.get_remote_attribute('syllabus_body')%>
+                  <% end%>
+                  <%= link_to "Mas informacion", aprendizaje_show_path(course.get_remote_attribute('id'))%>
                 </div>
               </section>
             </div>

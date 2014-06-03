@@ -21,6 +21,7 @@ module Refinery
     has_many :levels
     has_many :badges, through: :levels
     has_many :points
+    has_many :enrolls
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
@@ -240,6 +241,23 @@ module Refinery
      end
 
      ranking
+   end
+
+   def enroll_to_course(course)
+     enroll = enrolls.by_course_id(course.id).first
+     remote_enroll = enroll_to_remote_course(course.remote_courses_id)
+     if remote_enroll['id'].present?
+       enroll.update_attribute(remote_enroll_id: remote_enroll['id'])
+       enroll.update_attribute(enrolled: true)
+       true
+     else
+       false
+     end
+   end
+
+   def conclude_a_enroll(course)
+     enroll = enrolls.by_course_id(course.id).first
+     remote_enroll = conclude_a_remote_course(course.remote_courses_id, enroll.remote_enroll_id)
    end
 
 protected
