@@ -35,7 +35,9 @@ module RemoteCourse
   end
 
   def conclude_a_remote_course(course_id, enroll_id)
-    response = Typhoeus.delete("#{CANVAS_SITE}/api/v1/courses/#{course_id}/enrollments/#{enroll_id}",
+    response = Typhoeus.delete("#{CANVAS_SITE}/api/v1/courses/#{course_id}/enrollments/#{enroll_id}", body: {
+      task: 'delete'
+    },
       headers: {
         'Authorization' => "Bearer #{self.canvas_access_token}",
         'Content-Type' => 'application/x-www-form-urlencoded'

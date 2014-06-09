@@ -258,6 +258,12 @@ module Refinery
    def conclude_a_enroll(course)
      enroll = enrolls.by_course_id(course.id).first
      remote_enroll = conclude_a_remote_course(course.remote_courses_id, enroll.remote_enroll_id)
+     if remote_enroll[:enrollment_state] == 'delete'
+       enroll.update_attribute(:enrolled, false)
+       true
+     else
+       false
+     end
    end
 
 protected
