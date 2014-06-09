@@ -52,7 +52,7 @@
           <% if enroll.enrolled? %>
             <%= link_to 'Remover del curso', admin_course_enrolls_path(course_id: @course.remote_courses_id, user_id: enroll.user.id), method: :delete, class: 'btn btn-mini btn-danger' %>
           <% else %>
-            <%= link_to 'Inscribir al curso', admin_course_enrolls_path(course_id: @course.remote_courses_id, user_id: enroll.user.id), method: :post, class: 'btn btn-mini btn-primary' %>
+            <%= link_to 'Inscribir al curso', admin_course_enrolls_path(enroll, course_id: @course.remote_courses_id, user_id: enroll.user.id), method: :post, class: 'btn btn-mini btn-primary' %>
           <% end %>
         </td>
       </tr>
