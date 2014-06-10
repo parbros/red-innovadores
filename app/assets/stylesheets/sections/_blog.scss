@@ -237,6 +237,10 @@ div#show_blog_post {
 
     .related-posts {
       @include makeColumn(3);
+
+      img {
+        width: 120px;
+      }
     }
   }
 

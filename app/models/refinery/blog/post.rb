@@ -129,6 +129,11 @@ module Refinery
         content
       end
 
+      def image_path
+        image = Nokogiri::HTML(body).xpath("//img").first
+        image.present? ? image['src'] : false
+      end
+
       protected
 
       def publish_to_social_networks

@@ -86,7 +86,10 @@
           <h3>Articulos relacionados</h3>
           <ul>
             <% @post.related_post_by_categories.each do |related_post| %>
-              <li><%= link_to related_post.title, refinery.blog_post_url(related_post) %></li>
+              <li>
+                <%= image_tag related_post.image_path if related_post.image_path.present?%>
+                <%= link_to related_post.title, refinery.blog_post_url(related_post) %>
+              </li>
             <% end %>
           </ul>
         </div>
