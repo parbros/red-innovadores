@@ -1,4 +1,6 @@
-<h1> Curso: <%= @course.get_remote_attribute('name') %></h1>
+<% content_for :content_header do %>
+  Curso: <%= @course.get_remote_attribute('name') %>
+<% end %>
 
 <div class="row">
   <div class="span6">
@@ -8,7 +10,7 @@
         <% if @course.enroll_available? %>
           <span class="label label-info">Inscripciones abiertas</span>
         <% else %>
-          <span class="label label-important">Inscripciones cerradas</span>
+          <span class="label label-primary">Inscripciones cerradas</span>
         <% end %>
       </dd>
 

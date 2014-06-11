@@ -1,3 +1,7 @@
+<% content_for :content_header do %>
+  Usuarios
+<% end %>
+
 <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
 
 <%= form_tag '' do %>

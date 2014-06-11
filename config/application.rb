@@ -67,7 +67,9 @@ module RedInnovadores
 
     config.assets.initialize_on_precompile = true
 
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.precompile += ['admin.js', 'admin.css', 'mobile.css', 'new_admin.js']
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
     config.to_prepare do
       Refinery.searchable_models = [Refinery::Page, Refinery::Blog::Post, Refinery::Experiences::Experience, Refinery::Ideas::Idea]

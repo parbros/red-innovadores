@@ -1,4 +1,8 @@
-<h1> Editando <%= @post.title %></h1>
+<% content_for :content_header do %>
+  Blog | Editando: <%= @post.title %>
+<% end %>
+
+
 
 <%= form_for [:admin, @post] do |form| %>
   <%= render partial: 'form', locals: {form: form} %>

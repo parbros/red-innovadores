@@ -9,5 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require admin_base
+ *= require admin/font-awesome
+ *= require admin/bootstrap
+ *= require admin/jquery-ui.min
+ *= require admin/app
+ *= require admin/blue
+ *= require admin/select2
+ *= require admin/fullcalendar
+ *= require admin/redactor
+ *= require admin/custom
  */

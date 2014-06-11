@@ -1,3 +1,7 @@
+<% content_for :content_header do %>
+  Blog | Posts
+<% end %>
+
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 
 <div class="actions-container">

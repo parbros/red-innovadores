@@ -20,6 +20,7 @@ RedInnovadores::Application.routes.draw do
   match '/aprendizaje/:course_id/inscripcion' => 'enrolls#create', as: :enrolls, method: :post
 
   namespace :admin do
+    root to: 'dashboard#index'
     delete '/users', to: 'users#destroy'
     post '/users/bulk_subscribe_to_courses', to: 'users#bulk_subscribe_to_courses'
     resources :users, only: [:index, :destroy]

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  remote_courses_id: 1
+  enroll_available: false
+
+two:
+  remote_courses_id: 1
+  enroll_available: false

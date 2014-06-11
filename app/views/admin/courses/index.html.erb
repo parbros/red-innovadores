@@ -1,3 +1,7 @@
+<% content_for :content_header do %>
+  Cursos de Canvas
+<% end %>
+
 <table class="table table-bordered table-hover">
   <thead>
       <tr>
@@ -14,7 +18,7 @@
           <% if course.enroll_available? %>
             <%= course.enrolls.count %>
           <% else %>
-            <span class="label label-important">Inscripción cerrada</span>
+            <span class="label label-primary">Inscripción cerrada</span>
           <% end %>
         </td>
         <td>
