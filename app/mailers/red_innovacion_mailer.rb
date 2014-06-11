@@ -24,6 +24,15 @@ class RedInnovacionMailer < ActionMailer::Base
     @enroll = enroll
     @name = enroll.user ? enroll.user.full_name : ""
     @email = enroll.user ? enroll.user.email : ""
+    @enroll.get_course
     mail(:to => "#{@name} <#{@email}>", :subject => "#{@name} Haz aplicado para un curso.")
+  end
+
+  def subscription_notificaction(enroll)
+    @enroll = enroll
+    @name = enroll.user ? enroll.user.full_name : ""
+    @email = enroll.user ? enroll.user.email : ""
+    @enroll.get_course
+    mail(:to => "#{@name} <#{@email}>", :subject => "#{@name} Haz sido aceptado para un curso.")
   end
 end

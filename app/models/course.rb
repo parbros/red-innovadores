@@ -49,4 +49,11 @@ class Course < ActiveRecord::Base
   def set_remote_course(course_attr)
     @remote_course ||= course_attr
   end
+
+  def get_course
+    response = Typhoeus.get("#{CANVAS_SITE}/api/v1/courses/#{self.remote_courses_id}?include=syllabus_body", body: {
+      access_token: ACCESS_TOKEN
+    })
+    set_remote_course JSON.parse(response.body)
+  end
 end
