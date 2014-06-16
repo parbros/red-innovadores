@@ -16,7 +16,7 @@ module Refinery
       attr_accessible :membership_level, :first_name, :last_name, :title, :organization,
                       :street_address, :city, :province, :postal_code, :phone, :fax, :website,
                       :enabled, :add_to_member_until, :role_ids, :suscribed, :country_code,
-                      :age_range, :gender
+                      :age_range, :gender, :humanizer_answer, :humanizer_question_id
 
       self.inheritance_column = :membership_level
 
