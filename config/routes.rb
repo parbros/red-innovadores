@@ -19,6 +19,8 @@ RedInnovadores::Application.routes.draw do
   match '/aprendizaje/:id' => 'learning#show', as: :aprendizaje_show
   match '/aprendizaje/:course_id/inscripcion' => 'enrolls#create', as: :enrolls, method: :post
 
+  match '/resend_confirmation' => 'refinery/memberships/members#resend_confirmation'
+
   namespace :admin do
     root to: 'dashboard#index'
     delete '/users', to: 'users#destroy'

@@ -38,6 +38,16 @@ module Refinery
         end
       end
 
+      def resend_confirmation
+        @member = current_refinery_user
+
+        if @member.resend_confirmation_token
+          redirect_to root_path, :notice => "Se ha enviado el email de confirmacion."
+        else
+          redirect_to root_path, :notice => "Ha ocurrido un error al enviar el email de confirmacion."
+        end
+      end
+
       def create
         @member = Member.new(params[:member])
 
@@ -54,7 +64,7 @@ module Refinery
 
       def login
         if params[:member_login].present? && params[:redirect].present?
-          redirect_to root_url, :notice => "Por favor, confirme su cuenta para continuar."
+          redirect_to root_url, :notice => "Por favor, confirme su cuenta para continuar. <a href=\"/resend_confirmation\">Enviar email de confirmacion.</a>"
           return
         end
         redirect_to(cas_login_url)
