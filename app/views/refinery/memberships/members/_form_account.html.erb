@@ -78,9 +78,11 @@
   </ol>
 </fieldset>
 <fieldset>
-  <%= f.label :humanizer_answer, @member.humanizer_question %>
-  <%= f.text_field :humanizer_answer %>
-  <%= f.hidden_field :humanizer_question_id %>
+  <% if @member.new_record? %>
+    <%= f.label :humanizer_answer, @member.humanizer_question %>
+    <%= f.text_field :humanizer_answer %>
+    <%= f.hidden_field :humanizer_question_id %>
+  <% end %>
 </fieldset>
 
 <% content_for :javascripts do %>
