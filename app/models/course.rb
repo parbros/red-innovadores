@@ -43,7 +43,7 @@ class Course < ActiveRecord::Base
   end
 
   def get_remote_attribute(attr)
-    @remote_course[attr]
+    @remote_course[attr] if @remote_course
   end
 
   def set_remote_course(course_attr)
