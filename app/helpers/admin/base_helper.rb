@@ -15,4 +15,8 @@ module Admin::BaseHelper
   def course_active
     "active" if controller_name == 'courses'
   end
+
+  def memberships_admin_member_path(obf)
+    ""
+  end
 end
