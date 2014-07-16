@@ -27,4 +27,8 @@ module ApplicationHelper
 
   end
 
+  def memberships_admin_member_path(obj)
+    ""
+  end
+
 end
