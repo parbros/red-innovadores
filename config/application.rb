@@ -72,7 +72,7 @@ module RedInnovadores
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
     config.to_prepare do
-      Refinery.searchable_models = [Refinery::Page, Refinery::Blog::Post, Refinery::Experiences::Experience, Refinery::Ideas::Idea]
+      Refinery.searchable_models = [Refinery::Blog::Post, Refinery::Experiences::Experience, Refinery::Ideas::Idea]
     end
 
     config.middleware.use ::Rack::PerftoolsProfiler, :default_printer => 'gif', :bundler => true
