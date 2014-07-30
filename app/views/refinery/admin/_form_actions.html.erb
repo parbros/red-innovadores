@@ -30,7 +30,7 @@
     delete_confirmation ||= nil
     delete_button_id    ||= "delete_button"
     # we have to use eval rather than refinery.send because this url may not exist for HTTP GET
-    delete_url          ||=  eval("refinery.#{Refinery.route_for_model(f.object.class)}(#{f.object.id})") if eval("refinery.respond_to?(#{Refinery.route_for_model(f.object.class)})")
+    delete_url          ||=  ""
   end
 -%>
 <% if from_dialog? %>
