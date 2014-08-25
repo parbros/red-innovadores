@@ -26,7 +26,7 @@ module Refinery
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
 
-    devise :cas_authenticatable, :recoverable, :trackable
+    devise :database_authenticatable, :recoverable, :trackable
 
     mount_uploader :avatar, AvatarUploader
 
