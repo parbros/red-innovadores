@@ -21,6 +21,8 @@ RedInnovadores::Application.routes.draw do
 
   match '/resend_confirmation' => 'refinery/memberships/members#resend_confirmation'
 
+  match '/sso' => 'discourse_sso#sso'
+
   namespace :admin do
     root to: 'dashboard#index'
     delete '/users', to: 'users#destroy'
