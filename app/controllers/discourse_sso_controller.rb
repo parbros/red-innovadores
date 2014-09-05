@@ -8,6 +8,6 @@ class DiscourseSsoController < ApplicationController
     sso.external_id = current_refinery_user.id
     sso.sso_secret = secret
 
-    redirect_to sso.to_url("http://l.discourse/session/sso_login")
+    redirect_to sso.to_url("http://auth.redinnovacion.org/session/sso_login")
   end
 end
