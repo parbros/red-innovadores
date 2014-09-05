@@ -1,6 +1,6 @@
 class DiscourseSsoController < ApplicationController
   def sso
-    secret = "MY_SECRET_STRING"
+    secret = "redinnovacion"
     sso = SingleSignOn.parse(request.query_string, secret)
     sso.email = current_refinery_user.email
     sso.name = current_refinery_user.name
