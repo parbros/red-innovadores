@@ -1,18 +1,4 @@
 GIT
-  remote: git://github.com/radar/forem.git
-  revision: 114888aed2315c9a485e963f1561e4dd3fac183e
-  specs:
-    forem (1.0.0.beta1)
-      cancan (= 1.6.10)
-      decorators (~> 1.0.2)
-      friendly_id (~> 4.0, >= 4.0.9)
-      gemoji (= 1.1.2)
-      localeapp
-      rails (>= 3.1.10, < 3.3, != 3.2.9, != 3.2.8, != 3.2.7, != 3.2.6, != 3.2.5, != 3.2.4, != 3.2.3, != 3.2.2, != 3.2.10, != 3.2.1, != 3.2.0)
-      simple_form
-      workflow (= 0.8.0)
-
-GIT
   remote: git://github.com/refinery/refinerycms-settings.git
   revision: 1e4478bcd997c44b3d6540ab435ac16c95a55bba
   branch: 2-0-stable
@@ -72,7 +58,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    RedCloth (4.2.9)
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
       mail (~> 2.4.4)
@@ -111,7 +96,6 @@ GEM
     babosa (0.3.11)
     bcrypt-ruby (3.1.1)
     builder (3.0.4)
-    cancan (1.6.10)
     carmen (1.0.0)
       unicode_utils (~> 1.4.0)
     carmen-rails (1.0.0)
@@ -135,16 +119,11 @@ GEM
       debugger-ruby_core_source (~> 1.3.2)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.5)
-    decorators (1.0.3)
-      railties (>= 3.0.19, != 3.2.9, != 3.2.8, != 3.2.7, != 3.2.6, != 3.2.5, != 3.2.4, != 3.2.3, != 3.2.2, != 3.2.10, != 3.2.1, != 3.2.0, != 3.1.9, != 3.1.8, != 3.1.7, != 3.1.6, != 3.1.5, != 3.1.4, != 3.1.3, != 3.1.2, != 3.1.1, != 3.1.0)
     devise (2.0.5)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       railties (~> 3.1)
       warden (~> 1.1.1)
-    devise_cas_authenticatable (1.3.0)
-      devise (>= 1.2.0)
-      rubycas-client (>= 2.2.1)
     dragonfly (0.9.15)
       multi_json (~> 1.0)
       rack
@@ -174,17 +153,12 @@ GEM
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5.0)
       ruby-hmac
-    forem-textile_formatter (0.1.0)
-      RedCloth
-      forem
     formatador (0.2.4)
     friendly_id (4.0.9)
-    gemoji (1.1.2)
     gibbon (0.4.6)
       httparty
       multi_json (>= 1.3.4)
     gioco (1.0.1)
-    gli (2.7.0)
     globalize3 (0.3.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -216,13 +190,6 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.1.2)
       launchy (~> 2.2)
-    localeapp (0.6.10)
-      gli
-      i18n
-      json
-      rack
-      rest-client
-      ya2yaml
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -369,13 +336,9 @@ GEM
       dragonfly
       rack-cache
       refinerycms-core
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     routing-filter (0.3.1)
       actionpack
     ruby-hmac (0.4.0)
-    rubycas-client (2.3.9)
-      activesupport
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -383,9 +346,6 @@ GEM
       tilt (~> 1.3)
     seo_meta (1.3.0)
       railties (>= 3.0.0)
-    simple_form (2.1.0)
-      actionpack (~> 3.0)
-      activemodel (~> 3.0)
     simple_oauth (0.2.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -423,10 +383,8 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5.3)
     will_paginate (3.0.4)
-    will_paginate-bootstrap (0.2.5)
+    will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
-    workflow (0.8.0)
-    ya2yaml (0.31)
 
 PLATFORMS
   ruby
@@ -439,11 +397,8 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   debugger
-  devise_cas_authenticatable
   fb_graph
   fog
-  forem!
-  forem-textile_formatter
   gibbon
   gioco (= 1.0.1)
   haml-rails
@@ -479,4 +434,4 @@ DEPENDENCIES
   twitter
   typhoeus
   uglifier (>= 1.0.3)
-  will_paginate-bootstrap (= 0.2.5)
+  will_paginate-bootstrap (= 1.0.1)

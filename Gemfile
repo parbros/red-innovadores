@@ -53,21 +53,6 @@ gem 'mini_magick'
 gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 gem 'humanizer'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
 # Refinery CMS
 gem 'refinerycms', '~> 2.0.0'
 
@@ -81,12 +66,9 @@ gem 'refinerycms-inquiries', '~> 2.0.0'
 gem 'refinerycms-search', '~> 2.0.0'
 gem 'refinerycms-page-images', '~> 2.0.0'
 
-gem 'devise_cas_authenticatable'
-gem 'forem', :git => "git://github.com/radar/forem.git"
-gem 'forem-textile_formatter'
 gem 'refinerycms-ideas', :path => 'vendor/extensions'
 gem 'refinerycms-experiences', :path => 'vendor/extensions'
 gem 'refinerycms-covers', :path => 'vendor/extensions'
 
 gem 'refinerycms-gamifications', :path => 'vendor/extensions'
-gem 'will_paginate-bootstrap', '0.2.5'
+gem 'will_paginate-bootstrap', '1.0.1'
