@@ -40,7 +40,6 @@ RedInnovadores::Application.routes.draw do
 
   get 'sign_in', :to => 'refinery/cas_sessions#new', :as => :new_session
 
-  mount Forem::Engine, :at => "/foros"
   mount Refinery::Core::Engine, :at => '/'
 
 end

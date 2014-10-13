@@ -10,6 +10,4 @@ Refinery::Core::Engine.routes.append do
       end
     end
   end
-
-  match "/refinery/users/:id/edit" => 'refinery/admin/users#delete', as: 'memberships_admin_member'
 end
