@@ -7,7 +7,7 @@ module RemoteUser
   # ACCESS_TOKEN = 'pTi8zrX2WQiXYiAGTaGmkeZOTuJO4SxZuHAkhZY9jNBvrbJSItnQ7NdJJc68zjM3'
 
   #production access token
-  ACCESS_TOKEN = 'KlrctVpGTEejZN1M6e4CA6JvFUuOOaEpxZUhUnlSDdMuVMwBIx9AEPk7lZXS3tZ8'
+  ACCESS_TOKEN = 'Quuin1ofWcNJdpvw2fdaKhno1FXyQGzCnTewDwNE9FCQlBPilUHA1Fmm7Yk3asYU'
 
 
   def create_canvas_user

@@ -7,7 +7,7 @@ module RemoteCourse
   # ACCESS_TOKEN = 'SKnDkEZuzp85ByfCGrkrIWrr15tHzPJJkkTRtaaWWgtaDLCCW37tUpELaUnbPWSz'
 
   #production access token
-  ACCESS_TOKEN = 'KlrctVpGTEejZN1M6e4CA6JvFUuOOaEpxZUhUnlSDdMuVMwBIx9AEPk7lZXS3tZ8'
+  ACCESS_TOKEN = 'Quuin1ofWcNJdpvw2fdaKhno1FXyQGzCnTewDwNE9FCQlBPilUHA1Fmm7Yk3asYU'
   # ACCESS_TOKEN = 'y9kCw6lTxN0G0PRaGz7vXDFCq2snEovVNSlMWSIczO6DRKJPEQ7W1XnnOeT4hRzZ'
 
   def self.included(base)
