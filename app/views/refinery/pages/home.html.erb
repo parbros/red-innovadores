@@ -1,12 +1,12 @@
 <div class="row home">
   <div class="span12">
-    
+
     <% if @images.present? %>
       <div id="myCarousel" class="carousel slide">
         <ol class="carousel-indicators">
           <% @images.each_with_index do |image, index| %>
             <li data-target="#myCarousel" data-slide-to="<%= index %>" <% if index==0 %> class="active" <% end %> ></li>
-          <% end %>          
+          <% end %>
         </ol>
         <!-- Carousel items -->
         <div class="carousel-inner">
@@ -26,7 +26,7 @@
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
       </div>
     <% end %>
-    
+
     <% if @posts.present? %>
       <div class="row">
         <div class="span12">
@@ -35,7 +35,7 @@
             <ol class="carousel-indicators">
               <% @posts.each_with_index do |post_array, index| %>
                 <li data-target="#myCarouselPosts" data-slide-to="<%= index %>"  <% if index==0 %> class="active" <% end %>  ></li>
-              <% end %>          
+              <% end %>
             </ol>
             <div class="carousel-inner">
               <% @posts.each_with_index do |post_array, index| %>
@@ -44,21 +44,21 @@
                     <% post_array.each do |post| %>
                       <% if post %>
                         <div class="span4">
-                          <h3><%= post.object.title %></h3>
+                          <h3><%= post.object.title if  post.object %></h3>
                           <p><%= blog_post_teaser(post.object).html_safe %></p>
                           <%= link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post.object) %>
                         </div>
                       <% end %>
-                    <% end %>              
+                    <% end %>
                   </div>
                 </div>
               <% end %>
             </div>
           </div>
         </div>
-      </div>      
+      </div>
     <% end %>
-    
+
     <% if @community.present? %>
       <div class="row">
         <div class="span12">
@@ -67,7 +67,7 @@
               <ol class="carousel-indicators">
                 <% @community.each_with_index do |community, index| %>
                   <li data-target="#myCarouselComunity" data-slide-to="<%= index %>"  <% if index==0 %> class="active" <% end %>  ></li>
-                <% end %>          
+                <% end %>
               </ol>
               <div class="carousel-inner">
                 <% @community.each_with_index do |communities, index| %>

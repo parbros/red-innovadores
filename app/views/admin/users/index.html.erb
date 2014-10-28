@@ -8,16 +8,6 @@
 
   <div class="actions-container">
     <a href="#" class="btn btn-danger delete-selected-users">Borrar seleccionados</a>
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        Inscribir seleccionados <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <% @courses.each do |course| %>
-          <li><a class="subscribe-selected-users" href="#" data-course-id="<%= course['name'] %>"><%= course['name'] %></a></li>
-        <% end %>
-      </ul>
-    </div>
   </div>
 
   <table class="table table-bordered table-hover">
@@ -43,16 +33,6 @@
 
   <div class="actions-container">
     <a href="#" class="btn btn-danger delete-selected-users">Borrar seleccionados</a>
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        Inscribir seleccionados <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <% @courses.each do |course| %>
-          <li><a class="subscribe-selected-users" href="#" data-course-id="<%= course['name'] %>"><%= course['name'] %></a></li>
-        <% end %>
-      </ul>
-    </div>
   </div>
 
 <% end %>
