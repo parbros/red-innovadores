@@ -5,12 +5,14 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
   <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
   <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
   <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
   <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
   <%= yield :meta %>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <% if mobile_device? %>
