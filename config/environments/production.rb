@@ -43,7 +43,7 @@ RedInnovadores::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  config.action_controller.asset_host = "ri-assets-%d.canvas-app.co"
+  config.action_controller.asset_host = "redinnovacion.org"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -64,15 +64,15 @@ RedInnovadores::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  
+
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => 'redinnovacion.org' }
-  
+
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
-    :port      => 587, 
+    :port      => 587,
     :enable_starttls_auto => true,
     :user_name => "jorge.parbros@parbros.net",
     :password  => "HQx21FVvhOb57nIsz7O7pA",
