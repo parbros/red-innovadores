@@ -42,7 +42,7 @@
                 <div class="item <%= 'active' if index == 0 %>">
                   <div class="row">
                     <% post_array.each do |post| %>
-                      <% if post %>
+                      <% if post and post.post %>
                         <div class="span4">
                           <h3><%= post.object.title if  post.object %></h3>
                           <p><%= blog_post_teaser(post.object).html_safe %></p>
